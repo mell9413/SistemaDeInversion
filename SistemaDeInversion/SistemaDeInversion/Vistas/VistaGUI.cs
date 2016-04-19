@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -15,6 +16,18 @@ namespace SistemaDeInversion.Vistas
         public VistaGUI()
         {
             InitializeComponent();
+        }
+
+        private void VistaGUI_Load(object sender, EventArgs e)
+        {
+            Moneda x,y;
+            MessageBox.Show(Dolar.Nombre);
+            x = new Dolar();
+            y = new Colon();//MAMAMOS EL STATIC JAJJA
+            MessageBox.Show(Dolar.Nombre);
+            MessageBox.Show(Colon.Nombre);
+            
+
         }
     }
 }
