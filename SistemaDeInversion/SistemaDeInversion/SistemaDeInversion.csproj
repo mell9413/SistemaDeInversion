@@ -62,12 +62,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\BitacoraCSV.cs" />
+    <Compile Include="Modelo\BitacoraXML.cs" />
     <Compile Include="Modelo\CertificadoInversion.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Colon.cs" />
     <Compile Include="Modelo\CuentaCorriente.cs" />
     <Compile Include="Modelo\DepositoVistaPactada.cs" />
     <Compile Include="Modelo\Dolar.cs" />
+    <Compile Include="Modelo\IEscritor.cs" />
     <Compile Include="Modelo\Moneda.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />
     <Compile Include="Program.cs" />
