@@ -20,14 +20,16 @@ namespace SistemaDeInversion.Vistas
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
+            /*
             Moneda x,y;
             //MessageBox.Show(Dolar.Nombre);
             x = new Dolar();
             y = new Colon();
             MessageBox.Show(x.Nombre);
             MessageBox.Show(y.Nombre);
-            
-
+            */
+            BitacoraXML xml = new BitacoraXML();
+            xml.crearArchivo();
         }
     }
 }

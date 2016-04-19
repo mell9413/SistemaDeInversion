@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace SistemaDeInversion.Modelo
     class BitacoraCSV: IEscritor
     {
         private static int cantidadInstancias = 0;
-        private static String nombreArchivo = "bitacoraCSV";
+        private static String nombreArchivo = "bitacoraCSV.csv";
 
         public BitacoraCSV()
         {
@@ -43,7 +44,9 @@ namespace SistemaDeInversion.Modelo
 
         public void crearArchivo()
         {
-            //throw new NotImplementedException();
+            
+                File.Create(nombreArchivo).Close();
+            
         }
 
         public void escribirMovimiento()

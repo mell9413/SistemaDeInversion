@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SistemaDeInversion.Modelo
 {
     class BitacoraXML: IEscritor
     {
         private static int cantidadInstancias = 0;
-        private static String nombreArchivo = "bitacoraXML";
+        private static string nombreArchivo = "bitacoraXML.xml";
 
         public BitacoraXML()
         {
-
+            
         }
 
         public static int CantidadInstancias
@@ -44,7 +45,9 @@ namespace SistemaDeInversion.Modelo
 
         public void crearArchivo()
         {
-            //throw new NotImplementedException();
+            XmlTextWriter archivoXML = new XmlTextWriter(nombreArchivo, System.Text.Encoding.UTF8);
+            archivoXML.WriteStartDocument(true);
+            archivoXML.Close();
         }
 
         public void escribirMovimiento()

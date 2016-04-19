@@ -16,6 +16,13 @@ namespace SistemaDeInversion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Modelo.BitacoraXML xml = new Modelo.BitacoraXML();
+            xml.crearArchivo();
+
+            Modelo.BitacoraCSV csv = new Modelo.BitacoraCSV();
+            csv.crearArchivo();
+
             Application.Run(new Vistas.VistaGUI());
             //Consola.run();
 
