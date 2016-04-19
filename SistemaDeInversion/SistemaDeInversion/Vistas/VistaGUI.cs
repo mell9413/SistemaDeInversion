@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SistemaDeInversion
+namespace SistemaDeInversion.Vistas
 {
-    public partial class Form1 : Form
+    public partial class VistaGUI : Form
     {
-        public Form1()
+        public VistaGUI()
         {
             InitializeComponent();
         }
