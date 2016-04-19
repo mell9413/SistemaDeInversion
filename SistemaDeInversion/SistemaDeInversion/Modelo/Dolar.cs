@@ -10,7 +10,7 @@ namespace SistemaDeInversion.Modelo
     {
         public Dolar()
         {
-            Dolar.Nombre = "Dólar";
+            Nombre = "Dólar";
             
         }
     }

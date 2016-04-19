@@ -8,11 +8,11 @@ namespace SistemaDeInversion.Modelo
 {
     public abstract class Moneda
     {
-        private static String nombre;
+        private String nombre;
 
         public Moneda() { }
 
-        public static string Nombre
+        public string Nombre
         {
             get
             {

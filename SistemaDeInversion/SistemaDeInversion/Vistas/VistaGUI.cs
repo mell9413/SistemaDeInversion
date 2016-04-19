@@ -21,11 +21,11 @@ namespace SistemaDeInversion.Vistas
         private void VistaGUI_Load(object sender, EventArgs e)
         {
             Moneda x,y;
-            MessageBox.Show(Dolar.Nombre);
+            //MessageBox.Show(Dolar.Nombre);
             x = new Dolar();
-            y = new Colon();//MAMAMOS EL STATIC JAJJA
-            MessageBox.Show(Dolar.Nombre);
-            MessageBox.Show(Colon.Nombre);
+            y = new Colon();
+            MessageBox.Show(x.Nombre);
+            MessageBox.Show(y.Nombre);
             
 
         }

@@ -8,6 +8,8 @@ namespace SistemaDeInversion.Modelo
 {
     class Colon:Moneda
     {
-        public Colon() { }
+        public Colon() {
+            Nombre = "Colón";
+        }
     }
 }
