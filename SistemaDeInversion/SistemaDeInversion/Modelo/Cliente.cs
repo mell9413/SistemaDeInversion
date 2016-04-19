@@ -14,7 +14,7 @@ namespace SistemaDeInversion.Modelo
 
         public Cliente()
         {
-            this.id = "clte" + cantidadInstancias;
+            this.id = "clte#" + cantidadInstancias;
             cantidadInstancias++;
             this.serviciosTradicionales = new System.Collections.ArrayList();
         }
