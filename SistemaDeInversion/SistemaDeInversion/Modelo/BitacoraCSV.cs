@@ -75,6 +75,9 @@ namespace SistemaDeInversion.Modelo
             return "Se ha realizado correctamente el movimiento";
         }
 
-
+        public string getDataPath()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
