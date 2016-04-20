@@ -12,7 +12,7 @@ namespace SistemaDeInversion.Modelo
 
         public CertificadoInversion (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
         {
-            Id = "cerIn#"+cantidadInstancias;
+          //  Id = "cerIn#"+cantidadInstancias;
             cantidadInstancias++;
         }
 
