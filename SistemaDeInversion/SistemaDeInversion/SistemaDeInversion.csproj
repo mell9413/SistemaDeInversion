@@ -62,6 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controlador\Controlador.cs" />
+    <Compile Include="Controlador\IControlador.cs" />
+    <Compile Include="DTOs\DTOCliente.cs" />
     <Compile Include="Modelo\BitacoraCSV.cs" />
     <Compile Include="Modelo\BitacoraXML.cs" />
     <Compile Include="Modelo\CertificadoInversion.cs" />
@@ -108,8 +111,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controlador\" />
-    <Folder Include="DTOs\" />
+    <Folder Include="Data\" />
     <Folder Include="Modelo\Factorys\" />
   </ItemGroup>
   <ItemGroup>

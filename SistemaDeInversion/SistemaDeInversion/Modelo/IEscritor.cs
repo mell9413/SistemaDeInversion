@@ -10,5 +10,6 @@ namespace SistemaDeInversion.Modelo
     {
         void crearArchivo();
         void escribirMovimiento();
+        String asignarRuta();
     }
 }

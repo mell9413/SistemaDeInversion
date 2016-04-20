@@ -28,8 +28,12 @@ namespace SistemaDeInversion.Vistas
             MessageBox.Show(x.Nombre);
             MessageBox.Show(y.Nombre);
             */
+
             BitacoraXML xml = new BitacoraXML();
             xml.crearArchivo();
+
+            BitacoraCSV csv = new BitacoraCSV();
+            csv.crearArchivo();
         }
     }
 }

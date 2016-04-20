@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace SistemaDeInversion.Modelo
@@ -45,14 +47,21 @@ namespace SistemaDeInversion.Modelo
 
         public void crearArchivo()
         {
-            XmlTextWriter archivoXML = new XmlTextWriter(nombreArchivo, System.Text.Encoding.UTF8);
+            XmlTextWriter archivoXML = new XmlTextWriter (this.asignarRuta()+nombreArchivo, System.Text.Encoding.UTF8);
             archivoXML.WriteStartDocument(true);
             archivoXML.Close();
         }
 
         public void escribirMovimiento()
         {
-            //throw new NotImplementedException();
+            
+        }
+
+        public string asignarRuta()
+        {
+            String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
+            ruta = ruta.Remove(ruta.Length - 14) + "Data/";
+            return ruta;
         }
     }
 }

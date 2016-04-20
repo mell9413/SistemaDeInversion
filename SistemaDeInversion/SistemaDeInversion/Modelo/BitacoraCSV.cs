@@ -42,16 +42,23 @@ namespace SistemaDeInversion.Modelo
             }
         }
 
+        
+
         public void crearArchivo()
         {
-            
-                File.Create(nombreArchivo).Close();
-            
+            File.Create(this.asignarRuta()+nombreArchivo).Close();
         }
 
         public void escribirMovimiento()
         {
             //throw new NotImplementedException();
+        }
+
+        public string asignarRuta()
+        {
+            String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
+            ruta = ruta.Remove(ruta.Length - 14) + "Data/";
+            return ruta;
         }
     }
 }
