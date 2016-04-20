@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SistemaDeInversion.Modelo
 {
-    public abstract class ServicioAhorroInversion
+    public abstract class ServicioAhorroInversion:ILector
     {
         private static int cantidadInstancias = 0;
         protected String id;
-        private double montoInversion;
-        private int plazoDias;
-        private double interes;
+        protected double montoInversion;
+        protected int plazoDias;
+        protected double interes;
         private Moneda moneda;
         private Cliente cliente;
 
@@ -85,8 +86,16 @@ namespace SistemaDeInversion.Modelo
             }
 
         }
-
+        public abstract double getInteres();
         public abstract double calcularRendimiento();
 
+        protected string getDataPath()
+        {
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\books.xml.xml");
+            return ruta;
+        }
+
+
+        public bool mo { get; set; }
     }
 }

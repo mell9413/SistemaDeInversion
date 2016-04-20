@@ -31,6 +31,7 @@ namespace SistemaDeInversion.Modelo
                         break;
                 }
             }
+            array.IndexOf()
             return array;
         }
            
