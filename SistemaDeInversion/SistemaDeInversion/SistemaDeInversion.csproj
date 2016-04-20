@@ -65,6 +65,8 @@
     <Compile Include="Controlador\Controlador.cs" />
     <Compile Include="Controlador\IControlador.cs" />
     <Compile Include="DTOs\DTOCliente.cs" />
+    <Compile Include="DTOs\DTOMoneda.cs" />
+    <Compile Include="DTOs\DTOServicioAhorroInversion.cs" />
     <Compile Include="Modelo\BitacoraCSV.cs" />
     <Compile Include="Modelo\BitacoraXML.cs" />
     <Compile Include="Modelo\CertificadoInversion.cs" />
