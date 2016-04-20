@@ -12,7 +12,7 @@ namespace SistemaDeInversion.Modelo
 
         public DepositoVistaPactada (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
         {
-            Id = "DpVis#" + cantidadInstancias;
+            base.id = "DpVis#" + cantidadInstancias;
             cantidadInstancias++;
         }
         public override double calcularRendimiento()

@@ -9,7 +9,7 @@ namespace SistemaDeInversion.Modelo
     public abstract class ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
-        private String id;
+        protected String id;
         private double montoInversion;
         private int plazoDias;
         private double interes;
@@ -22,7 +22,7 @@ namespace SistemaDeInversion.Modelo
             this.moneda = moneda;
             this.montoInversion = montoInversion;
             this.plazoDias = plazoDias;
-            this.id = "Serv#" + CantidadInstancias;
+            //this.id = "Serv#" + CantidadInstancias;
             cantidadInstancias++;
         }
 
