@@ -23,55 +23,25 @@ namespace SistemaDeInversion.Modelo
             cantidadInstancias++;
         }
 
-
-        private ArrayList getTablaInteres()
+         public override double getInteres()
         {
-            ArrayList listaRangos=new ArrayList();            
-            String dataPath = base.getDataPath();
-            XmlTextReader reader = new XmlTextReader(dataPath);
-            while (reader.Read())
-            {
-                switch (reader.NodeType)
-                {
-                        case XmlNodeType.Text: //Display the text in each element.
-                             MessageBox.Show(reader.Value);
-                             listaRangos.Add(reader.Value);
-                             break;
-                }
-            }
-            return listaRangos;
-        }
-        /* public override double getInteres()
-        {
-            ArrayList listaRangos = getTablaInteres();
-             for (int i = 0; listaRangos.Count != i; i++)
-             {
-                 if (base.montoInversion <= listaRangos.IndexOf(i))
-                 {
-                     base.interes=
-                 }
-             }
-
              XElement xelement = XElement.Load(base.getDataPath());
-             var homePhone = from phoneno in xelement.Elements("row")
-                             where (string)phoneno.Element("rangomax")>=base.plazoDias;
-                             select phoneno;
-             Console.WriteLine("List HomePhone Nos.");
-             foreach (XElement xEle in homePhone)
-             {
-                 Console.WriteLine(xEle.Element("Phone").Value);
-             }
-             
-            return 2;
+             var homePhone = (from phoneno in xelement.Elements("row")
+                             where (double)phoneno.Element("rangomax")>=base.montoInversion
+                             select phoneno).First();
+            
+            // foreach (XElement xEle in homePhone)
+             //{
+               //  MessageBox.Show(xEle.Element("interesAnual").Value);
+             //}
+             MessageBox.Show(homePhone.Element("interesAnual").Value);
+             return Convert.ToDouble(homePhone.Element("interesAnual").Value);
         }
-        */
+        
         public override double calcularRendimiento()
         {
-            //ArrayList tabla = this.x.lol();
-           // MessageBox.Show(tabla[1].ToString());
-
-
-            return 2;
+           
+           return 2;
         }
 
 
