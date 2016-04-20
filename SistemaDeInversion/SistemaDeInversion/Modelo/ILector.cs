@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo
 {
-    interface IEscritor
+    interface ILector
     {
-        void crearArchivo();
-        String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
-        String asignarRuta();
+        
     }
 }

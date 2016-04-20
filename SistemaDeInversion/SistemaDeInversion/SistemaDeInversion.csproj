@@ -77,6 +77,7 @@
     <Compile Include="Modelo\Dolar.cs" />
     <Compile Include="Modelo\Fisico.cs" />
     <Compile Include="Modelo\IEscritor.cs" />
+    <Compile Include="Modelo\ILector.cs" />
     <Compile Include="Modelo\Moneda.cs" />
     <Compile Include="Modelo\posibleInterface.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />

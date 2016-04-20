@@ -41,7 +41,9 @@ namespace SistemaDeInversion.Vistas
             xml.crearArchivo();
             
             BitacoraCSV csv = new BitacoraCSV();
-            csv.crearArchivo();
+            //csv.crearArchivo();
+
+            csv.escribirMovimiento();
         }
     }
 }

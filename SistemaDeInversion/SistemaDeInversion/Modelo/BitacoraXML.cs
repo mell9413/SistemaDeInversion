@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Modelo
 {
@@ -52,16 +53,16 @@ namespace SistemaDeInversion.Modelo
             archivoXML.Close();
         }
 
-        public void escribirMovimiento()
-        {
-            
-        }
-
         public string asignarRuta()
         {
             String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
             ruta = ruta.Remove(ruta.Length - 14) + "Data/";
             return ruta;
+        }
+
+        public string escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento)
+        {
+            return "";
         }
     }
 }
