@@ -24,8 +24,6 @@ namespace SistemaDeInversion.Modelo
                                 case XmlNodeType.Text: //Display the text in each element.
                                 MessageBox.Show(reader.Value);
                                 array.Add(reader.Value);
-                                
-
                                 break;
                         }
                     }
