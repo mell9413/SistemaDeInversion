@@ -15,5 +15,9 @@ namespace SistemaDeInversion.Modelo
             Id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
         }
+
+        public override double calcularRendimiento(){
+            return 2;
+        }
     }
 }

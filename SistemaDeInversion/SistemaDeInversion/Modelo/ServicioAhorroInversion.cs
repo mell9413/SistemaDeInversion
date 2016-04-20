@@ -18,12 +18,12 @@ namespace SistemaDeInversion.Modelo
 
         public ServicioAhorroInversion(Cliente cliente, Moneda moneda, double montoInversion, int plazoDias)
         {
-            this.Cliente = cliente;
-            this.Moneda = moneda;
-            this.MontoInversion = montoInversion;
-            this.PlazoDias = plazoDias;
-            this.Id = "Serv#" + CantidadInstancias;
-            CantidadInstancias++;
+            this.cliente = cliente;
+            this.moneda = moneda;
+            this.montoInversion = montoInversion;
+            this.plazoDias = plazoDias;
+            this.id = "Serv#" + CantidadInstancias;
+            cantidadInstancias++;
         }
 
         public static int CantidadInstancias
@@ -33,10 +33,6 @@ namespace SistemaDeInversion.Modelo
                 return cantidadInstancias;
             }
 
-            set
-            {
-                cantidadInstancias = value;
-            }
         }
 
         public string Id
@@ -44,11 +40,6 @@ namespace SistemaDeInversion.Modelo
             get
             {
                 return id;
-            }
-
-            set
-            {
-                id = value;
             }
         }
 
@@ -59,10 +50,6 @@ namespace SistemaDeInversion.Modelo
                 return montoInversion;
             }
 
-            set
-            {
-                montoInversion = value;
-            }
         }
 
         public int PlazoDias
@@ -72,10 +59,6 @@ namespace SistemaDeInversion.Modelo
                 return plazoDias;
             }
 
-            set
-            {
-                plazoDias = value;
-            }
         }
 
         public double Interes
@@ -84,11 +67,6 @@ namespace SistemaDeInversion.Modelo
             {
                 return interes;
             }
-
-            set
-            {
-                interes = value;
-            }
         }
 
         public Moneda Moneda
@@ -96,11 +74,6 @@ namespace SistemaDeInversion.Modelo
             get
             {
                 return moneda;
-            }
-
-            set
-            {
-                moneda = value;
             }
         }
 
@@ -111,10 +84,9 @@ namespace SistemaDeInversion.Modelo
                 return cliente;
             }
 
-            set
-            {
-                cliente = value;
-            }
         }
+
+        public abstract double calcularRendimiento();
+
     }
 }

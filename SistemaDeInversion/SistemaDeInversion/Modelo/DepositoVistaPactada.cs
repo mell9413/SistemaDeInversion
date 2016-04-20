@@ -15,5 +15,9 @@ namespace SistemaDeInversion.Modelo
             Id = "DpVis#" + cantidadInstancias;
             cantidadInstancias++;
         }
+        public override double calcularRendimiento()
+        {
+            return 2;
+        }
     }
 }

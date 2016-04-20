@@ -16,6 +16,10 @@ namespace SistemaDeInversion.Modelo
             cantidadInstancias++;
         }
 
+        public override double calcularRendimiento()
+        {
+            return 2;
+        }
 
     }
 }
