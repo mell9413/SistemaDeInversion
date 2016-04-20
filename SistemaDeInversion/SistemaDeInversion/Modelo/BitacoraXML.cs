@@ -48,12 +48,12 @@ namespace SistemaDeInversion.Modelo
 
         public void crearArchivo()
         {
-            XmlTextWriter archivoXML = new XmlTextWriter (this.asignarRuta()+nombreArchivo, System.Text.Encoding.UTF8);
+            XmlTextWriter archivoXML = new XmlTextWriter(this.getDataPath() + nombreArchivo, System.Text.Encoding.UTF8);
             archivoXML.WriteStartDocument(true);
             archivoXML.Close();
         }
 
-        public string asignarRuta()
+        public string getDataPath()
         {
             String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
             ruta = ruta.Remove(ruta.Length - 14) + "Data/";

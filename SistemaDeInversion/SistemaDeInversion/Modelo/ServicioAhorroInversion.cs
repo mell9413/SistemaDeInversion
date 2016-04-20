@@ -86,7 +86,7 @@ namespace SistemaDeInversion.Modelo
             }
 
         }
-        public abstract double getInteres();
+        //public abstract double getInteres();
         public abstract double calcularRendimiento();
 
         protected string getDataPath()

@@ -81,7 +81,6 @@
     <Compile Include="Modelo\IEscritor.cs" />
     <Compile Include="Modelo\ILector.cs" />
     <Compile Include="Modelo\Moneda.cs" />
-    <Compile Include="Modelo\posibleInterface.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

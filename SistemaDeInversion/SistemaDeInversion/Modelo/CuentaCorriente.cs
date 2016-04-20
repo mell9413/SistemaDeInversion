@@ -13,7 +13,7 @@ namespace SistemaDeInversion.Modelo
 {
     class CuentaCorriente : ServicioAhorroInversion, ILector
     {
-        posibleInterface x = new posibleInterface();
+        
         private static int cantidadInstancias = 0;
 
         public CuentaCorriente(Cliente cliente, Moneda moneda, double montoInversion, int plazoDias)
@@ -21,7 +21,6 @@ namespace SistemaDeInversion.Modelo
         {
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
-            x = new posibleInterface();
         }
 
 
@@ -42,33 +41,34 @@ namespace SistemaDeInversion.Modelo
             }
             return listaRangos;
         }
-        public override double getInteres()
+        /* public override double getInteres()
         {
-           /* ArrayList listaRangos = getTablaInteres();
-            for (int i = 0; listaRangos.Count != i; i++)
-            {
-                if (base.montoInversion <= listaRangos.IndexOf(i))
-                {
-                    base.interes=
-                }
-            }*/
+            ArrayList listaRangos = getTablaInteres();
+             for (int i = 0; listaRangos.Count != i; i++)
+             {
+                 if (base.montoInversion <= listaRangos.IndexOf(i))
+                 {
+                     base.interes=
+                 }
+             }
 
-            XElement xelement = XElement.Load(base.getDataPath());
-            var homePhone = from phoneno in xelement.Elements("row")
-                            where (string)phoneno.Element("rangomax")>=base.plazoDias;
-                            select phoneno;
-            Console.WriteLine("List HomePhone Nos.");
-            foreach (XElement xEle in homePhone)
-            {
-                Console.WriteLine(xEle.Element("Phone").Value);
-            }
-
+             XElement xelement = XElement.Load(base.getDataPath());
+             var homePhone = from phoneno in xelement.Elements("row")
+                             where (string)phoneno.Element("rangomax")>=base.plazoDias;
+                             select phoneno;
+             Console.WriteLine("List HomePhone Nos.");
+             foreach (XElement xEle in homePhone)
+             {
+                 Console.WriteLine(xEle.Element("Phone").Value);
+             }
+             
+            return 2;
         }
-
+        */
         public override double calcularRendimiento()
         {
-            ArrayList tabla = this.x.lol();
-            MessageBox.Show(tabla[1].ToString());
+            //ArrayList tabla = this.x.lol();
+           // MessageBox.Show(tabla[1].ToString());
 
 
             return 2;

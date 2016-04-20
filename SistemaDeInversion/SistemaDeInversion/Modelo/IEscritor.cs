@@ -11,6 +11,5 @@ namespace SistemaDeInversion.Modelo
     {
         void crearArchivo();
         String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
-        String asignarRuta();
     }
 }
