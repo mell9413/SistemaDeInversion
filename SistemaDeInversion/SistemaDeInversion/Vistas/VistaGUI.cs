@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaDeInversion.Modelo;
+using System.IO;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -22,20 +23,25 @@ namespace SistemaDeInversion.Vistas
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
-            posibleInterface t = new posibleInterface();
-            //t.lol();
-            /*Mambiux
 
+
+
+
+            /*Mambiux
+               posibleInterface t = new posibleInterface();
+            //t.lol();
             ServicioAhorroInversion x;
             x = new DepositoVistaPactada(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
              t.lol();
+             * CuentaCorriente c = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
+            c.calcularRendimiento();
              */
-            
-            
 
 
 
-           
+
+
+
 
             BitacoraXML xml = new BitacoraXML();
             xml.crearArchivo();

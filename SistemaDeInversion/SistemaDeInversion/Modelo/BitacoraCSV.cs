@@ -60,5 +60,9 @@ namespace SistemaDeInversion.Modelo
             ruta = ruta.Remove(ruta.Length - 14) + "Data/";
             return ruta;
         }
+        public string getDataPath() {
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
+            return ruta;
+        }
     }
 }

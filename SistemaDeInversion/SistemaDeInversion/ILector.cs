@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 using SistemaDeInversion.Modelo;
-
-namespace SistemaDeInversion.Modelo
+namespace SistemaDeInversion
 {
-    interface IEscritor:IData
+    interface ILector:IData
     {
-        void crearArchivo();
-        void escribirMovimiento();
-        String asignarRuta();
+        ArrayList getTablaInteres();
     }
 }
