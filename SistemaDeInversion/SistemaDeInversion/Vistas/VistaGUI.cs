@@ -23,7 +23,7 @@ namespace SistemaDeInversion.Vistas
         private void VistaGUI_Load(object sender, EventArgs e)
         {
             posibleInterface t = new posibleInterface();
-            t.lol();
+            //t.lol();
             /*Mambiux
 
             ServicioAhorroInversion x;
