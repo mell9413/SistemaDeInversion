@@ -73,6 +73,8 @@
     <Compile Include="Modelo\CuentaCorriente.cs" />
     <Compile Include="Modelo\DepositoVistaPactada.cs" />
     <Compile Include="Modelo\Dolar.cs" />
+    <Compile Include="Modelo\Factorys\FactoryCliente.cs" />
+    <Compile Include="Modelo\Factorys\IFactoryCliente.cs" />
     <Compile Include="Modelo\IEscritor.cs" />
     <Compile Include="Modelo\Moneda.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />
@@ -112,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Modelo\Factorys\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
