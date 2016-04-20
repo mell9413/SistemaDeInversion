@@ -14,6 +14,7 @@ namespace SistemaDeInversion.Modelo
 
         public CuentaCorriente (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
         {
+            Id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
             x = new posibleInterface();
         }
