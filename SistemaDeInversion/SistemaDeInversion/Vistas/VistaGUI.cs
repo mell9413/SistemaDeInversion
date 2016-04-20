@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaDeInversion.Modelo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -41,14 +47,21 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Validacion.Validacion.validarLetras(textBoxNombre.Text))
+            validarTextBoxLetras(textBoxNombre);
+            validarTextBoxLetras(textBoxApellido1);
+            validarTextBoxLetras(textBoxApellido2);
+            Type clase = typeof(ServicioAhorroInversion);
+            MessageBox.Show(Validacion.Validacion.GetEnumerableOfType(clase)[0].ToString()) ;
+
+        }
+
+        private void validarTextBoxLetras(TextBox box)
+        {
+            if (!Validacion.Validacion.validarLetras(box.Text))
             {
-                MessageBox.Show("Bien");
+                MessageBox.Show("El dato ingresado '" + box.Text + "' es incorrecto, por favor asegurese que contenga solamente letras");
             }
-            else
-            {
-                MessageBox.Show("Mal");
-            }
+
         }
     }
 }
