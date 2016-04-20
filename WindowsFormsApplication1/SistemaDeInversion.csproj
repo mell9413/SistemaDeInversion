@@ -4,30 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D4A3AE8B-7706-41D7-83AF-76163353F644}</ProjectGuid>
+    <ProjectGuid>{B5D6EE88-C3E1-4FDC-949A-2CDD67DAAFEE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SistemaDeInversion</RootNamespace>
-    <AssemblyName>SistemaDeInversion</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,36 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador\Controlador.cs" />
-    <Compile Include="Controlador\IControlador.cs" />
-    <Compile Include="DTOs\DTOCliente.cs" />
-    <Compile Include="DTOs\DTOMoneda.cs" />
-    <Compile Include="DTOs\DTOServicioAhorroInversion.cs" />
-    <Compile Include="ILector.cs" />
-    <Compile Include="Modelo\BitacoraCSV.cs" />
-    <Compile Include="Modelo\BitacoraXML.cs" />
-    <Compile Include="Modelo\CertificadoInversion.cs" />
-    <Compile Include="Modelo\Cliente.cs" />
-    <Compile Include="Modelo\Colon.cs" />
-    <Compile Include="Modelo\CuentaCorriente.cs" />
-    <Compile Include="Modelo\DepositoVistaPactada.cs" />
-    <Compile Include="Modelo\Dolar.cs" />
-    <Compile Include="Modelo\Fisico.cs" />
-    <Compile Include="Modelo\IData.cs" />
-    <Compile Include="Modelo\IEscritor.cs" />
-    <Compile Include="Modelo\ILector.cs" />
-    <Compile Include="Modelo\Moneda.cs" />
-    <Compile Include="Modelo\posibleInterface.cs" />
-    <Compile Include="Modelo\ServicioAhorroInversion.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validacion\Validacion.cs" />
-    <Compile Include="Vistas\VistaGUI.cs">
+    <Compile Include="Cliente.cs" />
+    <Compile Include="VentanaGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\VistaGUI.Designer.cs">
-      <DependentUpon>VistaGUI.cs</DependentUpon>
+    <Compile Include="VentanaGUI.Designer.cs">
+      <DependentUpon>VentanaGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -100,10 +63,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Vistas\VistaGUI.resx">
-      <DependentUpon>VistaGUI.cs</DependentUpon>
+    <EmbeddedResource Include="VentanaGUI.resx">
+      <DependentUpon>VentanaGUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,22 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Modelo\Factorys\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
