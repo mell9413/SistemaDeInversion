@@ -11,9 +11,9 @@ namespace SistemaDeInversion.Validacion
     public static class  Validacion
     {
         // Valida si un string contiene solo letras
-        public static bool validarLetras(string nombre)
+        public static bool validarLetras(string palabra)
         {
-            foreach(char caracter in nombre)
+            foreach(char caracter in palabra)
             {
                 if (!char.IsLetter(caracter))
                 {
@@ -23,6 +23,17 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+        public static bool validarVacio(string palabra)
+        {
+            if(palabra == "")
+            {
+                return false;
+            }
+            return true;
+ 
+        }
+
+        // Metodo inutil, codigo muerto posiblemente
         public static ArrayList GetEnumerableOfType(Type constructorArgs) 
         {
             ArrayList objects = new ArrayList();
@@ -35,5 +46,7 @@ namespace SistemaDeInversion.Validacion
 
             return objects;
         }
+
+
     }
 }
