@@ -17,10 +17,9 @@ namespace SistemaDeInversion.Modelo
         private Moneda moneda;
         private Cliente cliente;
 
-        public ServicioAhorroInversion(Cliente cliente, Moneda moneda, double montoInversion, int plazoDias)
+        public ServicioAhorroInversion(Cliente cliente, double montoInversion, int plazoDias)
         {
             this.cliente = cliente;
-            this.moneda = moneda;
             this.montoInversion = montoInversion;
             this.plazoDias = plazoDias;
             //this.id = "Serv#" + CantidadInstancias;
@@ -86,12 +85,23 @@ namespace SistemaDeInversion.Modelo
             }
 
         }
-        public abstract double getInteres();
-        public abstract double calcularRendimiento();
+        public abstract void calcularInteres();
+
+        public double calcularRendimiento()
+        {
+            this.calcularInteres();
+            double rendimiento = 0;
+            for (int i = 0; i != this.plazoDias; i++)
+            {
+                rendimiento += this.montoInversion * (this.interes / 360);
+            }
+            return rendimiento;
+
+        }
 
         protected string getDataPath()
         {
-            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\books.xml.xml");
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\rangosCuentaCorriente.xml");
             return ruta;
         }
 
