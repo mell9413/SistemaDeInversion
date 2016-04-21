@@ -24,7 +24,7 @@ namespace SistemaDeInversion.Vistas
             internal static extern Boolean AllocConsole();
         }
 
-        private Boolean ingresarDatosCliente()
+        private void ingresarDatosCliente()
         {
             Console.WriteLine(">>> Por favor ingrese unicamente su nombre:\n");
             nombre = Console.ReadLine();
@@ -32,20 +32,25 @@ namespace SistemaDeInversion.Vistas
             primerApellido = Console.ReadLine();
             Console.WriteLine(">>> Por favor ingrese unicamente su segundo apellido:\n");
             segundoApellido = Console.ReadLine();
-            return asignarDatosCliente();
+            asignarDatosCliente();
         }
 
-        private Boolean asignarDatosCliente()
+        private void asignarDatosCliente()
         {
             if (!Validacion.Validacion.validarLetras(nombre) || !Validacion.Validacion.validarVacio(nombre))
             {
-                Console.WriteLine(">>> No ha ingresado su nombre correctamente intente de nuevo\n>>> Por favor ingrese unicamente su nombre:\n");
+                Console.WriteLine(">>> No ha ingresado su nombre correctamente intente de nuevo");
                 ingresarDatosCliente();
-                return false;
             }
-            else
+            else if (!Validacion.Validacion.validarLetras(primerApellido) || !Validacion.Validacion.validarVacio(primerApellido)) 
             {
-                return true;
+                Console.WriteLine(">>> No ha ingresado su primer apellido correctamente intente de nuevo");
+                ingresarDatosCliente();
+            }
+            else if (!Validacion.Validacion.validarLetras(segundoApellido) || !Validacion.Validacion.validarVacio(segundoApellido))
+            {
+                Console.WriteLine(">>> No ha ingresado su segundo apellido correctamente intente de nuevo");
+                ingresarDatosCliente();
             }
         }
 
@@ -61,15 +66,11 @@ namespace SistemaDeInversion.Vistas
             NativeMethods.AllocConsole();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
 
-            if (consola.ingresarDatosCliente())
-            {
-                Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido);
-            }
-            else
-            {
-                Console.WriteLine("false");
-            }
-
+            consola.ingresarDatosCliente();
+            
+            Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido);
+ 
+            Console.ReadLine();
 
 
 
