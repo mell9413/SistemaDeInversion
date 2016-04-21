@@ -7,37 +7,31 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 namespace SistemaDeInversion.Modelo
 {
-    public class InversionVistaPactada : ServicioAhorroInversion
+    public class InversionVistaPactada: ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
 
-        public InversionVistaPactada (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
+        public InversionVistaPactada (Cliente cliente, double montoInversion, int plazoDias): base (cliente,montoInversion,plazoDias)
         {
             base.id = "DpVis#" + cantidadInstancias;
             cantidadInstancias++;
         }
-        public override double calcularRendimiento()
-        {
-            return 2;
-        }
-        public override double getInteres()
-        {
-            XElement xelement = XElement.Load(base.getDataPath());
-            var homePhone = from phoneno in xelement.Elements("row")
-                            where (double)phoneno.Element("rangomax") >= base.montoInversion
-                            select phoneno;
-            Console.WriteLine("List HomePhone Nos.");
-            foreach (XElement xEle in homePhone)
-            {
-                MessageBox.Show(xEle.Element("interesAnual").Value);
-            }
-
-            return 2;
-        }
 
         public override void calcularInteres()
         {
+            XElement xelement = XElement.Load(base.getDataPath());
+            var homePhone = (from phoneno in xelement.Elements("row")
+                             where (double)phoneno.Element("rangomax") >= base.montoInversion
+                             select phoneno).First();
 
+            // foreach (XElement xEle in homePhone)
+            //{
+            //  MessageBox.Show(xEle.Element("interesAnual").Value);
+            //}
+            MessageBox.Show(homePhone.Element("interesAnual").Value);
+            base.interes = Convert.ToDouble(homePhone.Element("interesAnual").Value);
         }
+        
+
     }
 }
