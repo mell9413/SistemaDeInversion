@@ -45,6 +45,17 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+        public static bool validarDouble(string numero)
+        {
+            double resultado;
+            if(!Double.TryParse(numero, out resultado))
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         // Metodo inutil, codigo muerto posiblemente
         public static ArrayList GetEnumerableOfType(Type constructorArgs) 
         {
