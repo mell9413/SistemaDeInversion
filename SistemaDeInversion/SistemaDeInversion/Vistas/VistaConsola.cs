@@ -14,6 +14,14 @@ namespace SistemaDeInversion.Vistas
             [DllImport("kernel32.dll")]
             internal static extern Boolean AllocConsole();
         }
+
+        private void imprimirMenuInversiones()
+        {
+            Console.WriteLine("\n>>> Por favor ingrese el Servicio de Inversión y Ahorro:");
+            Console.WriteLine(">>> 1) ---> Cuenta Corriente");
+            Console.WriteLine(">>> 2) ---> Inversión a la Vista Tasa Pactada");
+            Console.WriteLine(">>> 3) ---> Certificado de Inversión\n");
+        }
         static void Main(string[] args)
         {
             while (false)

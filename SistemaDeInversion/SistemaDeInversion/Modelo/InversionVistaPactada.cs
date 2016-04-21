@@ -7,7 +7,7 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 namespace SistemaDeInversion.Modelo
 {
-    public class InversionVistaPactada: ServicioAhorroInversion
+    public class InversionVistaPactada : ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
 
@@ -33,6 +33,11 @@ namespace SistemaDeInversion.Modelo
             }
 
             return 2;
+        }
+
+        public override void calcularInteres()
+        {
+
         }
     }
 }
