@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,11 +14,13 @@ namespace SistemaDeInversion.Vistas
         private string primerApellido;
         private string segundoApellido;
         private int tipoServicio;
+        private string nombreServicio;
         private double montoInversion;
         private int plazoDias;
         private int tipoMoneda;
         private string numeroTemporal;
-
+        private string minimo;
+        ArrayList servicios;
 
         internal static class NativeMethods
         {
@@ -68,14 +71,27 @@ namespace SistemaDeInversion.Vistas
 
         private void ingresarServicio()
         {
+            servicios = Validacion.Validacion.getServicios();
             Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Servicio de Inversión y Ahorro:");
-            Console.WriteLine(">>> 1) ---> Cuenta Corriente");
-            Console.WriteLine(">>> 2) ---> Inversión a la Vista Tasa Pactada");
-            Console.WriteLine(">>> 3) ---> Certificado de Inversión\n");
+            int i = 0;
+            foreach (var servicio in servicios)
+            {
+                Console.WriteLine(">>> "+(i+1)+") ---> " + servicios[i]);
+                i++;
+            }            
             numeroTemporal = Console.ReadLine();
             if (validarInt(numeroTemporal))
             {
-                tipoServicio = Int32.Parse(numeroTemporal.ToString());
+                if (validarRango(Int32.Parse(numeroTemporal.ToString()), i))
+                {
+                    tipoServicio = Int32.Parse(numeroTemporal.ToString());
+                    nombreServicio = servicios[i-1].ToString();
+                }
+                else
+                {
+                    Console.WriteLine(">>> El numero ingresado esta fuera del rango de los servicios disponibles, intente de nuevo");
+                    ingresarServicio();
+                }
             }
             else
             {
@@ -91,7 +107,16 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (validarDouble(numeroTemporal))
             {
-                montoInversion = Int32.Parse(numeroTemporal.ToString());
+                
+                if (validarMinimos(Int32.Parse(numeroTemporal.ToString())))
+                {
+                    montoInversion = Int32.Parse(numeroTemporal.ToString());
+                }
+                else
+                {
+                    Console.WriteLine(">>> Debe ingresar un monto minimo igual a "+ minimo);
+                    ingresarInversion();
+                }
             }
             else
             {
@@ -152,6 +177,31 @@ namespace SistemaDeInversion.Vistas
             else
             {
                 return true;
+            }
+        }
+
+        private Boolean validarRango(int numero, int rango)
+        {
+            if (0<numero && numero<=rango)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private Boolean validarMinimos(int monto)
+        {
+            if (this.tipoServicio==1 && monto >= Validacion.Validacion.getSaldoMinCC())
+            {
+                minimo = Validacion.Validacion.getSaldoMinCC().ToString();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
