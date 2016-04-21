@@ -89,7 +89,7 @@ namespace SistemaDeInversion.Vistas
         {
             Console.WriteLine("\n>>> Por favor ingrese el Monto de Inversión y Ahorro:");
             numeroTemporal = Console.ReadLine();
-            if (validarInt(numeroTemporal))
+            if (validarDouble(numeroTemporal))
             {
                 montoInversion = Int32.Parse(numeroTemporal.ToString());
             }
@@ -110,7 +110,7 @@ namespace SistemaDeInversion.Vistas
             }
             else
             {
-                Console.WriteLine(">>> Ingrese unicamente números, intente de nuevo");
+                Console.WriteLine(">>> Ingrese unicamente números enteros, intente de nuevo");
                 ingresarPlazo();
             }
         }
@@ -134,6 +134,18 @@ namespace SistemaDeInversion.Vistas
         private Boolean validarInt(String numero)
         {
             if ( !Validacion.Validacion.validarNumeros(numero) || !Validacion.Validacion.validarVacio(numero))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean validarDouble(String numero)
+        {
+            if (!Validacion.Validacion.validarDouble(numero) || !Validacion.Validacion.validarDouble(numero))
             {
                 return false;
             }
