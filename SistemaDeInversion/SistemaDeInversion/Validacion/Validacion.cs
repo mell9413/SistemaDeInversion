@@ -33,6 +33,18 @@ namespace SistemaDeInversion.Validacion
  
         }
 
+        public static bool validarNumeros(string numero)
+        {
+            foreach(char caracter in numero)
+            {
+                if (!char.IsDigit(caracter))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         // Metodo inutil, codigo muerto posiblemente
         public static ArrayList GetEnumerableOfType(Type constructorArgs) 
         {

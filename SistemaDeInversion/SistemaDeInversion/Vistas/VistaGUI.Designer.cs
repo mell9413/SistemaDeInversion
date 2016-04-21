@@ -35,14 +35,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.textBoxMonto = new System.Windows.Forms.TextBox();
+            this.textBoxApellido1 = new System.Windows.Forms.TextBox();
+            this.textBoxApellido2 = new System.Windows.Forms.TextBox();
             this.comboBoxInversion = new System.Windows.Forms.ComboBox();
+            this.textBoxMonto = new System.Windows.Forms.TextBox();
             this.numericUpDownPlazo = new System.Windows.Forms.NumericUpDown();
             this.comboBoxMoneda = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxApellido1 = new System.Windows.Forms.TextBox();
-            this.textBoxApellido2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPlazo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.buttonInversion.Location = new System.Drawing.Point(435, 365);
             this.buttonInversion.Name = "buttonInversion";
             this.buttonInversion.Size = new System.Drawing.Size(121, 23);
-            this.buttonInversion.TabIndex = 0;
+            this.buttonInversion.TabIndex = 13;
             this.buttonInversion.Text = "Realizar Inversión";
             this.buttonInversion.UseVisualStyleBackColor = true;
             this.buttonInversion.Click += new System.EventHandler(this.button1_Click);
@@ -113,12 +113,19 @@
             this.textBoxNombre.Size = new System.Drawing.Size(153, 20);
             this.textBoxNombre.TabIndex = 6;
             // 
-            // textBoxMonto
+            // textBoxApellido1
             // 
-            this.textBoxMonto.Location = new System.Drawing.Point(403, 206);
-            this.textBoxMonto.Name = "textBoxMonto";
-            this.textBoxMonto.Size = new System.Drawing.Size(153, 20);
-            this.textBoxMonto.TabIndex = 8;
+            this.textBoxApellido1.Location = new System.Drawing.Point(404, 96);
+            this.textBoxApellido1.Name = "textBoxApellido1";
+            this.textBoxApellido1.Size = new System.Drawing.Size(153, 20);
+            this.textBoxApellido1.TabIndex = 7;
+            // 
+            // textBoxApellido2
+            // 
+            this.textBoxApellido2.Location = new System.Drawing.Point(403, 128);
+            this.textBoxApellido2.Name = "textBoxApellido2";
+            this.textBoxApellido2.Size = new System.Drawing.Size(153, 20);
+            this.textBoxApellido2.TabIndex = 8;
             // 
             // comboBoxInversion
             // 
@@ -128,12 +135,19 @@
             this.comboBoxInversion.Size = new System.Drawing.Size(153, 21);
             this.comboBoxInversion.TabIndex = 9;
             // 
+            // textBoxMonto
+            // 
+            this.textBoxMonto.Location = new System.Drawing.Point(403, 206);
+            this.textBoxMonto.Name = "textBoxMonto";
+            this.textBoxMonto.Size = new System.Drawing.Size(153, 20);
+            this.textBoxMonto.TabIndex = 10;
+            // 
             // numericUpDownPlazo
             // 
             this.numericUpDownPlazo.Location = new System.Drawing.Point(404, 248);
             this.numericUpDownPlazo.Name = "numericUpDownPlazo";
             this.numericUpDownPlazo.Size = new System.Drawing.Size(152, 20);
-            this.numericUpDownPlazo.TabIndex = 10;
+            this.numericUpDownPlazo.TabIndex = 11;
             // 
             // comboBoxMoneda
             // 
@@ -141,7 +155,7 @@
             this.comboBoxMoneda.Location = new System.Drawing.Point(404, 288);
             this.comboBoxMoneda.Name = "comboBoxMoneda";
             this.comboBoxMoneda.Size = new System.Drawing.Size(153, 21);
-            this.comboBoxMoneda.TabIndex = 11;
+            this.comboBoxMoneda.TabIndex = 12;
             // 
             // label6
             // 
@@ -163,34 +177,20 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Ingrese su segundo apellido:";
             // 
-            // textBoxApellido1
-            // 
-            this.textBoxApellido1.Location = new System.Drawing.Point(404, 96);
-            this.textBoxApellido1.Name = "textBoxApellido1";
-            this.textBoxApellido1.Size = new System.Drawing.Size(153, 20);
-            this.textBoxApellido1.TabIndex = 14;
-            // 
-            // textBoxApellido2
-            // 
-            this.textBoxApellido2.Location = new System.Drawing.Point(403, 128);
-            this.textBoxApellido2.Name = "textBoxApellido2";
-            this.textBoxApellido2.Size = new System.Drawing.Size(153, 20);
-            this.textBoxApellido2.TabIndex = 15;
-            // 
             // VistaGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 423);
-            this.Controls.Add(this.textBoxApellido2);
+            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.textBoxApellido1);
+            this.Controls.Add(this.textBoxApellido2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxMoneda);
             this.Controls.Add(this.numericUpDownPlazo);
             this.Controls.Add(this.comboBoxInversion);
             this.Controls.Add(this.textBoxMonto);
-            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -215,13 +215,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxMonto;
+        private System.Windows.Forms.TextBox textBoxApellido1;
+        private System.Windows.Forms.TextBox textBoxApellido2;
         private System.Windows.Forms.ComboBox comboBoxInversion;
+        private System.Windows.Forms.TextBox textBoxMonto;
         private System.Windows.Forms.NumericUpDown numericUpDownPlazo;
         private System.Windows.Forms.ComboBox comboBoxMoneda;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxApellido1;
-        private System.Windows.Forms.TextBox textBoxApellido2;
+
     }
 }
