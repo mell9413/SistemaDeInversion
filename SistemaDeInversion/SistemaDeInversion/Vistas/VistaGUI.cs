@@ -52,6 +52,7 @@ namespace SistemaDeInversion.Vistas
             validarTextBoxVacios(textBoxNombre);
             validarTextBoxVacios(textBoxApellido1);
             validarTextBoxVacios(textBoxApellido2);
+            validarTextBoxNumero(textBoxMonto);
 
         }
 
@@ -69,6 +70,14 @@ namespace SistemaDeInversion.Vistas
             if (!Validacion.Validacion.validarVacio(box.Text))
             {
                 MessageBox.Show("Por favor ingrese un dato");
+            }
+        }
+
+        private void validarTextBoxNumero(TextBox box)
+        {
+            if (!Validacion.Validacion.validarNumeros(box.Text))
+            {
+                MessageBox.Show("El monto ingresado es incorrecto, por favor ingrese números solamente");
             }
         }
     }
