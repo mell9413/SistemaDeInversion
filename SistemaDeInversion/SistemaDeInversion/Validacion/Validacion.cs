@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SistemaDeInversion.Validacion
 {
@@ -23,6 +25,7 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+        // valida si un string viene vacio
         public static bool validarVacio(string palabra)
         {
             if(palabra == "")
@@ -33,6 +36,7 @@ namespace SistemaDeInversion.Validacion
  
         }
 
+        // valida si un string contiene numeros
         public static bool validarNumeros(string numero)
         {
             foreach(char caracter in numero)
@@ -45,6 +49,7 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+        //valida si un string es tipo double
         public static bool validarDouble(string numero)
         {
             double resultado;
@@ -68,6 +73,32 @@ namespace SistemaDeInversion.Validacion
             }
 
             return objects;
+        }
+        
+        //returna las monedas registradas en el sistema
+        public static List<String[]> getMonedas()
+        {
+            List<String[]> tiposM = new List<String[]>();
+            XElement xelement = XElement.Load(Validacion.getDataPath());
+            IEnumerable<XElement> monedas = xelement.Elements();
+            foreach (var moneda in monedas)
+            {
+
+                String[] temp = new String[2];
+
+                temp[0] = (moneda.Element("Nombre").Value.ToString());
+                temp[1] = (moneda.Element("Símbolo").Value.ToString());
+                tiposM.Add(temp);
+
+            }
+            return tiposM;
+        }
+
+        // obtiene la ruta donde se encuentran las monedas
+        private static string getDataPath()
+        {
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\tiposMoneda.xml");
+            return ruta;
         }
 
 

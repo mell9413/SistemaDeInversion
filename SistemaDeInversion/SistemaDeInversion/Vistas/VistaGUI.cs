@@ -23,6 +23,7 @@ namespace SistemaDeInversion.Vistas
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
+            establecerMonedas();
             /*Mambiux
             Shiri X;
             X = new Shiri();
@@ -54,6 +55,7 @@ namespace SistemaDeInversion.Vistas
             validarTextBoxVacios(textBoxApellido2);
             validarTextBoxNumero(textBoxMonto);
 
+
         }
 
         private void validarTextBoxLetras(TextBox box)
@@ -80,5 +82,12 @@ namespace SistemaDeInversion.Vistas
                 MessageBox.Show("El monto ingresado es incorrecto, por favor ingrese números solamente");
             }
         }
+
+        private void establecerMonedas()
+        {
+            comboBoxMoneda.DataSource = Validacion.Validacion.getMonedas();
+        }
+
+
     }
 }
