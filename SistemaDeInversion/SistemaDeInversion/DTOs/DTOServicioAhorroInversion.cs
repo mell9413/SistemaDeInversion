@@ -15,6 +15,8 @@ namespace SistemaDeInversion.DTOs
         private double impuestoRenta;
         private Cliente cliente;
         private Moneda moneda;
+        private double saldoFinal;
+        private String tipoServicio;
 
         public double MontoInversion
         {
@@ -91,6 +93,32 @@ namespace SistemaDeInversion.DTOs
             set
             {
                 moneda = value;
+            }
+        }
+
+        public double SaldoFinal
+        {
+            get
+            {
+                return saldoFinal;
+            }
+
+            set
+            {
+                saldoFinal = value;
+            }
+        }
+
+        public string TipoServicio
+        {
+            get
+            {
+                return tipoServicio;
+            }
+
+            set
+            {
+                tipoServicio = value;
             }
         }
     }

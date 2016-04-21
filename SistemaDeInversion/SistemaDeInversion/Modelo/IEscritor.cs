@@ -7,9 +7,10 @@ using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion.Modelo
 {
-    interface IEscritor:IData
+    interface IEscritor
     {
         void crearArchivo();
         String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
+        String asignarRuta();
     }
 }

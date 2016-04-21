@@ -61,14 +61,13 @@ namespace SistemaDeInversion.Modelo
 
         public String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento)
         {
-            string filePath = this.asignarRuta() + nombreArchivo;  
-	        string delimiter = ",";  	 
+            string delimiter = ",";  	 
             string[][] output = new string[][]{  
-	                new string[]{"Col 1 Row 1", "Col 2 Row 1", "Col 3 Row 1"}
+	                new string[]{dtomovimiento.Cliente.ToString(), dtomovimiento.TipoServicio, dtomovimiento.MontoInversion.ToString(),dtomovimiento.PlazoDias.ToString(), dtomovimiento.Moneda.Nombre}
 	        };  
 	        StringBuilder sb = new StringBuilder();
             sb.AppendLine(string.Join(delimiter, output[0]));
-            using (StreamWriter outputFile = new StreamWriter(filePath, true))
+            using (StreamWriter outputFile = new StreamWriter(this.getDataPath()+nombreArchivo, true))
             {
                 outputFile.WriteLine(sb.ToString().Remove(sb.Length-2));
             }
@@ -77,7 +76,9 @@ namespace SistemaDeInversion.Modelo
 
         public string getDataPath()
         {
-            throw new NotImplementedException();
+            String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
+            ruta = ruta.Remove(ruta.Length - 14) + "Data/";
+            return ruta;
         }
     }
 }
