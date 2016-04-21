@@ -76,7 +76,7 @@ namespace SistemaDeInversion.Vistas
 
         private void validarTextBoxNumero(TextBox box)
         {
-            if (!Validacion.Validacion.validarNumeros(box.Text))
+            if (!Validacion.Validacion.validarDouble(box.Text))
             {
                 MessageBox.Show("El monto ingresado es incorrecto, por favor ingrese números solamente");
             }
