@@ -13,21 +13,21 @@ namespace SistemaDeInversion.Modelo
 {
     class Shiri
     {
-        public  ArrayList getMonedas()
+        public List<String[]> getMonedas()
         {
-            ArrayList tiposM= new ArrayList();
+            List< String[]> tiposM= new List< String[]>();
             XElement xelement = XElement.Load(this.getDataPath());
             IEnumerable<XElement> monedas = xelement.Elements();
-            // Read the entire XML
             foreach (var moneda in monedas)
             {
-                String[] temp= new String [moneda.Elements().Count()];
-                for (int i = 0; i != moneda.Elements().Count(); i++) {
-                   // temp[i] = (String)moneda.Element(moneda.Value);
-                  //  MessageBox.Show((String)moneda.Element(moneda.Value.ToString()));
-                }
-                    MessageBox.Show(moneda.Element("Nombre").Value.ToString());
-                tiposM.Add(moneda.Element("Nombre").Value);
+
+               String[] temp = new String[2];
+             
+                   temp[0]=(moneda.Element("Nombre").Value.ToString());
+                   temp[1]=(moneda.Element("Símbolo").Value.ToString());
+                   tiposM.Add(temp);
+                   MessageBox.Show(moneda.Element("Nombre").Value.ToString());
+                    
             }
             return tiposM;
         }
