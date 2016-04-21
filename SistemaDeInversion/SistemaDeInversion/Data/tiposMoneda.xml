@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<tiposMoneda>
+<row><Nombre>Dólar</Nombre><Símbolo>$</Símbolo></row>
+<row><Nombre>Colón</Nombre><Símbolo>₡</Símbolo></row>
+<row><Nombre>Epsy</Nombre><Símbolo>LOL</Símbolo></row>
+</tiposMoneda>

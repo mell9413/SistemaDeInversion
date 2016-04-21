@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<tiposServicio>
+<row><Nombre>Cuenta Corriente</Nombre><Clase>CuentaCorriente</Clase></row>
+<row><Nombre>Certificado de Inversión</Nombre><Clase>CertificadoInversion</Clase></row>
+<row><Nombre>Inversión Vista pactada</Nombre><Clase>InversionVistaPactada</Clase></row>
+</tiposServicio>
