@@ -7,11 +7,11 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 namespace SistemaDeInversion.Modelo
 {
-    public class DepositoVistaPactada: ServicioAhorroInversion
+    public class InversionVistaPactada: ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
 
-        public DepositoVistaPactada (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
+        public InversionVistaPactada (Cliente cliente, Moneda moneda, double montoInversion, int plazoDias): base (cliente,moneda,montoInversion,plazoDias)
         {
             base.id = "DpVis#" + cantidadInstancias;
             cantidadInstancias++;
