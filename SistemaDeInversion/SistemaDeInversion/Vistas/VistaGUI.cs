@@ -21,14 +21,17 @@ namespace SistemaDeInversion.Vistas
     {
         public VistaGUI()
         {
-          
+            
             InitializeComponent();
         }
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
             /*Mambiux
-
+            Shiri X;
+            X = new Shiri();
+            X.getMonedas();
+             * 
             ServicioAhorroInversion x;
             x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
              t.lol();
