@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaDeInversion.Modelo;
 using System.Reflection;
+using SistemaDeInversion.Validacion;
 
 
 namespace SistemaDeInversion.Vistas
@@ -23,6 +24,7 @@ namespace SistemaDeInversion.Vistas
         private void VistaGUI_Load(object sender, EventArgs e)
         {
             establecerMonedas();
+            establecerServicios();
             /*Mambiux
             Shiri X;
             X = new Shiri();
@@ -49,10 +51,12 @@ namespace SistemaDeInversion.Vistas
             validarTextBoxLetras(textBoxNombre);
             validarTextBoxLetras(textBoxApellido1);
             validarTextBoxLetras(textBoxApellido2);
+
             validarTextBoxVacios(textBoxNombre);
             validarTextBoxVacios(textBoxApellido1);
             validarTextBoxVacios(textBoxApellido2);
             validarTextBoxNumero(textBoxMonto);
+
 
 
         }
@@ -85,6 +89,11 @@ namespace SistemaDeInversion.Vistas
         private void establecerMonedas()
         {
             comboBoxMoneda.DataSource = Validacion.Validacion.getMonedas();
+        }
+
+        private void establecerServicios()
+        {
+            comboBoxInversion.DataSource = Validacion.Validacion.getServicios();
         }
 
 

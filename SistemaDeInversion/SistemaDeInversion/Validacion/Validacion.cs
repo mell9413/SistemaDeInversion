@@ -77,7 +77,7 @@ namespace SistemaDeInversion.Validacion
         }
         
         //returna las monedas registradas en el sistema
-        public static List<String[]> getMonedas()
+        public static ArrayList getMonedas()
         {
             List<String[]> tiposM = new List<String[]>();
             XElement xelement = XElement.Load(Validacion.getDataPath() + "tiposMoneda.xml");
@@ -92,10 +92,24 @@ namespace SistemaDeInversion.Validacion
                 tiposM.Add(temp);
 
             }
-            return tiposM;
+            return Validacion.aplanarLista(tiposM);
+
         }
-        //retorna la mierda
-        public static List<String[]> getServicios()
+
+        private static ArrayList aplanarLista(List<String[]> lista) 
+        {
+            ArrayList resultado = new ArrayList();
+            foreach(String[] elemento in lista)
+            { 
+               resultado.Add(elemento[0]);
+  
+            }
+            return resultado;
+
+        }
+
+       // Devuelve los diferentes tipos de servicios de ahorro e inversion
+        public static ArrayList getServicios()
         {
             List<String[]> tiposS = new List<String[]>();
             XElement xelement = XElement.Load(getDataPath()+"tiposServicios.xml");
@@ -108,12 +122,11 @@ namespace SistemaDeInversion.Validacion
                 temp[0] = (servicio.Element("Nombre").Value.ToString());
                 temp[1] = (servicio.Element("Clase").Value.ToString());
                 tiposS.Add(temp);
-               // MessageBox.Show(servicio.Element("Nombre").Value.ToString());
-                //MessageBox.Show(servicio.Element("Clase").Value.ToString());
+
 
             }
 
-            return tiposS;
+            return Validacion.aplanarLista(tiposS);
         }
         public static double getSaldoMinCC()
         {
