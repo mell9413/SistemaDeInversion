@@ -5,7 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
+using System.Xml.Linq;
+using System.Collections;
+using SistemaDeInversion.Modelo;
 namespace SistemaDeInversion.Validacion
 {
     public static class  Validacion
@@ -45,6 +48,7 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+
         // Metodo inutil, codigo muerto posiblemente
         public static ArrayList GetEnumerableOfType(Type constructorArgs) 
         {
@@ -59,6 +63,32 @@ namespace SistemaDeInversion.Validacion
             return objects;
         }
 
+        public static string getDataPath()
+        {
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
+            return ruta;
+        }
+
+        public static List<String[]> getServicios()
+        {
+            List<String[]> tiposS = new List<String[]>();
+            XElement xelement = XElement.Load(getDataPath() + "tiposServicios.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            foreach (var servicio in servicios)
+            {
+
+                String[] temp = new String[2];
+
+                temp[0] = (servicio.Element("Nombre").Value.ToString());
+                temp[1] = (servicio.Element("Clase").Value.ToString());
+                tiposS.Add(temp);
+               // MessageBox.Show(servicio.Element("Nombre").Value.ToString());
+                //MessageBox.Show(servicio.Element("Clase").Value.ToString());
+
+            }
+
+            return tiposS;
+        }
 
     }
 }

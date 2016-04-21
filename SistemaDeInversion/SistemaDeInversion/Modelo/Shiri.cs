@@ -16,7 +16,7 @@ namespace SistemaDeInversion.Modelo
         public List<String[]> getMonedas()
         {
             List< String[]> tiposM= new List< String[]>();
-            XElement xelement = XElement.Load(this.getDataPath());
+            XElement xelement = XElement.Load(this.getDataPathTiposServicio());
             IEnumerable<XElement> monedas = xelement.Elements();
             foreach (var moneda in monedas)
             {
@@ -31,11 +31,31 @@ namespace SistemaDeInversion.Modelo
             }
             return tiposM;
         }
-         public string getDataPath()
+         public string getDataPathTiposServicio()
         {
-            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\tiposMoneda.xml");
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\tiposServicios.xml");
             return ruta;
         }
+         public List<String[]> getServicios()
+         {
+             List<String[]> tiposS = new List<String[]>();
+             XElement xelement = XElement.Load(this.getDataPathTiposServicio());
+             IEnumerable<XElement> servicios = xelement.Elements();
+             foreach (var servicio in servicios)
+             {
+
+                 String[] temp = new String[2];
+
+                 temp[0] = (servicio.Element("Nombre").Value.ToString());
+                 temp[1] = (servicio.Element("Clase").Value.ToString());
+                 tiposS.Add(temp);
+                 MessageBox.Show(servicio.Element("Nombre").Value.ToString());
+                 MessageBox.Show(servicio.Element("Clase").Value.ToString());
+
+             }
+  
+             return tiposS;
+         }
         
     }
 }
