@@ -16,14 +16,14 @@ namespace SistemaDeInversion.Modelo
         
         private static int cantidadInstancias = 0;
 
-        public CuentaCorriente(Cliente cliente, Moneda moneda, double montoInversion, int plazoDias)
-            : base(cliente, moneda, montoInversion, plazoDias)
+        public CuentaCorriente(Cliente cliente,double montoInversion, int plazoDias)
+            : base(cliente,montoInversion, plazoDias)
         {
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
         }
 
-         public override double getInteres()
+        public override void calcularInteres()
         {
              XElement xelement = XElement.Load(base.getDataPath());
              var homePhone = (from phoneno in xelement.Elements("row")
@@ -35,16 +35,9 @@ namespace SistemaDeInversion.Modelo
                //  MessageBox.Show(xEle.Element("interesAnual").Value);
              //}
              MessageBox.Show(homePhone.Element("interesAnual").Value);
-             return Convert.ToDouble(homePhone.Element("interesAnual").Value);
+             base.interes= Convert.ToDouble(homePhone.Element("interesAnual").Value);
         }
         
-        public override double calcularRendimiento()
-        {
-           
-           return 2;
-        }
-
-
 
        
     }
