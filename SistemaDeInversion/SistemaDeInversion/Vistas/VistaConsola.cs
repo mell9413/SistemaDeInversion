@@ -13,9 +13,10 @@ namespace SistemaDeInversion.Vistas
         private string primerApellido;
         private string segundoApellido;
         private int tipoServicio;
-        private int montoInversion;
+        private double montoInversion;
         private int plazoDias;
         private int tipoMoneda;
+        private string numeroTemporal;
 
 
         internal static class NativeMethods
@@ -28,29 +29,117 @@ namespace SistemaDeInversion.Vistas
         {
             Console.WriteLine(">>> Por favor ingrese unicamente su nombre:\n");
             nombre = Console.ReadLine();
-            Console.WriteLine(">>> Por favor ingrese unicamente su primer apellido:\n");
-            primerApellido = Console.ReadLine();
-            Console.WriteLine(">>> Por favor ingrese unicamente su segundo apellido:\n");
-            segundoApellido = Console.ReadLine();
-            asignarDatosCliente();
+            if (validarDatosCliente(nombre))
+            {
+                Console.WriteLine(">>> Por favor ingrese unicamente su primer apellido:\n");
+                primerApellido = Console.ReadLine();
+                if (validarDatosCliente(primerApellido))
+                {
+                    Console.WriteLine(">>> Por favor ingrese unicamente su segundo apellido:\n");
+                    segundoApellido = Console.ReadLine();
+                    if (!validarDatosCliente(segundoApellido))
+                    {
+                        ingresarDatosCliente();
+                    }
+                }
+                else
+                {
+                    ingresarDatosCliente();
+                }
+            }
+            else
+            {
+                ingresarDatosCliente();
+            }
         }
 
-        private void asignarDatosCliente()
+        private Boolean validarDatosCliente(String dato)
         {
-            if (!Validacion.Validacion.validarLetras(nombre) || !Validacion.Validacion.validarVacio(nombre))
+            if (!Validacion.Validacion.validarLetras(dato) || !Validacion.Validacion.validarVacio(dato))
             {
-                Console.WriteLine(">>> No ha ingresado su nombre correctamente intente de nuevo");
-                ingresarDatosCliente();
+                Console.WriteLine(">>> No lo ha ingresado el dato correctamente intente de nuevo");
+                return false;
             }
-            else if (!Validacion.Validacion.validarLetras(primerApellido) || !Validacion.Validacion.validarVacio(primerApellido)) 
+            else
             {
-                Console.WriteLine(">>> No ha ingresado su primer apellido correctamente intente de nuevo");
-                ingresarDatosCliente();
+                return true;
             }
-            else if (!Validacion.Validacion.validarLetras(segundoApellido) || !Validacion.Validacion.validarVacio(segundoApellido))
+        }
+
+        private void ingresarServicio()
+        {
+            Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Servicio de Inversión y Ahorro:");
+            Console.WriteLine(">>> 1) ---> Cuenta Corriente");
+            Console.WriteLine(">>> 2) ---> Inversión a la Vista Tasa Pactada");
+            Console.WriteLine(">>> 3) ---> Certificado de Inversión\n");
+            numeroTemporal = Console.ReadLine();
+            if (validarInt(numeroTemporal))
             {
-                Console.WriteLine(">>> No ha ingresado su segundo apellido correctamente intente de nuevo");
-                ingresarDatosCliente();
+                tipoServicio = Int32.Parse(numeroTemporal.ToString());
+            }
+            else
+            {
+                Console.WriteLine(">>> Ingrese el numero correspondiente al servicio que desea, intente de nuevo");
+                ingresarServicio();
+            }
+            
+        }
+
+        private void ingresarInversion()
+        {
+            Console.WriteLine("\n>>> Por favor ingrese el Monto de Inversión y Ahorro:");
+            numeroTemporal = Console.ReadLine();
+            if (validarInt(numeroTemporal))
+            {
+                montoInversion = Int32.Parse(numeroTemporal.ToString());
+            }
+            else
+            {
+                Console.WriteLine(">>> Ingrese unicamente números, intente de nuevo");
+                ingresarInversion();
+            }
+        }
+
+        private void ingresarPlazo()
+        {
+            Console.WriteLine("\n>>> Por favor ingrese el Plazo de la Inversion:");
+            numeroTemporal = Console.ReadLine();
+            if (validarInt(numeroTemporal))
+            {
+                plazoDias = Int32.Parse(numeroTemporal.ToString());
+            }
+            else
+            {
+                Console.WriteLine(">>> Ingrese unicamente números, intente de nuevo");
+                ingresarPlazo();
+            }
+        }
+
+        private void ingresarMoneda()
+        {
+            Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
+            Console.WriteLine(">>> 1) ---> Colón");
+            Console.WriteLine(">>> 2) ---> Dólar");
+            numeroTemporal = Console.ReadLine();
+            if (validarInt(numeroTemporal))
+            {
+                tipoMoneda = Int32.Parse(numeroTemporal.ToString());
+            }
+            else
+            {
+                Console.WriteLine(">>> Ingrese el numero correspondiente a la moneda que desea, intente de nuevo");
+                ingresarMoneda();
+            }
+        }
+        private Boolean validarInt(String numero)
+        {
+            if ( !Validacion.Validacion.validarNumeros(numero) || !Validacion.Validacion.validarVacio(numero))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -67,26 +156,14 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
 
             consola.ingresarDatosCliente();
-            
-            Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido);
+            consola.ingresarServicio();
+            consola.ingresarInversion();
+            consola.ingresarPlazo();
+            consola.ingresarMoneda();
+
+            Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido+consola.tipoServicio+consola.plazoDias+consola.montoInversion+consola.tipoMoneda);
  
             Console.ReadLine();
-
-
-
-            //Console.WriteLine("\n>>> Por favor ingrese el Servicio de Inversión y Ahorro:");
-            //Console.WriteLine(">>> 1) ---> Cuenta Corriente");
-            //Console.WriteLine(">>> 2) ---> Inversión a la Vista Tasa Pactada");
-            //Console.WriteLine(">>> 3) ---> Certificado de Inversión\n");
-            //asignardato("servicio");
-            ////tipoServicio = Int32.Parse(Console.ReadLine().ToString());
-            //Console.WriteLine("\n>>> Por favor ingrese el Monto de Inversión y Ahorro:");
-            //montoInversion = Int32.Parse(Console.ReadLine().ToString());
-            //Console.WriteLine("\n>>> Por favor ingrese el Plazo de la Inversion:");
-            //plazoDias = Int32.Parse(Console.ReadLine().ToString());
-            //Console.WriteLine("\n>>> Por favor ingrese el Tipo de Moneda de la inversión:");
-            //tipoMoneda = Int32.Parse(Console.ReadLine().ToString());
-
         }
     }
 }
