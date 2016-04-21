@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace SistemaDeInversion.Validacion
@@ -114,7 +115,15 @@ namespace SistemaDeInversion.Validacion
 
             return tiposS;
         }
-
+        public static double getSaldoMinCC()
+        {
+            double saldoMin;
+            XElement xelement = XElement.Load(getDataPath() + "rangosCuentaCorriente.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            saldoMin=Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
+            MessageBox.Show(saldoMin.ToString());
+            return saldoMin;
+        }
         // obtiene la ruta donde se encuentran las monedas
         private static string getDataPath()
         {
