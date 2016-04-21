@@ -79,7 +79,7 @@ namespace SistemaDeInversion.Validacion
         public static List<String[]> getMonedas()
         {
             List<String[]> tiposM = new List<String[]>();
-            XElement xelement = XElement.Load(Validacion.getDataPath());
+            XElement xelement = XElement.Load(Validacion.getDataPath() + "tiposMoneda.xml");
             IEnumerable<XElement> monedas = xelement.Elements();
             foreach (var moneda in monedas)
             {
@@ -93,11 +93,32 @@ namespace SistemaDeInversion.Validacion
             }
             return tiposM;
         }
+        //retorna la mierda
+        public static List<String[]> getServicios()
+        {
+            List<String[]> tiposS = new List<String[]>();
+            XElement xelement = XElement.Load(getDataPath()+"tiposServicios.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            foreach (var servicio in servicios)
+            {
+
+                String[] temp = new String[2];
+
+                temp[0] = (servicio.Element("Nombre").Value.ToString());
+                temp[1] = (servicio.Element("Clase").Value.ToString());
+                tiposS.Add(temp);
+               // MessageBox.Show(servicio.Element("Nombre").Value.ToString());
+                //MessageBox.Show(servicio.Element("Clase").Value.ToString());
+
+            }
+
+            return tiposS;
+        }
 
         // obtiene la ruta donde se encuentran las monedas
         private static string getDataPath()
         {
-            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\tiposMoneda.xml");
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
             return ruta;
         }
 

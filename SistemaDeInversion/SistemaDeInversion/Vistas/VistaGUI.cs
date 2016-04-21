@@ -17,8 +17,6 @@ namespace SistemaDeInversion.Vistas
     {
         public VistaGUI()
         {
-            Shiri X = new Shiri();
-            X.getServicios();
             InitializeComponent();
         }
 
