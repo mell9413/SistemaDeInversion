@@ -65,26 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador\Controlador.cs" />
-    <Compile Include="Controlador\IControlador.cs" />
+    <Compile Include="Controles\Controlador.cs" />
+    <Compile Include="Controles\IControlador.cs" />
     <Compile Include="DataBase\LectorData.cs" />
     <Compile Include="DTOs\DTOCliente.cs" />
-    <Compile Include="DTOs\DTOMoneda.cs" />
     <Compile Include="DTOs\DTOServicioAhorroInversion.cs" />
-    <Compile Include="ILector.cs" />
     <Compile Include="Modelo\BitacoraCSV.cs" />
     <Compile Include="Modelo\BitacoraXML.cs" />
     <Compile Include="Modelo\CertificadoInversion.cs" />
     <Compile Include="Modelo\Cliente.cs" />
-    <Compile Include="Modelo\Colon.cs" />
     <Compile Include="Modelo\CuentaCorriente.cs" />
     <Compile Include="Modelo\InversionVistaPactada.cs" />
-    <Compile Include="Modelo\Dolar.cs" />
-    <Compile Include="Modelo\Fisico.cs" />
-    <Compile Include="Modelo\IData.cs" />
     <Compile Include="Modelo\IEscritor.cs" />
-    <Compile Include="Modelo\ILector.cs" />
-    <Compile Include="Modelo\Moneda.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

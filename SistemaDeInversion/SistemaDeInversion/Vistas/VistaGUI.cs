@@ -11,23 +11,22 @@ using System.Windows.Forms;
 using SistemaDeInversion.Modelo;
 using System.Reflection;
 using SistemaDeInversion.Validaciones;
-using SistemaDeInversion.Controlador;
 using SistemaDeInversion.DataBase;
-
+using SistemaDeInversion.Controles;
 
 namespace SistemaDeInversion.Vistas
 {
     public partial class VistaGUI : Form
     {
-        IControlador caca = new Controlador.Controlador();
+        private IControlador controlador = new Controlador();
 
         public VistaGUI()
         {
-            ServicioAhorroInversion x;
-            x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
-           MessageBox.Show( x.calcularRendimiento().ToString());
+            //ServicioAhorroInversion x;
+            //x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
+           //MessageBox.Show( x.calcularRendimiento().ToString());
             InitializeComponent();
-            caca.crearBitacora();
+            controlador.crearBitacora();
             
       
 
@@ -120,13 +119,13 @@ namespace SistemaDeInversion.Vistas
         private void establecerMonedas()
         {
             ArrayList lista = new ArrayList();
-            lista.Add(LectorData.getMonedas()[1].ToString());
+            lista.Add(LectorData.obtenerMonedas()[1].ToString());
             comboBoxMoneda.DataSource = lista;
         }
 
         private void establecerServicios()
         {
-            comboBoxInversion.DataSource = LectorData.getServicios();
+            comboBoxInversion.DataSource = LectorData.obtenerServicios();
         }
 
         private void textBoxNombre_Click(object sender, EventArgs e)
@@ -155,17 +154,17 @@ namespace SistemaDeInversion.Vistas
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ArrayList listaServicios = LectorData.getServicios();
+            ArrayList listaServicios = LectorData.obtenerServicios();
             ArrayList lista = new ArrayList();
             if (comboBoxInversion.Text == listaServicios[0].ToString() || listaServicios[1].ToString() == "Certificado de Inversión")
             {
-                lista.Add(LectorData.getMonedas()[1].ToString());
+                lista.Add(LectorData.obtenerMonedas()[1].ToString());
                 comboBoxMoneda.DataSource = lista;
             }
             else if (comboBoxInversion.Text == listaServicios[3].ToString())
             {
 
-                comboBoxMoneda.DataSource = LectorData.getMonedas();
+                comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
             }
 
 

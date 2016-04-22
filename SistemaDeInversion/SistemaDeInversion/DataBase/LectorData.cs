@@ -12,10 +12,10 @@ namespace SistemaDeInversion.DataBase
     public static class LectorData
     {
         //returna las monedas registradas en el sistema
-        public static ArrayList getMonedas()
+        public static ArrayList obtenerMonedas()
         {
             List<String[]> tiposM = new List<String[]>();
-            XElement xelement = XElement.Load(getDataPath() + "tiposMoneda.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "tiposMoneda.xml");
             IEnumerable<XElement> monedas = xelement.Elements();
             foreach (var moneda in monedas)
             {
@@ -27,11 +27,11 @@ namespace SistemaDeInversion.DataBase
                 tiposM.Add(temp);
 
             }
-            return aplanarLista(tiposM);
+            return obtenerNombreMonedas(tiposM);
 
         }
 
-        private static ArrayList aplanarLista(List<String[]> lista)
+        private static ArrayList obtenerNombreMonedas(List<String[]> lista)
         {
             ArrayList resultado = new ArrayList();
             foreach (String[] elemento in lista)
@@ -44,10 +44,10 @@ namespace SistemaDeInversion.DataBase
         }
 
         // Devuelve los diferentes tipos de servicios de ahorro e inversion
-        public static ArrayList getServicios()
+        public static ArrayList obtenerServicios()
         {
             List<String[]> tiposS = new List<String[]>();
-            XElement xelement = XElement.Load(getDataPath() + "tiposServicios.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "tiposServicios.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             foreach (var servicio in servicios)
             {
@@ -58,46 +58,50 @@ namespace SistemaDeInversion.DataBase
                 tiposS.Add(temp);
             }
 
-            return aplanarLista(tiposS);
+            return obtenerNombreMonedas(tiposS);
         }
 
-        public static double getSaldoMinCC()
+        public static double obtenerSaldoMinCuentaCorriente()
         {
             double saldoMin;
-            XElement xelement = XElement.Load(getDataPath() + "rangosCuentaCorriente.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosCuentaCorriente.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
             //MessageBox.Show(saldoMin.ToString());
             return saldoMin;
         }
         // obtiene la ruta donde se encuentran las monedas
-        private static string getDataPath()
+        public static string obtenerRutaCarpeta()
         {
             String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
             return ruta;
         }
 
         //Saldo minimo inversión Vista pactada
-        public static double getSaldoMinIVP(String tipoMoneda)
+        public static double obtenerMinInversionVista(String tipoMoneda)
         {
             double saldoMin;
-            XElement xelement = XElement.Load(getDataPath() + "rangosInversionVistaPactada.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosInversionVistaPactada.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(tipoMoneda).Value);
-            //MessageBox.Show(saldoMin.ToString());
             return saldoMin;
         }
-        public static double getSaldoMinxDiasCC(int Dias)
+        public static double obtenerSaldoMinCertificado(int Dias)
         {
-            XElement xelement = XElement.Load(getDataPath() + "rangosInversionCertificado.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosInversionCertificado.xml");
             var saldos = (from rango in xelement.Elements("row")
                           where (double)rango.Element("rangomax") >= Dias
                           select rango).First();
             return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
         }
-
-
-
-    }
+        public static int obtenerMinDiasInversionVista()
+        {
+            int minDias;
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosInversionVistaPactada.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
+            return minDias;
+        }
+}
 
 }

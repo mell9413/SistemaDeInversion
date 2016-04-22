@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.DTOs
 {
-    class DTOServicioAhorroInversion
+    public class DTOServicioAhorroInversion
     {
         private double montoInversion;
         private int plazoDias;
         private double interes;
         private double impuestoRenta;
         private Cliente cliente;
-        private Moneda moneda;
+        private String moneda;
         private double saldoFinal;
         private String tipoServicio;
 
@@ -83,7 +83,7 @@ namespace SistemaDeInversion.DTOs
             }
         }
 
-        public Moneda Moneda
+        public string Moneda
         {
             get
             {
@@ -120,6 +120,11 @@ namespace SistemaDeInversion.DTOs
             {
                 tipoServicio = value;
             }
+        }
+
+        public DTOServicioAhorroInversion()
+        {
+
         }
     }
 }

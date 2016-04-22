@@ -7,11 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using SistemaDeInversion.DataBase;
 using SistemaDeInversion.Validaciones;
+using SistemaDeInversion.Controles;
 
 namespace SistemaDeInversion.Vistas
 {
     class VistaConsola
     {
+
+        private IControlador controlador = new Controlador();
+
+
         private string nombre;
         private string primerApellido;
         private string segundoApellido;
@@ -22,8 +27,9 @@ namespace SistemaDeInversion.Vistas
         private int tipoMoneda;
         private string numeroTemporal;
         private Double minimo;
-        ArrayList servicios = LectorData.getServicios();
-        ArrayList monedas = LectorData.getMonedas();
+        private int minimoDias;
+        ArrayList servicios = LectorData.obtenerServicios();
+        ArrayList monedas = LectorData.obtenerMonedas();
         private string nombreMoneda;
 
         internal static class NativeMethods
@@ -139,7 +145,15 @@ namespace SistemaDeInversion.Vistas
             if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
                 if( 0< Int32.Parse(numeroTemporal.ToString())){
-                    plazoDias = Int32.Parse(numeroTemporal.ToString());
+                    if (validarMinimoDias(Int32.Parse(numeroTemporal.ToString())))
+                    {
+                        plazoDias = Int32.Parse(numeroTemporal.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine(">>> El plazo mínimo para la inversión es de " + minimoDias + " intente de nuevo");
+                        ingresarPlazo();
+                    }
                 }
                 else
                 {
@@ -224,14 +238,14 @@ namespace SistemaDeInversion.Vistas
 
         private Boolean validarMinimos(double monto)
         {
-            if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.getSaldoMinCC()))
+            if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.obtenerSaldoMinCuentaCorriente()))
             {
-                minimo = LectorData.getSaldoMinCC();
+                minimo = LectorData.obtenerSaldoMinCuentaCorriente();
                 return false;
             }
-            else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.getSaldoMinIVP(nombreMoneda)))
+            else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.obtenerMinInversionVista(nombreMoneda)))
             {
-                minimo = LectorData.getSaldoMinIVP(nombreMoneda);
+                minimo = LectorData.obtenerMinInversionVista(nombreMoneda);
                 return false;
             }
 
@@ -242,8 +256,20 @@ namespace SistemaDeInversion.Vistas
                 return true;
             }
         }
+        private Boolean validarMinimoDias(int dias)
+        {
+            minimoDias = LectorData.obtenerMinDiasInversionVista();
+            if (this.tipoServicio == 3 && dias<minimoDias)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
-        private int getElementos(ArrayList lista)
+    private int getElementos(ArrayList lista)
         {
             int i = 0;
             foreach (var elemento in lista)

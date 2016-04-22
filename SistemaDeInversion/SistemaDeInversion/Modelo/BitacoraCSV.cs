@@ -5,18 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaDeInversion.DTOs;
+using SistemaDeInversion.DataBase;
 
 namespace SistemaDeInversion.Modelo
 {
     class BitacoraCSV: IEscritor
     {
         private static String nombreArchivo = "bitacoraCSV.csv";
-
-        public BitacoraCSV()
-        {
-
-        }
-
 
         public static string NombreArchivo
         {
@@ -27,42 +22,28 @@ namespace SistemaDeInversion.Modelo
 
         }
 
-        
-
         public void crearArchivo()
         {
-            File.Create(this.asignarRuta()+nombreArchivo).Close();
+            File.Create(LectorData.obtenerRutaCarpeta()+ nombreArchivo).Close();
         }
 
-        
-
-        public string asignarRuta()
+        public void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
         {
-            String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
-            ruta = ruta.Remove(ruta.Length - 14) + "Data/";
-            return ruta;
+            //if existe archivo y sino crearlo
+         //   string delimiter = ",";  	 
+         //   string[][] output = new string[][]{  
+	        //        new string[]{ dtoMovimiento.getCliente().ToString(), dtoMovimiento.getTipoServicio(), dtoMovimiento.getMontoInversion().ToString(), dtoMovimiento.getPlazoDias().ToString(), dtoMovimiento.getMoneda()}
+	        //};  
+	        //StringBuilder sb = new StringBuilder();
+         //   sb.AppendLine(string.Join(delimiter, output[0]));
+         //   using (StreamWriter outputFile = new StreamWriter(LectorData.obtenerRutaCarpeta()+nombreArchivo, true))
+         //   {
+         //       outputFile.WriteLine(sb.ToString().Remove(sb.Length-2));
+         //   }
         }
-
-        public String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento)
+        public Boolean existeArchivo()
         {
-            string delimiter = ",";  	 
-            string[][] output = new string[][]{  
-	                new string[]{dtomovimiento.Cliente.ToString(), dtomovimiento.TipoServicio, dtomovimiento.MontoInversion.ToString(),dtomovimiento.PlazoDias.ToString(), dtomovimiento.Moneda.Nombre}
-	        };  
-	        StringBuilder sb = new StringBuilder();
-            sb.AppendLine(string.Join(delimiter, output[0]));
-            using (StreamWriter outputFile = new StreamWriter(this.getDataPath()+nombreArchivo, true))
-            {
-                outputFile.WriteLine(sb.ToString().Remove(sb.Length-2));
-            }
-            return "Se ha realizado correctamente el movimiento";
-        }
-
-        public string getDataPath()
-        {
-            String ruta = Path.GetFullPath(@"temp").Replace(@"\", @"/");
-            ruta = ruta.Remove(ruta.Length - 14) + "Data/";
-            return ruta;
+            return true;
         }
     }
 }

@@ -8,16 +8,17 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
+using SistemaDeInversion.DTOs;
+using SistemaDeInversion.DataBase;
 
 namespace SistemaDeInversion.Modelo
 {
-    class CuentaCorriente : ServicioAhorroInversion, ILector
+    class CuentaCorriente : ServicioAhorroInversion
     {
         
         private static int cantidadInstancias = 0;
 
-        public CuentaCorriente(Cliente cliente,String tipoMoneda,double montoInversion, int plazoDias)
-            : base(cliente,tipoMoneda,montoInversion, plazoDias)
+        public CuentaCorriente(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
@@ -25,7 +26,7 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(base.getDataPath() + "rangosCuentaCorriente.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "rangosCuentaCorriente.xml");
              var intAnual = (from rango in xelement.Elements("row")
                              where (double)rango.Element("rangomax")>=base.montoInversion
                              select rango).First();

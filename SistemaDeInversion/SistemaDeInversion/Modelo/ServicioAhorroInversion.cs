@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Modelo
 {
-    public abstract class ServicioAhorroInversion:ILector
+    public abstract class ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
         protected String id;
@@ -17,12 +18,9 @@ namespace SistemaDeInversion.Modelo
         protected String moneda;
         protected Cliente cliente;
 
-        public ServicioAhorroInversion(Cliente cliente,String tipoMoneda, double montoInversion, int plazoDias)
+        public ServicioAhorroInversion(DTOServicioAhorroInversion dtoInversion)
         {
-            this.cliente = cliente;
-            this.montoInversion = montoInversion;
-            this.plazoDias = plazoDias;
-            this.moneda = tipoMoneda;
+            //PROGRAMAR!
             cantidadInstancias++;
         }
 
@@ -91,12 +89,6 @@ namespace SistemaDeInversion.Modelo
             }
             return rendimiento;
 
-        }
-
-        protected string getDataPath()
-        {
-            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
-            return ruta;
         }
     }
 }

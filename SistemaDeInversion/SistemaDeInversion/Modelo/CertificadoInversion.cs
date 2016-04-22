@@ -5,22 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Windows.Forms;
+using SistemaDeInversion.DTOs;
+using SistemaDeInversion.DataBase;
+
 namespace SistemaDeInversion.Modelo
 {
     class CertificadoInversion : ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
 
-        public CertificadoInversion(Cliente cliente, String tipoMoneda, double montoInversion, int plazoDias)
-            : base(cliente, tipoMoneda, montoInversion, plazoDias)
+        public CertificadoInversion(DTOServicioAhorroInversion dtoInversion): base(dtoInversion)
         {
             base.id = "Cer#" + cantidadInstancias;
             cantidadInstancias++;
         }
 
-        private double getISR()
+        private double obtenerImpuestoRenta()
         {
-            XElement xelement = XElement.Load(base.getDataPath() + "staticData.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "staticData.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             select rango).First();
             //MessageBox.Show(intAnual.Element("ISR").Value);
@@ -29,7 +31,7 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(base.getDataPath() + "rangosInversionCertificado.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "rangosInversionCertificado.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias
                             select rango).First();

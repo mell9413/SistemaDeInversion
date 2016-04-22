@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Windows.Forms;
+using SistemaDeInversion.DTOs;
+using SistemaDeInversion.DataBase;
+
 namespace SistemaDeInversion.Modelo
 {
     public class InversionVistaPactada: ServicioAhorroInversion
     {
         private static int cantidadInstancias = 0;
 
-        public InversionVistaPactada(Cliente cliente, String tipoMoneda, double montoInversion, int plazoDias)
-            : base(cliente, tipoMoneda, montoInversion, plazoDias)
+        public InversionVistaPactada(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
             base.id = "DpVis#" + cantidadInstancias;
             cantidadInstancias++;
@@ -20,7 +22,7 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(base.getDataPath() + "rangosInversionVistaPactada.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "rangosInversionVistaPactada.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias  
                             select rango).First();

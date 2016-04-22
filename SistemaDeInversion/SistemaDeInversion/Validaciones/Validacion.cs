@@ -39,13 +39,13 @@ namespace SistemaDeInversion.Validaciones
 
         private static bool validarMontoCC(double cantidad)
         {
-            return LectorData.getSaldoMinCC() <= cantidad;
+            return LectorData.obtenerSaldoMinCuentaCorriente() <= cantidad;
        
         }
 
         private static bool validarMontoIVP(double cantidad, string moneda)
         {
-            return LectorData.getSaldoMinIVP(moneda) <= cantidad;
+            return LectorData.obtenerMinInversionVista(moneda) <= cantidad;
 
         }
 

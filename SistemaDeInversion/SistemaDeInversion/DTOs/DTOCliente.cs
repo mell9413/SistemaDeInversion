@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.DTOs
 {
-    class DTOCliente
+    public class DTOCliente
     {
         private String nombre;
+        private String primerApellido;
+        private String segundoApellido;
+
+        public DTOCliente()
+        {
+
+        }
 
         public string Nombre
         {
@@ -20,6 +27,32 @@ namespace SistemaDeInversion.DTOs
             set
             {
                 nombre = value;
+            }
+        }
+
+        public string PrimerApellido
+        {
+            get
+            {
+                return primerApellido;
+            }
+
+            set
+            {
+                primerApellido = value;
+            }
+        }
+
+        public string SegundoApellido
+        {
+            get
+            {
+                return segundoApellido;
+            }
+
+            set
+            {
+                segundoApellido = value;
             }
         }
     }

@@ -10,7 +10,7 @@ namespace SistemaDeInversion.Modelo
     interface IEscritor
     {
         void crearArchivo();
-        String escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
-        String asignarRuta();
+        void escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
+        Boolean existeArchivo();
     }
 }
