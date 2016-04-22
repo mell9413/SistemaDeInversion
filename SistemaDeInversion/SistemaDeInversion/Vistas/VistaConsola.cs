@@ -123,11 +123,18 @@ namespace SistemaDeInversion.Vistas
 
         private void ingresarPlazo()
         {
-            Console.WriteLine("\n>>> Por favor ingrese el Plazo de la Inversion:");
+            Console.WriteLine("\n>>> Por favor ingrese el numero de días para el Plazo de la Inversion:");
             numeroTemporal = Console.ReadLine();
             if (validarInt(numeroTemporal))
             {
-                plazoDias = Int32.Parse(numeroTemporal.ToString());
+                if( 0< Int32.Parse(numeroTemporal.ToString())){
+                    plazoDias = Int32.Parse(numeroTemporal.ToString());
+                }
+                else
+                {
+                    Console.WriteLine(">>> Ingrese unicamente números enteros mayores a cero, intente de nuevo");
+                    ingresarPlazo();
+                }
             }
             else
             {
@@ -169,14 +176,14 @@ namespace SistemaDeInversion.Vistas
             else
             {
                 Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
-                Console.WriteLine(">>> 1) ---> Colón");
+                Console.WriteLine(">>> 1) ---> Colones");
                 numeroTemporal = Console.ReadLine();
                 if (validarInt(numeroTemporal))
                 {
                     if (validarRango(Int32.Parse(numeroTemporal.ToString()), 1))
                     {
                         tipoMoneda = Int32.Parse(numeroTemporal.ToString());
-                        nombreMoneda = "Colón";
+                        nombreMoneda = "Colones";
                     }
                     else
                     {
@@ -254,31 +261,58 @@ namespace SistemaDeInversion.Vistas
             }
             return i;
         }
+
+        private void resultado()
+        {
+            Console.Clear();
+            Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
+            Console.WriteLine("***** Datos del cliente y su operación bancaria *****");
+            Console.WriteLine("Cliente:\t\t\t"+nombre+" "+primerApellido+" "+segundoApellido);
+            Console.WriteLine("Monto de ahorro e inversión:\t" + montoInversion+" "+nombreMoneda);
+            Console.WriteLine("Plazo de la inversión en días:\t" + plazoDias+" días");
+            Console.WriteLine("Sistema de ahorro e inversión:\t" + nombreServicio);
+            Console.WriteLine("Interés anual correspondiente:\t");
+            Console.WriteLine("\n***Rendimiento***");
+            if (nombreServicio == "Inversión Vista Pactada")
+            {
+                Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tImpuesto de Renta\tSaldo Final");
+                Console.WriteLine("\t" + plazoDias + "\t\t" + montoInversion + " " + nombreMoneda + "\t\t  " + "8100" + " " + nombreMoneda + "\t\t  " + "9999"+" "+nombreMoneda+ "\t\t  " + "565656");
+            }
+            else
+            {
+                Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tSaldo Final");
+                Console.WriteLine("\t" + plazoDias + "\t\t" + montoInversion + " " + nombreMoneda + "\t\t  " + "8100" + " " + nombreMoneda + "\t\t  " + "999999");
+            }
+            Console.WriteLine("--->Última línea<---");
+        }
         static void Main(string[] args)
         {
-            while (false)
+            while (true)
             {
                 //NativeMethods.AllocConsole();
                 //Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
                 //Console.WriteLine("\n>>> Por favor ingrese su nombre completo:");
+
+                VistaConsola consola = new VistaConsola();
+                NativeMethods.AllocConsole();
+                Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
+
+                consola.ingresarDatosCliente();
+                consola.ingresarServicio();
+                consola.ingresarMoneda(consola.nombreServicio);
+                consola.ingresarPlazo();
+                consola.ingresarInversion();
+                //consola.ingresarInversion();
+                //consola.ingresarPlazo();
+                //consola.ingresarMoneda(consola.nombreServicio);
+
+                consola.resultado();
+
+                //Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido+consola.tipoServicio+consola.plazoDias+consola.montoInversion+consola.tipoMoneda);
+                //Console.WriteLine(consola.nombreMoneda+"    "+consola.nombreServicio);
+
+                Console.ReadLine();
             }
-            VistaConsola consola = new VistaConsola();
-            NativeMethods.AllocConsole();
-            Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
-
-            consola.ingresarDatosCliente();
-            consola.ingresarServicio();
-            consola.ingresarMoneda(consola.nombreServicio);
-            consola.ingresarPlazo();
-            consola.ingresarInversion();
-            //consola.ingresarInversion();
-            //consola.ingresarPlazo();
-            //consola.ingresarMoneda(consola.nombreServicio);
-
-            Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido+consola.tipoServicio+consola.plazoDias+consola.montoInversion+consola.tipoMoneda);
-            Console.WriteLine(consola.nombreMoneda+"    "+consola.nombreServicio);
-
-            Console.ReadLine();
         }
     }
 }
