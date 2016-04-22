@@ -289,6 +289,8 @@ namespace SistemaDeInversion.Vistas
                 consola.ingresarMoneda(consola.nombreServicio);
                 consola.ingresarPlazo();
                 consola.ingresarInversion();
+                //enviardatosalDTO
+                //consola.resultado(DTOInversion) al final Consola.run();
                 consola.resultado();
                 Console.ReadLine();
             }
