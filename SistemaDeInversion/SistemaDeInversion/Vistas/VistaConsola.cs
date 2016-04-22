@@ -113,7 +113,6 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.Validacion.validarDouble(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
-                //Console.WriteLine("===========================    "+ Double.Parse(numeroTemporal));
                 if (validarMinimos(Double.Parse(numeroTemporal)))
                 {
                     montoInversion = Double.Parse(numeroTemporal);
