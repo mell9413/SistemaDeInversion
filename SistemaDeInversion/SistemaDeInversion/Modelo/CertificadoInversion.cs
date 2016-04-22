@@ -11,8 +11,8 @@ namespace SistemaDeInversion.Modelo
     {
         private static int cantidadInstancias = 0;
 
-        public CertificadoInversion(Cliente cliente, double montoInversion, int plazoDias)
-            : base(cliente, montoInversion, plazoDias)
+        public CertificadoInversion(Cliente cliente, String tipoMoneda, double montoInversion, int plazoDias)
+            : base(cliente, tipoMoneda, montoInversion, plazoDias)
         {
             base.id = "Cer#" + cantidadInstancias;
             cantidadInstancias++;

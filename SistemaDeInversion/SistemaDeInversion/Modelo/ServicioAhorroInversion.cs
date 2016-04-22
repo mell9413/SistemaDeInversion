@@ -14,14 +14,15 @@ namespace SistemaDeInversion.Modelo
         protected double montoInversion;
         protected int plazoDias;
         protected double interes;
-        private Moneda moneda;
+        protected String moneda;
         private Cliente cliente;
 
-        public ServicioAhorroInversion(Cliente cliente, double montoInversion, int plazoDias)
+        public ServicioAhorroInversion(Cliente cliente,String tipoMoneda, double montoInversion, int plazoDias)
         {
             this.cliente = cliente;
             this.montoInversion = montoInversion;
             this.plazoDias = plazoDias;
+            this.moneda = tipoMoneda;
             //this.id = "Serv#" + CantidadInstancias;
             cantidadInstancias++;
         }
@@ -69,13 +70,7 @@ namespace SistemaDeInversion.Modelo
             }
         }
 
-        public Moneda Moneda
-        {
-            get
-            {
-                return moneda;
-            }
-        }
+      
 
         public Cliente Cliente
         {
@@ -101,7 +96,7 @@ namespace SistemaDeInversion.Modelo
 
         protected string getDataPath()
         {
-            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\rangosCuentaCorriente.xml");
+            String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
             return ruta;
         }
 

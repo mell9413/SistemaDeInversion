@@ -128,6 +128,7 @@ namespace SistemaDeInversion.Validacion
 
             return Validacion.aplanarLista(tiposS);
         }
+
         public static double getSaldoMinCC()
         {
             double saldoMin;
@@ -142,6 +143,17 @@ namespace SistemaDeInversion.Validacion
         {
             String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
             return ruta;
+        }
+
+        //Saldo minimo inversión Vista pactada
+        public static double getSaldoMinIVP(String tipoMoneda)
+        {
+            double saldoMin;
+            XElement xelement = XElement.Load(getDataPath() + "rangosInversionVistaPactada.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(tipoMoneda).Value);
+            MessageBox.Show(saldoMin.ToString());
+            return saldoMin;
         }
 
 
