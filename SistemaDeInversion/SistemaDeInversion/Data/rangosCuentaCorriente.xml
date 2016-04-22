@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <ccorriente>
-<row><rangomin>25000</rangomin><rangomax>500000</rangomax><Colón>0,1</Colón></row>
-<row><rangomin>500001</rangomin><rangomax>1000000</rangomax><Colón>0,2</Colón></row>
-<row><rangomin>1000001 </rangomin><rangomax>2500000</rangomax><Colón>0,225</Colón></row>
-<row><rangomin>2500001</rangomin><rangomax>10000000 </rangomax><Colón>0,25</Colón></row>
-<row><rangomin>10000001</rangomin><rangomax>1000000000</rangomax><Colón>0,275</Colón></row>
+<row><rangomin>25000</rangomin><rangomax>500000</rangomax><Colones>0,1</Colones></row>
+<row><rangomin>500001</rangomin><rangomax>1000000</rangomax><Colones>0,2</Colones></row>
+<row><rangomin>1000001 </rangomin><rangomax>2500000</rangomax><Colones>0,225</Colones></row>
+<row><rangomin>2500001</rangomin><rangomax>10000000 </rangomax><Colones>0,25</Colones></row>
+<row><rangomin>10000001</rangomin><rangomax>1000000000</rangomax><Colones>0,275</Colones></row>
 </ccorriente>
