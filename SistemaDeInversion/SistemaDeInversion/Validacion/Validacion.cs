@@ -152,7 +152,7 @@ namespace SistemaDeInversion.Validacion
             XElement xelement = XElement.Load(getDataPath() + "rangosInversionVistaPactada.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(tipoMoneda).Value);
-            MessageBox.Show(saldoMin.ToString());
+            //MessageBox.Show(saldoMin.ToString());
             return saldoMin;
         }
 

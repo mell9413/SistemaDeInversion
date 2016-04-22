@@ -227,7 +227,11 @@ namespace SistemaDeInversion.Vistas
                 minimo = Validacion.Validacion.getSaldoMinCC();
                 return false;
             }
-
+            else if (this.tipoServicio == 3 && 0 > monto.CompareTo(Validacion.Validacion.getSaldoMinIVP(nombreMoneda)))
+            {
+                minimo = Validacion.Validacion.getSaldoMinIVP(nombreMoneda);
+                return false;
+            }
 
 
 
