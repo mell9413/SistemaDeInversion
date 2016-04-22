@@ -18,16 +18,25 @@ namespace SistemaDeInversion.Modelo
             cantidadInstancias++;
         }
 
+        private double getISR()
+        {
+            XElement xelement = XElement.Load(base.getDataPath() + "staticData.xml");
+            var intAnual = (from rango in xelement.Elements("row")
+                            select rango).First();
+            //MessageBox.Show(intAnual.Element("ISR").Value);
+            return Convert.ToDouble(intAnual.Element("ISR").Value);
+        }
+
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(base.getDataPath() + "rangosInversionVistaPactada.xml");
+            XElement xelement = XElement.Load(base.getDataPath() + "rangosInversionCertificado.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias
                             select rango).First();
-            //MessageBox.Show(base.moneda);
-            // MessageBox.Show(intAnual.Element(base.moneda).Value);
-            base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
+
+            //MessageBox.Show(intAnual.Element(base.moneda).Value);
+            double interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
+            base.interes = interes - (interes * 0.08);
         }
-        
     }
 }

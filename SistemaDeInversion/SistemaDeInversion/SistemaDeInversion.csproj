@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\rangosCuentaCorriente.xml" />
+    <Content Include="Data\rangosInversionCertificado.xml" />
     <Content Include="Data\rangosInversionVistaPactada.xml" />
     <Content Include="Data\tiposMoneda.xml" />
     <Content Include="Data\tiposServicios.xml" />
