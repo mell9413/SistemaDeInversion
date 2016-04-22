@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<inversionPactada>
+<saldoMin><Colones>100000</Colones><Dólares>500</Dólares></saldoMin>
+<row><rangomin>15</rangomin><rangomax>29</rangomax><Colones>0,0485</Colones><Dólares>0,08</Dólares></row>
+<row><rangomin>30</rangomin><rangomax>59</rangomax><Colones>0,0494</Colones><Dólares>0,091</Dólares></row>
+<row><rangomin>60</rangomin><rangomax>89</rangomax><Colones>0,0523</Colones><Dólares>0,0106</Dólares></row>
+<row><rangomin>90</rangomin><rangomax>179</rangomax><Colones>0,0581</Colones><Dólares>0,0144</Dólares></row>
+<row><rangomin>180</rangomin><rangomax>269</rangomax><Colones>0,0883</Colones><Dólares>0,0221</Dólares></row>
+<row><rangomin>270</rangomin><rangomax>359</rangomax><Colones>0,0869</Colones><Dólares>0,0226</Dólares></row>
+<row><rangomin>360</rangomin><rangomax>719</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
+<row><rangomin>720</rangomin><rangomax>1079</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
+<row><rangomin>1080</rangomin><rangomax>1439</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
+<row><rangomin>1440</rangomin><rangomax>1799</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
+<row><rangomin>1800</rangomin><rangomax>3000000</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
+</inversionPactada>
