@@ -10,25 +10,13 @@ namespace SistemaDeInversion.Modelo
 {
     class BitacoraCSV: IEscritor
     {
-        private static int cantidadInstancias = 0;
         private static String nombreArchivo = "bitacoraCSV.csv";
 
         public BitacoraCSV()
         {
 
         }
-        public static int CantidadInstancias
-        {
-            get
-            {
-                return cantidadInstancias;
-            }
 
-            set
-            {
-                cantidadInstancias = value;
-            }
-        }
 
         public static string NombreArchivo
         {
@@ -37,10 +25,6 @@ namespace SistemaDeInversion.Modelo
                 return nombreArchivo;
             }
 
-            set
-            {
-                nombreArchivo = value;
-            }
         }
 
         

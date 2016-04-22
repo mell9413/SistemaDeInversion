@@ -10,19 +10,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaDeInversion.Modelo;
 using System.Reflection;
-using SistemaDeInversion.Validacion;
+using SistemaDeInversion.Validaciones;
+using SistemaDeInversion.Controlador;
+using SistemaDeInversion.DataBase;
 
 
 namespace SistemaDeInversion.Vistas
 {
     public partial class VistaGUI : Form
     {
+        IControlador caca = new Controlador.Controlador();
+
         public VistaGUI()
         {
             ServicioAhorroInversion x;
             x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
            MessageBox.Show( x.calcularRendimiento().ToString());
             InitializeComponent();
+            caca.crearBitacora();
             
       
 
@@ -60,23 +65,28 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (validarTextBoxLetras(textBoxNombre) && validarTextBoxLetras(textBoxApellido1) && validarTextBoxLetras(textBoxApellido2) && validarTextBoxVacios(textBoxNombre) && validarTextBoxVacios(textBoxApellido1) && validarTextBoxVacios(textBoxApellido2) && validarTextBoxNumero(textBoxMonto) && validarTextBoxMontoMayor())
-            {
-                MessageBox.Show("Transaccion realizada con éxito");
-            }
+            validarTextBoxLetras(textBoxNombre);
+            validarTextBoxLetras(textBoxApellido1);
+            validarTextBoxLetras(textBoxApellido2);
+            validarTextBoxVacios(textBoxNombre);
+            validarTextBoxVacios(textBoxApellido1);
+            validarTextBoxVacios(textBoxApellido2);
+            validarTextBoxNumero(textBoxMonto);
+            validarTextBoxMontoMayor(textBoxMonto);
+            
 
 
         }
 
         private bool validarTextBoxMontoMayor(TextBox box)
         {
-
+            //if (Validacion.Validacion.)
             return true;
         }
 
         private bool validarTextBoxLetras(TextBox box)
         {
-            if (!Validacion.Validacion.validarLetras(box.Text))
+            if (!Validaciones.Validacion.validarLetras(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
@@ -87,7 +97,7 @@ namespace SistemaDeInversion.Vistas
 
         private bool validarTextBoxVacios(TextBox box)
         {
-            if (!Validacion.Validacion.validarVacio(box.Text))
+            if (!Validacion.validarVacio(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
@@ -98,7 +108,7 @@ namespace SistemaDeInversion.Vistas
 
         private bool validarTextBoxNumero(TextBox box)
         {
-            if (!Validacion.Validacion.validarDouble(box.Text))
+            if (!Validacion.validarDouble(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
@@ -110,13 +120,13 @@ namespace SistemaDeInversion.Vistas
         private void establecerMonedas()
         {
             ArrayList lista = new ArrayList();
-            lista.Add(Validacion.Validacion.getMonedas()[1].ToString());
+            lista.Add(LectorData.getMonedas()[1].ToString());
             comboBoxMoneda.DataSource = lista;
         }
 
         private void establecerServicios()
         {
-            comboBoxInversion.DataSource = Validacion.Validacion.getServicios();
+            comboBoxInversion.DataSource = LectorData.getServicios();
         }
 
         private void textBoxNombre_Click(object sender, EventArgs e)
@@ -145,17 +155,17 @@ namespace SistemaDeInversion.Vistas
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("noob");
+            ArrayList listaServicios = LectorData.getServicios();
             ArrayList lista = new ArrayList();
-            if (comboBoxInversion.Text == "Cuenta Corriente" || comboBoxInversion.Text == "Certificado de Inversión")
+            if (comboBoxInversion.Text == listaServicios[0].ToString() || listaServicios[1].ToString() == "Certificado de Inversión")
             {
-                lista.Add(Validacion.Validacion.getMonedas()[1].ToString());
+                lista.Add(LectorData.getMonedas()[1].ToString());
                 comboBoxMoneda.DataSource = lista;
             }
-            else if (comboBoxInversion.Text == "Inversión Vista Pactada")
+            else if (comboBoxInversion.Text == listaServicios[3].ToString())
             {
 
-                comboBoxMoneda.DataSource = Validacion.Validacion.getMonedas();
+                comboBoxMoneda.DataSource = LectorData.getMonedas();
             }
 
 

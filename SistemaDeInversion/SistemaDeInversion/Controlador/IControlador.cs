@@ -8,5 +8,6 @@ namespace SistemaDeInversion.Controlador
 {
     interface IControlador
     {
+        void crearBitacora();
     }
 }
