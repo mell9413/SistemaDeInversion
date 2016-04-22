@@ -112,6 +112,7 @@
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(153, 20);
             this.textBoxNombre.TabIndex = 6;
+            this.textBoxNombre.Click += new System.EventHandler(this.textBoxNombre_Click);
             // 
             // textBoxApellido1
             // 
@@ -119,6 +120,7 @@
             this.textBoxApellido1.Name = "textBoxApellido1";
             this.textBoxApellido1.Size = new System.Drawing.Size(153, 20);
             this.textBoxApellido1.TabIndex = 7;
+            this.textBoxApellido1.Click += new System.EventHandler(this.textBoxApellido1_Click);
             // 
             // textBoxApellido2
             // 
@@ -126,6 +128,7 @@
             this.textBoxApellido2.Name = "textBoxApellido2";
             this.textBoxApellido2.Size = new System.Drawing.Size(153, 20);
             this.textBoxApellido2.TabIndex = 8;
+            this.textBoxApellido2.Click += new System.EventHandler(this.textBoxApellido2_Click);
             // 
             // comboBoxInversion
             // 
@@ -141,6 +144,7 @@
             this.textBoxMonto.Name = "textBoxMonto";
             this.textBoxMonto.Size = new System.Drawing.Size(153, 20);
             this.textBoxMonto.TabIndex = 10;
+            this.textBoxMonto.Click += new System.EventHandler(this.textBoxMonto_Click);
             // 
             // numericUpDownPlazo
             // 

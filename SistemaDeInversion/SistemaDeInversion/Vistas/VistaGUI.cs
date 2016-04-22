@@ -48,6 +48,7 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             validarTextBoxLetras(textBoxNombre);
             validarTextBoxLetras(textBoxApellido1);
             validarTextBoxLetras(textBoxApellido2);
@@ -55,9 +56,12 @@ namespace SistemaDeInversion.Vistas
             validarTextBoxVacios(textBoxNombre);
             validarTextBoxVacios(textBoxApellido1);
             validarTextBoxVacios(textBoxApellido2);
+
             validarTextBoxNumero(textBoxMonto);
+        }
 
-
+        private void registrarCliente()
+        {
 
         }
 
@@ -65,16 +69,17 @@ namespace SistemaDeInversion.Vistas
         {
             if (!Validacion.Validacion.validarLetras(box.Text))
             {
-                MessageBox.Show("El dato ingresado '" + box.Text + "' es incorrecto, por favor asegurese que contenga solamente letras");
+                box.Text = "Dato incorrecto";
+                box.ForeColor = Color.Red;
             }
-
         }
 
         private void validarTextBoxVacios(TextBox box)
         {
             if (!Validacion.Validacion.validarVacio(box.Text))
             {
-                MessageBox.Show("Por favor ingrese un dato");
+                box.Text = "Dato incorrecto";
+                box.ForeColor = Color.Red;
             }
         }
 
@@ -82,7 +87,8 @@ namespace SistemaDeInversion.Vistas
         {
             if (!Validacion.Validacion.validarDouble(box.Text))
             {
-                MessageBox.Show("El monto ingresado es incorrecto, por favor ingrese números solamente");
+                box.Text = "Dato incorrecto";
+                box.ForeColor = Color.Red;
             }
         }
 
@@ -96,6 +102,28 @@ namespace SistemaDeInversion.Vistas
             comboBoxInversion.DataSource = Validacion.Validacion.getServicios();
         }
 
+        private void textBoxNombre_Click(object sender, EventArgs e)
+        {
+            textBoxNombre.Text = "";
+            textBoxNombre.ForeColor = Color.Black;
+        }
 
+        private void textBoxApellido1_Click(object sender, EventArgs e)
+        {
+            textBoxApellido1.Text = "";
+            textBoxApellido1.ForeColor = Color.Black;
+        }
+
+        private void textBoxApellido2_Click(object sender, EventArgs e)
+        {
+            textBoxApellido2.Text = "";
+            textBoxApellido2.ForeColor = Color.Black;
+        }
+
+        private void textBoxMonto_Click(object sender, EventArgs e)
+        {
+            textBoxMonto.Text = "";
+            textBoxMonto.ForeColor = Color.Black;
+        }
     }
 }
