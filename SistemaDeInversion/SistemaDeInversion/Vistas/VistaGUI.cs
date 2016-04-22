@@ -19,7 +19,13 @@ namespace SistemaDeInversion.Vistas
     {
         public VistaGUI()
         {
+            ServicioAhorroInversion x;
+            x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
+           MessageBox.Show( x.calcularRendimiento().ToString());
             InitializeComponent();
+            
+      
+
         }
 
         private void VistaGUI_Load(object sender, EventArgs e)
@@ -28,24 +34,27 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            /*Mambiux
-            Shiri X;
-            X = new Shiri();
-            X.getMonedas();
+            /*Mambiux Inversión Pactada y validacion de saldo
+             * ServicioAhorroInversiox;
+                x = new InversionVistaPactada(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1200000, 56);
+                MessageBox.Show(Validacion.Validacion.getSaldoMinIVP("Dólar").ToString());
+                MessageBox.Show((x.calcularRendimiento()).ToString());
              * 
-            ServicioAhorroInversion x;
-            x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
-             t.lol();
+            Mambiux Cuenta corriente 
+             *  ServicioAhorroInversion x;
+                x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
+             
              */
+
+
+
+
 
             /* BitacoraXML xml = new BitacoraXML();
              xml.crearArchivo();
             
              BitacoraCSV csv = new BitacoraCSV();
              csv.crearArchivo();
-             *  ServicioAhorroInversion x;
-             x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 2500001, 30);
-             x.getInteres();
              */
         }
 

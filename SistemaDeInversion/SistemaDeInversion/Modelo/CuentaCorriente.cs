@@ -16,8 +16,8 @@ namespace SistemaDeInversion.Modelo
         
         private static int cantidadInstancias = 0;
 
-        public CuentaCorriente(Cliente cliente,double montoInversion, int plazoDias)
-            : base(cliente,montoInversion, plazoDias)
+        public CuentaCorriente(Cliente cliente,String tipoMoneda,double montoInversion, int plazoDias)
+            : base(cliente,tipoMoneda,montoInversion, plazoDias)
         {
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
@@ -25,17 +25,17 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-             XElement xelement = XElement.Load(base.getDataPath());
-             var homePhone = (from phoneno in xelement.Elements("row")
-                             where (double)phoneno.Element("rangomax")>=base.montoInversion
-                             select phoneno).First();
+            XElement xelement = XElement.Load(base.getDataPath() + "rangosCuentaCorriente.xml");
+             var intAnual = (from rango in xelement.Elements("row")
+                             where (double)rango.Element("rangomax")>=base.montoInversion
+                             select rango).First();
             
             // foreach (XElement xEle in homePhone)
              //{
                //  MessageBox.Show(xEle.Element("interesAnual").Value);
              //}
-             MessageBox.Show(homePhone.Element("interesAnual").Value);
-             base.interes= Convert.ToDouble(homePhone.Element("interesAnual").Value);
+             MessageBox.Show(intAnual.Element(base.moneda).Value);
+             base.interes= Convert.ToDouble(intAnual.Element(base.moneda).Value);
         }
         
 

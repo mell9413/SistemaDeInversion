@@ -30,31 +30,41 @@ namespace SistemaDeInversion.Vistas
             internal static extern Boolean AllocConsole();
         }
 
-        private void ingresarDatosCliente()
+        private void ingresarNombreCliente()
         {
             Console.WriteLine(">>> Por favor ingrese unicamente su nombre:\n");
             nombre = Console.ReadLine();
             if (validarDatosCliente(nombre))
             {
-                Console.WriteLine(">>> Por favor ingrese unicamente su primer apellido:\n");
-                primerApellido = Console.ReadLine();
-                if (validarDatosCliente(primerApellido))
-                {
-                    Console.WriteLine(">>> Por favor ingrese unicamente su segundo apellido:\n");
-                    segundoApellido = Console.ReadLine();
-                    if (!validarDatosCliente(segundoApellido))
-                    {
-                        ingresarDatosCliente();
-                    }
-                }
-                else
-                {
-                    ingresarDatosCliente();
-                }
+                ingresarApellido1Cliente();
             }
             else
             {
-                ingresarDatosCliente();
+                ingresarNombreCliente();
+            }
+        }
+
+        private void ingresarApellido1Cliente()
+        {
+            Console.WriteLine(">>> Por favor ingrese unicamente su primer apellido:\n");
+            primerApellido = Console.ReadLine();
+            if (validarDatosCliente(primerApellido))
+            {
+                ingresarApellido2Cliente();
+            }
+            else
+            {
+                ingresarApellido1Cliente();
+            }
+        }
+
+        private void ingresarApellido2Cliente()
+        {
+            Console.WriteLine(">>> Por favor ingrese unicamente su segundo apellido:\n");
+            segundoApellido = Console.ReadLine();
+            if (!validarDatosCliente(segundoApellido))
+            {
+                ingresarApellido2Cliente();
             }
         }
 
@@ -103,7 +113,6 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.Validacion.validarDouble(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
-                //Console.WriteLine("===========================    "+ Double.Parse(numeroTemporal));
                 if (validarMinimos(Double.Parse(numeroTemporal)))
                 {
                     montoInversion = Double.Parse(numeroTemporal);
@@ -218,7 +227,11 @@ namespace SistemaDeInversion.Vistas
                 minimo = Validacion.Validacion.getSaldoMinCC();
                 return false;
             }
-
+            else if (this.tipoServicio == 3 && 0 > monto.CompareTo(Validacion.Validacion.getSaldoMinIVP(nombreMoneda)))
+            {
+                minimo = Validacion.Validacion.getSaldoMinIVP(nombreMoneda);
+                return false;
+            }
 
 
 
@@ -266,28 +279,15 @@ namespace SistemaDeInversion.Vistas
         {
             while (true)
             {
-                //NativeMethods.AllocConsole();
-                //Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
-                //Console.WriteLine("\n>>> Por favor ingrese su nombre completo:");
-
                 VistaConsola consola = new VistaConsola();
                 NativeMethods.AllocConsole();
                 Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
-
-                consola.ingresarDatosCliente();
+                consola.ingresarNombreCliente();
                 consola.ingresarServicio();
                 consola.ingresarMoneda(consola.nombreServicio);
                 consola.ingresarPlazo();
                 consola.ingresarInversion();
-                //consola.ingresarInversion();
-                //consola.ingresarPlazo();
-                //consola.ingresarMoneda(consola.nombreServicio);
-
                 consola.resultado();
-
-                //Console.WriteLine(consola.nombre+consola.primerApellido+consola.segundoApellido+consola.tipoServicio+consola.plazoDias+consola.montoInversion+consola.tipoMoneda);
-                //Console.WriteLine(consola.nombreMoneda+"    "+consola.nombreServicio);
-
                 Console.ReadLine();
             }
         }
