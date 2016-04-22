@@ -19,7 +19,7 @@ namespace SistemaDeInversion.Vistas
         private int plazoDias;
         private int tipoMoneda;
         private string numeroTemporal;
-        private double minimo;
+        private Double minimo;
         ArrayList servicios = Validacion.Validacion.getServicios();
         ArrayList monedas = Validacion.Validacion.getMonedas();
         private string nombreMoneda;
@@ -76,7 +76,7 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Servicio de Inversión y Ahorro:");
             int rangoLista = getElementos(servicios);
             numeroTemporal = Console.ReadLine();
-            if (validarInt(numeroTemporal))
+            if (Validacion.Validacion.validarNumeros(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
                 if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
                 {
@@ -101,12 +101,12 @@ namespace SistemaDeInversion.Vistas
         {
             Console.WriteLine("\n>>> Por favor ingrese el Monto de Inversión y Ahorro:");
             numeroTemporal = Console.ReadLine();
-            if (validarDouble(numeroTemporal))
+            if (Validacion.Validacion.validarDouble(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
-                
-                if (validarMinimos(Int32.Parse(numeroTemporal.ToString())))
+                //Console.WriteLine("===========================    "+ Double.Parse(numeroTemporal));
+                if (validarMinimos(Double.Parse(numeroTemporal)))
                 {
-                    montoInversion = Int32.Parse(numeroTemporal.ToString());
+                    montoInversion = Double.Parse(numeroTemporal);
                 }
                 else
                 {
@@ -125,7 +125,7 @@ namespace SistemaDeInversion.Vistas
         {
             Console.WriteLine("\n>>> Por favor ingrese el numero de días para el Plazo de la Inversion:");
             numeroTemporal = Console.ReadLine();
-            if (validarInt(numeroTemporal))
+            if (Validacion.Validacion.validarNumeros(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
                 if( 0< Int32.Parse(numeroTemporal.ToString())){
                     plazoDias = Int32.Parse(numeroTemporal.ToString());
@@ -148,7 +148,7 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
             int rangoLista = getElementos(monedas);
             numeroTemporal = Console.ReadLine();
-            if (validarInt(numeroTemporal))
+            if (Validacion.Validacion.validarNumeros(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
                 if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
                 {
@@ -178,7 +178,7 @@ namespace SistemaDeInversion.Vistas
                 Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
                 Console.WriteLine(">>> 1) ---> Colones");
                 numeroTemporal = Console.ReadLine();
-                if (validarInt(numeroTemporal))
+                if (Validacion.Validacion.validarNumeros(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
                 {
                     if (validarRango(Int32.Parse(numeroTemporal.ToString()), 1))
                     {
@@ -198,29 +198,6 @@ namespace SistemaDeInversion.Vistas
                 }
             }
         }
-        private Boolean validarInt(String numero)
-        {
-            if ( !Validacion.Validacion.validarNumeros(numero) || !Validacion.Validacion.validarVacio(numero))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private Boolean validarDouble(String numero)
-        {
-            if (!Validacion.Validacion.validarDouble(numero) || !Validacion.Validacion.validarDouble(numero))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
 
         private Boolean validarRango(int numero, int rango)
         {
@@ -234,9 +211,9 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private Boolean validarMinimos(int monto)
+        private Boolean validarMinimos(double monto)
         {
-            if (this.tipoServicio==1 && monto < Validacion.Validacion.getSaldoMinCC())
+            if (this.tipoServicio == 1 && 0>monto.CompareTo(Validacion.Validacion.getSaldoMinCC()))
             {
                 minimo = Validacion.Validacion.getSaldoMinCC();
                 return false;
