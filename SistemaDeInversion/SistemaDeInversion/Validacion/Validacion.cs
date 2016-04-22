@@ -26,6 +26,10 @@ namespace SistemaDeInversion.Validacion
             return true;
         }
 
+        public static bool validarMontoInversion(string inversion, double monto)
+        {
+
+        }
         // valida si un string viene vacio
         public static bool validarVacio(string palabra)
         {

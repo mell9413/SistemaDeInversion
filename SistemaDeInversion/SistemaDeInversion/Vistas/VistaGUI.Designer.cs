@@ -137,6 +137,7 @@
             this.comboBoxInversion.Name = "comboBoxInversion";
             this.comboBoxInversion.Size = new System.Drawing.Size(153, 21);
             this.comboBoxInversion.TabIndex = 9;
+            this.comboBoxInversion.SelectedIndexChanged += new System.EventHandler(this.comboBoxInversion_SelectedIndexChanged);
             // 
             // textBoxMonto
             // 
@@ -149,9 +150,24 @@
             // numericUpDownPlazo
             // 
             this.numericUpDownPlazo.Location = new System.Drawing.Point(404, 248);
+            this.numericUpDownPlazo.Maximum = new decimal(new int[] {
+            1874919424,
+            2328306,
+            0,
+            0});
+            this.numericUpDownPlazo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownPlazo.Name = "numericUpDownPlazo";
             this.numericUpDownPlazo.Size = new System.Drawing.Size(152, 20);
             this.numericUpDownPlazo.TabIndex = 11;
+            this.numericUpDownPlazo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // comboBoxMoneda
             // 

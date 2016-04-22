@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,8 @@ namespace SistemaDeInversion.Vistas
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
+            comboBoxInversion.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
             /*Mambiux
@@ -48,53 +51,58 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (validarTextBoxLetras(textBoxNombre) && validarTextBoxLetras(textBoxApellido1) && validarTextBoxLetras(textBoxApellido2) && validarTextBoxVacios(textBoxNombre) && validarTextBoxVacios(textBoxApellido1) && validarTextBoxVacios(textBoxApellido2) && validarTextBoxNumero(textBoxMonto) && validarTextBoxMontoMayor())
+            {
+                MessageBox.Show("Transaccion realizada con éxito");
+            }
 
-            validarTextBoxLetras(textBoxNombre);
-            validarTextBoxLetras(textBoxApellido1);
-            validarTextBoxLetras(textBoxApellido2);
 
-            validarTextBoxVacios(textBoxNombre);
-            validarTextBoxVacios(textBoxApellido1);
-            validarTextBoxVacios(textBoxApellido2);
-
-            validarTextBoxNumero(textBoxMonto);
         }
 
-        private void registrarCliente()
+        private bool validarTextBoxMontoMayor(TextBox box)
         {
 
+            return true;
         }
 
-        private void validarTextBoxLetras(TextBox box)
+        private bool validarTextBoxLetras(TextBox box)
         {
             if (!Validacion.Validacion.validarLetras(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
+                return false;
             }
+            return true;
         }
 
-        private void validarTextBoxVacios(TextBox box)
+        private bool validarTextBoxVacios(TextBox box)
         {
             if (!Validacion.Validacion.validarVacio(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
+                return false;
             }
+            return true;
         }
 
-        private void validarTextBoxNumero(TextBox box)
+        private bool validarTextBoxNumero(TextBox box)
         {
             if (!Validacion.Validacion.validarDouble(box.Text))
             {
                 box.Text = "Dato incorrecto";
                 box.ForeColor = Color.Red;
+                return false;
             }
+            return true;
         }
 
         private void establecerMonedas()
         {
-            comboBoxMoneda.DataSource = Validacion.Validacion.getMonedas();
+            ArrayList lista = new ArrayList();
+            lista.Add(Validacion.Validacion.getMonedas()[1].ToString());
+            comboBoxMoneda.DataSource = lista;
         }
 
         private void establecerServicios()
@@ -125,5 +133,26 @@ namespace SistemaDeInversion.Vistas
             textBoxMonto.Text = "";
             textBoxMonto.ForeColor = Color.Black;
         }
+
+        private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("noob");
+            ArrayList lista = new ArrayList();
+            if (comboBoxInversion.Text == "Cuenta Corriente" || comboBoxInversion.Text == "Certificado de Inversión")
+            {
+                lista.Add(Validacion.Validacion.getMonedas()[1].ToString());
+                comboBoxMoneda.DataSource = lista;
+            }
+            else if (comboBoxInversion.Text == "Inversión Vista Pactada")
+            {
+
+                comboBoxMoneda.DataSource = Validacion.Validacion.getMonedas();
+            }
+
+
+            
+
+        }
+
     }
 }
