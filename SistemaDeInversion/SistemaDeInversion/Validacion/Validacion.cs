@@ -28,7 +28,7 @@ namespace SistemaDeInversion.Validacion
 
         public static bool validarMontoInversion(string inversion, double monto)
         {
-
+            return true;
         }
         // valida si un string viene vacio
         public static bool validarVacio(string palabra)
@@ -160,6 +160,15 @@ namespace SistemaDeInversion.Validacion
             return saldoMin;
         }
 
+        public static int getDiasIVP()
+        {
+            int minDias;
+            XElement xelement = XElement.Load(getDataPath() + "rangosInversionVistaPactada.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
+            //MessageBox.Show(minDias.ToString());
+            return minDias;
+        }
 
     }
 }

@@ -20,6 +20,7 @@ namespace SistemaDeInversion.Vistas
         private int tipoMoneda;
         private string numeroTemporal;
         private Double minimo;
+        private int minimoDias;
         ArrayList servicios = Validacion.Validacion.getServicios();
         ArrayList monedas = Validacion.Validacion.getMonedas();
         private string nombreMoneda;
@@ -113,7 +114,7 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.Validacion.validarDouble(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
-                if (validarMinimos(Double.Parse(numeroTemporal)))
+                if (validarMinimoInversion(Double.Parse(numeroTemporal)))
                 {
                     montoInversion = Double.Parse(numeroTemporal);
                 }
@@ -137,7 +138,15 @@ namespace SistemaDeInversion.Vistas
             if (Validacion.Validacion.validarNumeros(numeroTemporal) && Validacion.Validacion.validarVacio(numeroTemporal))
             {
                 if( 0< Int32.Parse(numeroTemporal.ToString())){
-                    plazoDias = Int32.Parse(numeroTemporal.ToString());
+                    if (validarMinimoDias(Int32.Parse(numeroTemporal.ToString())))
+                    {
+                        plazoDias = Int32.Parse(numeroTemporal.ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine(">>> El plazo mínimo para la inversión es de "+minimoDias+" intente de nuevo");
+                        ingresarPlazo();
+                    }
                 }
                 else
                 {
@@ -220,8 +229,9 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private Boolean validarMinimos(double monto)
+        private Boolean validarMinimoInversion(double monto)
         {
+            
             if (this.tipoServicio == 1 && 0>monto.CompareTo(Validacion.Validacion.getSaldoMinCC()))
             {
                 minimo = Validacion.Validacion.getSaldoMinCC();
@@ -235,6 +245,19 @@ namespace SistemaDeInversion.Vistas
 
 
 
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean validarMinimoDias(int dias)
+        {
+            minimoDias = Validacion.Validacion.getDiasIVP();
+            if (this.tipoServicio == 3 && dias < minimoDias)
+            {
+                return false;
+            }
             else
             {
                 return true;

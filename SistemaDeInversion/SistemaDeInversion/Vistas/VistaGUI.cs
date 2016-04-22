@@ -60,10 +60,10 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (validarTextBoxLetras(textBoxNombre) && validarTextBoxLetras(textBoxApellido1) && validarTextBoxLetras(textBoxApellido2) && validarTextBoxVacios(textBoxNombre) && validarTextBoxVacios(textBoxApellido1) && validarTextBoxVacios(textBoxApellido2) && validarTextBoxNumero(textBoxMonto) && validarTextBoxMontoMayor())
-            {
-                MessageBox.Show("Transaccion realizada con éxito");
-            }
+            //if (validarTextBoxLetras(textBoxNombre) && validarTextBoxLetras(textBoxApellido1) && validarTextBoxLetras(textBoxApellido2) && validarTextBoxVacios(textBoxNombre) && validarTextBoxVacios(textBoxApellido1) && validarTextBoxVacios(textBoxApellido2) && validarTextBoxNumero(textBoxMonto) && validarTextBoxMontoMayor())
+            //{
+            //    MessageBox.Show("Transaccion realizada con éxito");
+            //}
 
 
         }
