@@ -15,7 +15,7 @@ namespace SistemaDeInversion.Modelo
         protected int plazoDias;
         protected double interes;
         protected String moneda;
-        private Cliente cliente;
+        protected Cliente cliente;
 
         public ServicioAhorroInversion(Cliente cliente,String tipoMoneda, double montoInversion, int plazoDias)
         {
@@ -23,7 +23,6 @@ namespace SistemaDeInversion.Modelo
             this.montoInversion = montoInversion;
             this.plazoDias = plazoDias;
             this.moneda = tipoMoneda;
-            //this.id = "Serv#" + CantidadInstancias;
             cantidadInstancias++;
         }
 
@@ -99,8 +98,5 @@ namespace SistemaDeInversion.Modelo
             String ruta = Directory.GetCurrentDirectory().Replace("bin\\Debug", "\\Data\\");
             return ruta;
         }
-
-
-        public bool mo { get; set; }
     }
 }

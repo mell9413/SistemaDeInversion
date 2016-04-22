@@ -20,17 +20,14 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(base.getDataPath());
-            var homePhone = (from phoneno in xelement.Elements("row")
-                             where (double)phoneno.Element("rangomax") >= base.montoInversion
-                             select phoneno).First();
-
-            // foreach (XElement xEle in homePhone)
-            //{
-            //  MessageBox.Show(xEle.Element("interesAnual").Value);
-            //}
-            MessageBox.Show(homePhone.Element("interesAnual").Value);
-            base.interes = Convert.ToDouble(homePhone.Element("interesAnual").Value);
+            XElement xelement = XElement.Load(base.getDataPath() + "rangosInversionVistaPactada.xml");
+            var intAnual = (from rango in xelement.Elements("row")
+                            where (double)rango.Element("rangomax") >= base.plazoDias
+                            select rango).First();
+            //MessageBox.Show(base.moneda);
+            // MessageBox.Show(intAnual.Element(base.moneda).Value);
+            base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
         }
+        
     }
 }
