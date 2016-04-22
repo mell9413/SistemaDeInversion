@@ -87,6 +87,15 @@ namespace SistemaDeInversion.DataBase
             //MessageBox.Show(saldoMin.ToString());
             return saldoMin;
         }
+        public static double getSaldoMinxDiasCC(int Dias)
+        {
+            XElement xelement = XElement.Load(getDataPath() + "rangosInversionCertificado.xml");
+            var saldos = (from rango in xelement.Elements("row")
+                          where (double)rango.Element("rangomax") >= Dias
+                          select rango).First();
+            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
+        }
+
 
 
     }
