@@ -34,8 +34,8 @@ namespace SistemaDeInversion.Modelo
              //{
                //  MessageBox.Show(xEle.Element("interesAnual").Value);
              //}
-             MessageBox.Show(intAnual.Element("interesAnual").Value);
-             base.interes= Convert.ToDouble(intAnual.Element("interesAnual").Value);
+             MessageBox.Show(intAnual.Element(base.moneda).Value);
+             base.interes= Convert.ToDouble(intAnual.Element(base.moneda).Value);
         }
         
 

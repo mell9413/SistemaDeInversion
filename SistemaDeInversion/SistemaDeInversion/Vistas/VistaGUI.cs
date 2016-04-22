@@ -18,6 +18,9 @@ namespace SistemaDeInversion.Vistas
     {
         public VistaGUI()
         {
+            ServicioAhorroInversion x;
+            x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
+           MessageBox.Show( x.calcularRendimiento().ToString());
             InitializeComponent();
             
       
