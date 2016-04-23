@@ -91,7 +91,7 @@ namespace SistemaDeInversion.Validaciones
 
 
         // Metodo inutil, codigo muerto posiblemente
-        public static ArrayList GetEnumerableOfType(Type constructorArgs) 
+        public static ArrayList GetEnumerableOfType() 
         {
             ArrayList objects = new ArrayList();
             foreach (Type type in
@@ -100,6 +100,7 @@ namespace SistemaDeInversion.Validaciones
             {
                 objects.Add(type);
             }
+            MessageBox.Show(objects[0].ToString());
 
             return objects;
         }
