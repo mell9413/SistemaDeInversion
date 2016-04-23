@@ -13,7 +13,7 @@ namespace SistemaDeInversion.DataBase
     public static class LectorData
     {
         //Devuelve lista de monedas aceptadas por un tipo de inversion
-        public static List<String[]> obtenerMonedasXinstancia(String nombreInstancia)
+        public static ArrayList obtenerMonedasXinstancia(String nombreInstancia)
         {
             List<String[]> tiposM = new List<String[]>();
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "tiposMoneda.xml");
@@ -25,7 +25,7 @@ namespace SistemaDeInversion.DataBase
                     tiposM.Add(Convert.ToString(moneda.Element(nombreInstancia).Value).Split(','));
                 }
             }
-            return tiposM;
+            return obtenerNombreMonedas(tiposM);
         }
 
         private static ArrayList obtenerNombreMonedas(List<String[]> lista)
@@ -58,7 +58,23 @@ namespace SistemaDeInversion.DataBase
             return tiposS;
         }
 
-      
+        public static ArrayList obtenerServiciosClase()
+        {
+            List<String[]> tiposS = new List<String[]>();
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "tiposServicios.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            foreach (var servicio in servicios)
+            {
+                String[] temp = new String[2];
+
+                temp[0] = (servicio.Element("Clase").Value.ToString());
+                tiposS.Add(temp);
+            }
+
+            return obtenerNombreMonedas(tiposS);
+        }
+
+
         // obtiene la ruta donde se encuentran las monedas
         public static string obtenerRutaCarpeta()
         {
@@ -66,12 +82,12 @@ namespace SistemaDeInversion.DataBase
             return ruta;
         }
 
-        public static int obtenerMinDiasInversionVista()
+        public static int obtenerMinDias(String tipoServicio)
         {
             int minDias;
-            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosInversionVistaPactada.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + tipoServicio+".xml");
             IEnumerable<XElement> servicios = xelement.Elements();
-            minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
+            minDias = Convert.ToInt32(servicios.ToArray()[0].Element("rangomin").Value);
             return minDias;
         }
 }

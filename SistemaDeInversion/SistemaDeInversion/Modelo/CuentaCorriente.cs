@@ -37,7 +37,7 @@ namespace SistemaDeInversion.Modelo
         public override double obtenerSaldoMinimo()
         {
             double saldoMin;
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +this.GetType());
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +"CuentaCorriente.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
             //MessageBox.Show(saldoMin.ToString());

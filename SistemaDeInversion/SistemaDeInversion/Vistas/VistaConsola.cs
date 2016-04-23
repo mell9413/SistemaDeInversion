@@ -5,6 +5,7 @@ using SistemaDeInversion.DataBase;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Controles;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -13,7 +14,7 @@ namespace SistemaDeInversion.Vistas
 
         private IControlador controlador = new Controlador();
 
-        /*
+
         private string nombre;
         private string primerApellido;
         private string segundoApellido;
@@ -25,8 +26,9 @@ namespace SistemaDeInversion.Vistas
         private string numeroTemporal;
         private Double minimo;
         private int minimoDias;
+        private string claseServicio;
         ArrayList servicios = LectorData.obtenerServicios();
-        //ArrayList monedas = LectorData.obtenerMonedas();
+        ArrayList clasesServicios = LectorData.obtenerServiciosClase();
         private string nombreMoneda;
 
         internal static class NativeMethods
@@ -97,6 +99,7 @@ namespace SistemaDeInversion.Vistas
                 {
                     tipoServicio = Int32.Parse(numeroTemporal.ToString());
                     nombreServicio = servicios[tipoServicio - 1].ToString();
+                    claseServicio = clasesServicios[tipoServicio - 1].ToString();
                 }
                 else
                 {
@@ -118,15 +121,15 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarDouble(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture)))
-                {
+                //if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture)))
+                //{
                     montoInversion = Double.Parse(numeroTemporal, CultureInfo.InvariantCulture);
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>>Si quiere expresar decimales por favor usar punto");
                     ingresarInversion();
-                }
+                //}
             }
             else
             {
@@ -142,7 +145,7 @@ namespace SistemaDeInversion.Vistas
             if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
                 if( 0< Int32.Parse(numeroTemporal.ToString())){
-                    if (validarMinimoDias(Int32.Parse(numeroTemporal.ToString())))
+                    if (tipoServicio==1 || validarMinimoDias(Int32.Parse(numeroTemporal.ToString()),claseServicio))
                     {
                         plazoDias = Int32.Parse(numeroTemporal.ToString());
                     }
@@ -165,60 +168,31 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private void ingresarMoneda()
-        {
-            //Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
-            //int rangoLista = getElementos(monedas);
-            //numeroTemporal = Console.ReadLine();
-            //if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
-            //{
-            //    if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
-            //    {
-            //        tipoMoneda = Int32.Parse(numeroTemporal.ToString());
-            //        nombreMoneda = monedas[tipoMoneda-1].ToString();
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine(">>> El numero ingresado esta fuera del rango de las monedas disponibles, intente de nuevo");
-            //        ingresarMoneda();
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine(">>> Ingrese el numero correspondiente a la moneda que desea, intente de nuevo");
-            //    ingresarMoneda();
-            //}
-        }
         private void ingresarMoneda(String nombreServicio)
         {
-            if (nombreServicio == "Inversión Vista Pactada")
+            Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
+            ArrayList monedas = LectorData.obtenerMonedasXinstancia(claseServicio);
+            int rangoLista = getElementos(monedas);
+            numeroTemporal = Console.ReadLine();
+            if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                ingresarMoneda();
-            }
-            else
-            {
-                Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
-                Console.WriteLine(">>> 1) ---> Colones");
-                numeroTemporal = Console.ReadLine();
-                if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
+                if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
                 {
-                    if (validarRango(Int32.Parse(numeroTemporal.ToString()), 1))
-                    {
-                        tipoMoneda = Int32.Parse(numeroTemporal.ToString());
-                        nombreMoneda = "Colones";
-                    }
-                    else
-                    {
-                        Console.WriteLine(">>> El numero ingresado esta fuera del rango de las monedas disponibles, intente de nuevo");
-                        ingresarMoneda(this.nombreServicio);
-                    }
+                    tipoMoneda = Int32.Parse(numeroTemporal.ToString());
+                    nombreMoneda = monedas[tipoMoneda-1].ToString();
                 }
                 else
                 {
-                    Console.WriteLine(">>> Ingrese el numero correspondiente a la moneda que desea, intente de nuevo");
+                    Console.WriteLine(">>> El numero ingresado esta fuera del rango de las monedas disponibles, intente de nuevo");
                     ingresarMoneda(this.nombreServicio);
                 }
             }
+            else
+            {
+                Console.WriteLine(">>> Ingrese el numero correspondiente a la moneda que desea, intente de nuevo");
+                ingresarMoneda(this.nombreServicio);
+            }
+            
         }
 
         private Boolean validarRango(int numero, int rango)
@@ -233,30 +207,30 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private Boolean validarMinimos(double monto)
+        //private Boolean validarMinimos(double monto)
+        //{
+        //    if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.obtenerSaldoMinCuentaCorriente()))
+        //    {
+        //        minimo = LectorData.obtenerSaldoMinCuentaCorriente();
+        //        return false;
+        //    }
+        //    else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.obtenerMinInversionVista(nombreMoneda)))
+        //    {
+        //        minimo = LectorData.obtenerMinInversionVista(nombreMoneda);
+        //        return false;
+        //    }
+
+
+
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+        private Boolean validarMinimoDias(int dias, string claseServicio)
         {
-            //if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.obtenerSaldoMinCuentaCorriente()))
-            //{
-            //    minimo = LectorData.obtenerSaldoMinCuentaCorriente();
-            //    return false;
-            //}
-            //else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.obtenerMinInversionVista(nombreMoneda)))
-            //{
-            //    minimo = LectorData.obtenerMinInversionVista(nombreMoneda);
-            //    return false;
-            //}
-
-
-
-            //else
-            //{
-              return true;
-            //}
-        }
-        private Boolean validarMinimoDias(int dias)
-        {
-            minimoDias = LectorData.obtenerMinDiasInversionVista();
-            if (this.tipoServicio == 3 && dias<minimoDias)
+            minimoDias = LectorData.obtenerMinDias(claseServicio);
+            if (dias<minimoDias)
             {
                 return false;
             }
@@ -266,7 +240,18 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-    private int getElementos(ArrayList lista)
+        private int getElementos(ArrayList lista)
+        {
+            int i = 0;
+            foreach (var elemento in lista)
+            {
+                Console.WriteLine(">>> " + (i + 1) + ") ---> " + lista[i]);
+                i++;
+            }
+            return i;
+        }
+
+        private int getElementos(List<String[]> lista)
         {
             int i = 0;
             foreach (var elemento in lista)
@@ -309,7 +294,7 @@ namespace SistemaDeInversion.Vistas
                 Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
                 consola.ingresarNombreCliente();
                 consola.ingresarServicio();
-                consola.ingresarMoneda(consola.nombreServicio);
+                consola.ingresarMoneda(consola.claseServicio);
                 consola.ingresarPlazo();
                 consola.ingresarInversion();
                 //enviardatosalDTO
@@ -317,6 +302,6 @@ namespace SistemaDeInversion.Vistas
                 consola.resultado();
                 Console.ReadLine();
             }
-        }*/
+        }
     }
 }

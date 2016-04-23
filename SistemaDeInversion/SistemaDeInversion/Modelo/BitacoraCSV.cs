@@ -22,12 +22,12 @@ namespace SistemaDeInversion.Modelo
 
         }
 
-        public void crearArchivo()
+        public override void crearArchivo()
         {
             File.Create(LectorData.obtenerRutaCarpeta()+ nombreArchivo).Close();
         }
 
-        public void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
+        public override void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
         {
             //if existe archivo y sino crearlo
          //   string delimiter = ",";  	 
@@ -41,7 +41,7 @@ namespace SistemaDeInversion.Modelo
          //       outputFile.WriteLine(sb.ToString().Remove(sb.Length-2));
          //   }
         }
-        public Boolean existeArchivo()
+        public override Boolean existeArchivo()
         {
             return true;
         }

@@ -24,7 +24,7 @@ namespace SistemaDeInversion.Modelo
             }
         }
 
-        public void crearArchivo()
+        public override void crearArchivo()
         {
             XmlTextWriter archivoXML = new XmlTextWriter(LectorData.obtenerRutaCarpeta() + nombreArchivo, System.Text.Encoding.UTF8);
             archivoXML.WriteStartDocument();
@@ -34,7 +34,7 @@ namespace SistemaDeInversion.Modelo
             archivoXML.Close();
         }
 
-        public void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
+        public override void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
         {
             //if exitse y crear y eso
             //string filepath = LectorData.obtenerRutaCarpeta() + nombreArchivo;
@@ -50,7 +50,7 @@ namespace SistemaDeInversion.Modelo
             //xml.Save(filepath);
         }
 
-        public Boolean existeArchivo() {
+        public override Boolean existeArchivo() {
             return true;
         }
     }

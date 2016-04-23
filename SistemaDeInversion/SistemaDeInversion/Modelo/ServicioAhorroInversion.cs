@@ -20,7 +20,11 @@ namespace SistemaDeInversion.Modelo
 
         public ServicioAhorroInversion(DTOServicioAhorroInversion dtoInversion)
         {
-            //PROGRAMAR!
+            this.montoInversion = dtoInversion.MontoInversion;
+            this.plazoDias = dtoInversion.PlazoDias;
+            this.interes = dtoInversion.Interes;
+            this.moneda = dtoInversion.Moneda;
+            this.cliente = dtoInversion.Cliente;
             cantidadInstancias++;
         }
 
@@ -81,7 +85,7 @@ namespace SistemaDeInversion.Modelo
         public abstract void calcularInteres();
         public abstract double obtenerSaldoMinimo();
 
-        public double calcularRendimiento(String nombreInstancia)
+        public double calcularRendimiento()
         {
             this.calcularInteres();
             double rendimiento = 0;
