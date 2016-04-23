@@ -8,17 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SistemaDeInversion.Modelo;
+
 using System.Reflection;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.DataBase;
 using SistemaDeInversion.Controles;
+using SistemaDeInversion.DTOs;
+
+
 
 namespace SistemaDeInversion.Vistas
 {
     public partial class VistaGUI : Form
     {
-        private IControlador controlador = new Controlador();
+        //private FactoryControlador controlador = new Controlador();
+
 
         public VistaGUI()
         {
@@ -26,7 +30,7 @@ namespace SistemaDeInversion.Vistas
             //x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
            //MessageBox.Show( x.calcularRendimiento().ToString());
             InitializeComponent();
-            controlador.crearBitacora();
+            //controlador.crearBitacora();
             
       
 
@@ -64,6 +68,9 @@ namespace SistemaDeInversion.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // Valida que los datos ingresados sean correctos y devuelve los "datos incorrectos"
+
             validarTextBoxLetras(textBoxNombre);
             validarTextBoxLetras(textBoxApellido1);
             validarTextBoxLetras(textBoxApellido2);
@@ -71,11 +78,68 @@ namespace SistemaDeInversion.Vistas
             validarTextBoxVacios(textBoxApellido1);
             validarTextBoxVacios(textBoxApellido2);
             validarTextBoxNumero(textBoxMonto);
-            validarTextBoxMontoMayor(textBoxMonto);
-            
+            //validarTextBoxMontoMayor(textBoxMonto);
 
+            // Valida si existe en los nombres "datos incorrectos" y no deja registrar
+            realizarInversion();
+        }
+
+        private void realizarInversion()
+        {
+            ArrayList boxList = new ArrayList();
+            boxList.Add(textBoxApellido1);
+            boxList.Add(textBoxNombre);
+            boxList.Add(textBoxApellido2);
+            boxList.Add(textBoxMonto);
+
+            if (revisarDatos(boxList))
+            {
+                crearDTOCliente();
+                crearDTOInversion();
+                //controlador.realizarInversion();
+                MessageBox.Show("linda");
+            }
+            else
+            {
+                MessageBox.Show("Datos incorrectos");
+            }
+        }
+
+        private DTOCliente crearDTOCliente()
+        {
+            DTOCliente dtoCliente = new DTOCliente();
+            dtoCliente.Nombre = textBoxNombre.Text;
+            dtoCliente.PrimerApellido = textBoxApellido1.Text;
+            dtoCliente.PrimerApellido = textBoxApellido2.Text;
+            return dtoCliente;
+        }
+
+        private DTOServicioAhorroInversion crearDTOInversion()
+        {
+            DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
+            dtoServicio.Moneda = comboBoxMoneda.Text;
+            dtoServicio.TipoServicio = comboBoxInversion.Text;
+            dtoServicio.PlazoDias = Decimal.ToInt32(numericUpDownPlazo.Value);
+            return dtoServicio;
 
         }
+        private bool revisarDatos(ArrayList boxList)
+        {
+            string error = "Dato incorrecto"; 
+            foreach(TextBox elemento in boxList)
+            {
+                if(elemento.Text == error)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+
+        }
+
+
+
 
         private bool validarTextBoxMontoMayor(TextBox box)
         {
@@ -118,9 +182,8 @@ namespace SistemaDeInversion.Vistas
 
         private void establecerMonedas()
         {
-            ArrayList lista = new ArrayList();
-            lista.Add(LectorData.obtenerMonedas()[1].ToString());
-            comboBoxMoneda.DataSource = lista;
+      
+            comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
         }
 
         private void establecerServicios()
@@ -151,24 +214,28 @@ namespace SistemaDeInversion.Vistas
             textBoxMonto.Text = "";
             textBoxMonto.ForeColor = Color.Black;
         }
+        private void validarIncorrectos()
+        {
+
+        }
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ArrayList listaServicios = LectorData.obtenerServicios();
-            ArrayList lista = new ArrayList();
-            if (comboBoxInversion.Text == listaServicios[0].ToString() || listaServicios[1].ToString() == "Certificado de Inversión")
-            {
-                lista.Add(LectorData.obtenerMonedas()[1].ToString());
-                comboBoxMoneda.DataSource = lista;
-            }
-            else if (comboBoxInversion.Text == listaServicios[3].ToString())
-            {
+            /* ArrayList listaServicios = LectorData.obtenerServicios();
+             ArrayList lista = new ArrayList();
+             if (comboBoxInversion.Text == listaServicios[0].ToString() || listaServicios[1].ToString() == "Certificado de Inversión")
+             {
+                 lista.Add(LectorData.obtenerMonedas()[1].ToString());
+                 comboBoxMoneda.DataSource = lista;
+             }
+             else if (comboBoxInversion.Text == listaServicios[3].ToString())
+             {
 
-                comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
-            }
+                 comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
+            } */
 
 
-            
+
 
         }
 
