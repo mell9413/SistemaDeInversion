@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.IO;
 using System.Xml.Linq;
 using System.Windows.Forms;
 using SistemaDeInversion.DTOs;
@@ -29,6 +31,16 @@ namespace SistemaDeInversion.Modelo
             //MessageBox.Show(base.moneda);
            // MessageBox.Show(intAnual.Element(base.moneda).Value);
             base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
+        }
+
+        //Saldo minimo inversión Vista pactada
+        public override double obtenerSaldoMinimo()
+        {
+            double saldoMin;
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + this.GetType());
+            IEnumerable<XElement> servicios = xelement.Elements();
+            saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(base.moneda).Value);
+            return saldoMin;
         }
         
 
