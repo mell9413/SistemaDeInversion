@@ -27,27 +27,27 @@ namespace SistemaDeInversion.Validaciones
             return true;
         }
 
-        public static bool validarMontoInversion(string inversion, double monto)
-        {
-            if (inversion ==  "Cuenta Corriente")
-            {
-                validarMontoCC(monto);
-            }
+        //public static bool validarMontoInversion(string inversion, double monto)
+        //{
+        //    if (inversion ==  "Cuenta Corriente")
+        //    {
+        //        validarMontoCC(monto);
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
-        private static bool validarMontoCC(double cantidad)
-        {
-            return LectorData.obtenerSaldoMinCuentaCorriente() <= cantidad;
-       
-        }
+        //private static bool validarMontoCC(double cantidad)
+        //{
+        //    return LectorData.obtenerSaldoMinCuentaCorriente() <= cantidad;
 
-        private static bool validarMontoIVP(double cantidad, string moneda)
-        {
-            return LectorData.obtenerMinInversionVista(moneda) <= cantidad;
+        //}
 
-        }
+        //private static bool validarMontoIVP(double cantidad, string moneda)
+        //{
+        //    return LectorData.obtenerMinInversionVista(moneda) <= cantidad;
+
+        //}
 
         private static bool validarMontoCertificado(double cantidad, string moneda)
         {

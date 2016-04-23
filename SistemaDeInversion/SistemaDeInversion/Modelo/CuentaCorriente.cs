@@ -30,15 +30,18 @@ namespace SistemaDeInversion.Modelo
              var intAnual = (from rango in xelement.Elements("row")
                              where (double)rango.Element("rangomax")>=base.montoInversion
                              select rango).First();
-            
-            // foreach (XElement xEle in homePhone)
-             //{
-               //  MessageBox.Show(xEle.Element("interesAnual").Value);
-             //}
-             //MessageBox.Show(intAnual.Element(base.moneda).Value);
-             //base.interes= Convert.ToDouble(intAnual.Element(base.moneda).Value);
+
+             base.interes= Convert.ToDouble(intAnual.Element(base.moneda).Value);
         }
-        
+        public override double obtenerSaldoMinimo()
+        {
+            double saldoMin;
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +this.GetType());
+            IEnumerable<XElement> servicios = xelement.Elements();
+            saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
+            //MessageBox.Show(saldoMin.ToString());
+            return saldoMin;
+        }
 
        
     }

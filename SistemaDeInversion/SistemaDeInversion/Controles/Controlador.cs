@@ -10,7 +10,7 @@ using SistemaDeInversion.Modelo.Factorys;
 
 namespace SistemaDeInversion.Controles
 {
-    class Controlador: IControlador
+    public class Controlador: IControlador
     {
        // private FactoryCliente factoryCliente = new FactoryCliente();
         private FactoryServicio factoryServicio = new FactoryConcretoServicio();
