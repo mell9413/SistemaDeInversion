@@ -13,6 +13,6 @@ namespace SistemaDeInversion.Controles
         void crearBitacora();
         ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio);
         Cliente crearCliente(DTOCliente dtoCliente);
-        void realizarInversion(DTOServicioAhorroInversion dtoServicio);
+        void realizarInversion(DTOServicioAhorroInversion dtoServicio, DTOCliente dtoCliente);
     }
 }

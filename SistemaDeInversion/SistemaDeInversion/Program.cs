@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaDeInversion.Modelo.Factorys;
+using SistemaDeInversion.Validaciones;
+using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion
 {
@@ -17,6 +20,9 @@ namespace SistemaDeInversion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Validacion.GetEnumerableOfType();
+            FactoryServicio x = new FactoryConcretoServicio();
+            x.registrarServiciosHash();
             /*
             Modelo.BitacoraXML xml = new Modelo.BitacoraXML();
             xml.crearArchivo();

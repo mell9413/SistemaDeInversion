@@ -6,31 +6,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Modelo.Factorys;
 
 namespace SistemaDeInversion.Controles
 {
     public class Controlador: IControlador
     {
-        ArrayList escritor= new ArrayList();
-        //FactoryServicio factoryServicio;
-        //FactoryCliente factoryCliente;
+       // private FactoryCliente factoryCliente = new FactoryCliente();
+        private FactoryServicio factoryServicio = new FactoryConcretoServicio();
+      //  private FactoryBitacora factoryBitacora = new FactoryBitacora();
 
         public Controlador()
         {
-            IEscritor csv = new BitacoraCSV();
-            IEscritor xml = new BitacoraXML();
-            this.escritor.Add(csv);
-            this.escritor.Add(xml);
         }
 
        public void crearBitacora()
         {
-
-            BitacoraXML xml = new BitacoraXML();
-            xml.crearArchivo();
-
-            BitacoraCSV csv = new BitacoraCSV();
-            csv.crearArchivo();
+            //factoryBitacora();
+            
         }
 
         public Cliente crearCliente(DTOCliente dtoCliente)
@@ -43,7 +36,7 @@ namespace SistemaDeInversion.Controles
             throw new NotImplementedException();
         }
 
-        public void realizarInversion(DTOServicioAhorroInversion dtoServicio)
+        public void realizarInversion(DTOServicioAhorroInversion dtoServicio, DTOCliente dtoCliente)
         {
             throw new NotImplementedException();
         }
