@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    public abstract class FactoryCliente
+    public abstract class FactoryServicio
     {
-        public abstract Cliente crearCliente(DTOCliente dtoCliente);
+        public abstract ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio);
     }
 }

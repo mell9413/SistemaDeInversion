@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using SistemaDeInversion.DataBase;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Controles;
+using System.Globalization;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -121,13 +118,13 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarDouble(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                if (validarMinimos(Double.Parse(numeroTemporal)))
+                if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture)))
                 {
-                    montoInversion = Double.Parse(numeroTemporal);
+                    montoInversion = Double.Parse(numeroTemporal, CultureInfo.InvariantCulture);
                 }
                 else
                 {
-                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo);
+                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>>Si quiere expresar decimales por favor usar punto");
                     ingresarInversion();
                 }
             }

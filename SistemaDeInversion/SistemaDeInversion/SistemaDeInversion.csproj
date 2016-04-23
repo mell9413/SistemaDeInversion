@@ -75,6 +75,12 @@
     <Compile Include="Modelo\CertificadoInversion.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\CuentaCorriente.cs" />
+    <Compile Include="Modelo\Factorys\FactoryCliente.cs" />
+    <Compile Include="Modelo\Factorys\FactoryConcretoCliente.cs" />
+    <Compile Include="Modelo\Factorys\FactoryConcretoControlador.cs" />
+    <Compile Include="Modelo\Factorys\FactoryConcretoServicio.cs" />
+    <Compile Include="Modelo\Factorys\FactoryControlador.cs" />
+    <Compile Include="Modelo\Factorys\FactoryServicio.cs" />
     <Compile Include="Modelo\InversionVistaPactada.cs" />
     <Compile Include="Modelo\IEscritor.cs" />
     <Compile Include="Modelo\ServicioAhorroInversion.cs" />
@@ -114,9 +120,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modelo\Factorys\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

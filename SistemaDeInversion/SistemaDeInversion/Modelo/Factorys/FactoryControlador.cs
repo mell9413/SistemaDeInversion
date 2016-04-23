@@ -1,4 +1,4 @@
-﻿using SistemaDeInversion.DTOs;
+﻿using SistemaDeInversion.Controles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    public abstract class FactoryCliente
+    public abstract class FactoryControlador
     {
-        public abstract Cliente crearCliente(DTOCliente dtoCliente);
+        public abstract Controlador crearIControlador(); 
     }
 }
