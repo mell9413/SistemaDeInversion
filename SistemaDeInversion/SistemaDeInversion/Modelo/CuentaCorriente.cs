@@ -20,6 +20,11 @@ namespace SistemaDeInversion.Modelo
 
         public CuentaCorriente(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
+             montoInversion=dtoInversion.MontoInversion;
+             plazoDias=dtoInversion.PlazoDias;
+             interes=dtoInversion.Interes;
+             moneda=dtoInversion.Moneda;
+             cliente=dtoInversion.Cliente;
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
         }
@@ -36,7 +41,7 @@ namespace SistemaDeInversion.Modelo
         public override double obtenerSaldoMinimo()
         {
             double saldoMin;
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +this.GetType());
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +"CuentaCorriente.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
             //MessageBox.Show(saldoMin.ToString());

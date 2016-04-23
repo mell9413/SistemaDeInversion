@@ -16,10 +16,13 @@ namespace SistemaDeInversion.Modelo
         private string primerApellido;
         private string segundoApellido;
 
-        public Cliente()
+        public Cliente(String nombre, String primerApellido, String segundoApellido)
         {
+            this.nombre = nombre;
+            this.primerApellido = primerApellido;
+            this.segundoApellido = segundoApellido;
             this.id = "Clte#" + CantidadInstancias;
-            CantidadInstancias++;
+            cantidadInstancias++;
             this.serviciosAhorroInversion = new ArrayList();
         }
 
@@ -30,10 +33,7 @@ namespace SistemaDeInversion.Modelo
                 return cantidadInstancias;
             }
 
-            set
-            {
-                cantidadInstancias = value;
-            }
+            
         }
 
         public string Id
@@ -51,10 +51,7 @@ namespace SistemaDeInversion.Modelo
                 return serviciosAhorroInversion;
             }
 
-            set
-            {
-                serviciosAhorroInversion = value;
-            }
+           
         }
 
         public string Nombre
@@ -64,10 +61,6 @@ namespace SistemaDeInversion.Modelo
                 return nombre;
             }
 
-            set
-            {
-                nombre = value;
-            }
         }
 
         public string PrimerApellido

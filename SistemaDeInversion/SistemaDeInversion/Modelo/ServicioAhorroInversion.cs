@@ -81,7 +81,7 @@ namespace SistemaDeInversion.Modelo
         public abstract void calcularInteres();
         public abstract double obtenerSaldoMinimo();
 
-        public double calcularRendimiento(String nombreInstancia)
+        public double calcularRendimiento()
         {
             this.calcularInteres();
             double rendimiento = 0;
