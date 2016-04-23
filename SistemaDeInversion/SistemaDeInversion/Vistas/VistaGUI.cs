@@ -183,7 +183,7 @@ namespace SistemaDeInversion.Vistas
         private void establecerMonedas()
         {
       
-            //comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
+            comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia("CuentaCorriente");
         }
 
         private void establecerServicios()

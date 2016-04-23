@@ -13,18 +13,14 @@ using SistemaDeInversion.DataBase;
 
 namespace SistemaDeInversion.Modelo
 {
-    class CuentaCorriente : ServicioAhorroInversion
+    public class CuentaCorriente : ServicioAhorroInversion
     {
         
         private static int cantidadInstancias = 0;
 
+
         public CuentaCorriente(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
-             montoInversion=dtoInversion.MontoInversion;
-             plazoDias=dtoInversion.PlazoDias;
-             interes=dtoInversion.Interes;
-             moneda=dtoInversion.Moneda;
-             cliente=dtoInversion.Cliente;
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    public abstract class FactoryControlador
+    public abstract class FactoryIControlador
     {
         public abstract Controlador crearIControlador(); 
     }

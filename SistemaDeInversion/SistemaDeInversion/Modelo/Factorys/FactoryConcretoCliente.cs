@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaDeInversion.DTOs;
+using System.Reflection;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
@@ -11,7 +12,11 @@ namespace SistemaDeInversion.Modelo.Factorys
     {
         public override Cliente crearCliente(DTOCliente dtoCliente)
         {
-            return null;
+            var assembly = Assembly.GetExecutingAssembly();
+            var type = assembly.GetType("SistemaDeInversion.Modelo.Cliente");
+            object[] args = { dtoCliente };
+            Cliente claseConcreta = (Cliente)Activator.CreateInstance(type, args);
+            return claseConcreta;
         }
     }
 }

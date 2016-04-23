@@ -41,7 +41,7 @@ namespace SistemaDeInversion.DataBase
         }
 
         // Devuelve los diferentes tipos de servicios de ahorro e inversion
-        public static ArrayList obtenerServicios()
+        public static List<String[]> obtenerServicios()
         {
             List<String[]> tiposS = new List<String[]>();
             XElement xelement = XElement.Load(obtenerRutaCarpeta() + "tiposServicios.xml");
@@ -55,7 +55,7 @@ namespace SistemaDeInversion.DataBase
                 tiposS.Add(temp);
             }
 
-            return obtenerNombreMonedas(tiposS);
+            return tiposS;
         }
 
         public static ArrayList obtenerServiciosClase()
