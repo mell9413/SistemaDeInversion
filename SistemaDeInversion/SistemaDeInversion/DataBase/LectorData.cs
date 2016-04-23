@@ -82,12 +82,12 @@ namespace SistemaDeInversion.DataBase
             return ruta;
         }
 
-        public static int obtenerMinDiasInversionVista()
+        public static int obtenerMinDias(String tipoServicio)
         {
             int minDias;
-            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "rangosInversionVistaPactada.xml");
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() + tipoServicio+".xml");
             IEnumerable<XElement> servicios = xelement.Elements();
-            minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
+            minDias = Convert.ToInt32(servicios.ToArray()[0].Element("rangomin").Value);
             return minDias;
         }
 }
