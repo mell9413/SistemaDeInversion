@@ -29,7 +29,7 @@ namespace SistemaDeInversion.Modelo.Factorys
         {
             foreach(String elemento in LectorData.obtenerServicios())// "Cuenta Corriente" ,, "CuentaCorriente"
             {
-                Type clase = Type.GetType("SistemaDeInversion.Modelo." + );
+                Type clase = Type.GetType("SistemaDeInversion.Modelo." + "");
                 MessageBox.Show(clase.ToString());
                 registrarServicioHash(elemento, clase);
             }

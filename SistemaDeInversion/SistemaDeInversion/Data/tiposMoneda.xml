@@ -5,5 +5,5 @@
 <row><CuentaCorriente>Colones,Yenes</CuentaCorriente></row>
 <row><InversionVistaPactada>Dólares</InversionVistaPactada></row>
 <row><InversionVistaPactada>Colones</InversionVistaPactada></row>
-<row><Certificado>Colones</Certificado></row>
+<row><CertificadoInversion>Colones</CertificadoInversion></row>
 </tiposMoneda>
