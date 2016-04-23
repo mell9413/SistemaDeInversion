@@ -13,7 +13,7 @@ namespace SistemaDeInversion.Controles
     public class Controlador: IControlador
     {
        // private FactoryCliente factoryCliente = new FactoryCliente();
-        private FactoryServicio factoryServicio = new FactoryConcretoServicio();
+        //private FactoryServicio factoryServicio = new FactoryConcretoServicio();
       //  private FactoryBitacora factoryBitacora = new FactoryBitacora();
 
         public Controlador()
