@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Controles
 {
@@ -30,6 +31,21 @@ namespace SistemaDeInversion.Controles
 
             BitacoraCSV csv = new BitacoraCSV();
             csv.crearArchivo();
+        }
+
+        public Cliente crearCliente(DTOCliente dtoCliente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void realizarInversion(DTOServicioAhorroInversion dtoServicio)
+        {
+            throw new NotImplementedException();
         }
     }
 }
