@@ -20,11 +20,6 @@ namespace SistemaDeInversion.Modelo
 
         public CuentaCorriente(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
-             montoInversion=dtoInversion.MontoInversion;
-             plazoDias=dtoInversion.PlazoDias;
-             interes=dtoInversion.Interes;
-             moneda=dtoInversion.Moneda;
-             cliente=dtoInversion.Cliente;
             base.id = "CntCo#" + cantidadInstancias;
             cantidadInstancias++;
         }
