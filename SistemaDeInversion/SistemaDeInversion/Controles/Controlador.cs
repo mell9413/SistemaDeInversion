@@ -9,7 +9,7 @@ using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Controles
 {
-    class Controlador: IControlador
+    public class Controlador: IControlador
     {
         ArrayList escritor= new ArrayList();
         //FactoryServicio factoryServicio;
