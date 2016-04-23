@@ -11,5 +11,4 @@
 <row><rangomin>1080</rangomin><rangomax>1439</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
 <row><rangomin>1440</rangomin><rangomax>1799</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
 <row><rangomin>1800</rangomin><rangomax>3000000</rangomax><Colones>0,0869</Colones><Dólares>0,024</Dólares></row>
-<saldoMin><Colones>100000</Colones><Dólares>500</Dólares></saldoMin>
 </inversionPactada>

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace SistemaDeInversion.Vistas
 {
-    class VistaConsola
+    public class VistaConsola
     {
 
         private IControlador controlador = new Controlador();
@@ -207,21 +207,14 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        //private Boolean validarMinimos(double monto)
+        //private Boolean validarMinimos(double monto,string claseServicio)
         //{
-        //    if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.obtenerSaldoMinCuentaCorriente()))
+            
+        //    if (0 > monto.CompareTo(claseServicio.obtenerSaldoMinimo()))
         //    {
         //        minimo = LectorData.obtenerSaldoMinCuentaCorriente();
         //        return false;
         //    }
-        //    else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.obtenerMinInversionVista(nombreMoneda)))
-        //    {
-        //        minimo = LectorData.obtenerMinInversionVista(nombreMoneda);
-        //        return false;
-        //    }
-
-
-
         //    else
         //    {
         //        return true;
@@ -285,21 +278,21 @@ namespace SistemaDeInversion.Vistas
             }
             Console.WriteLine("--->Última línea<---");
         }
-        static void Main(string[] args)
+        public void run()
         {
+            NativeMethods.AllocConsole();
             while (true)
             {
-                VistaConsola consola = new VistaConsola();
-                NativeMethods.AllocConsole();
+
                 Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
-                consola.ingresarNombreCliente();
-                consola.ingresarServicio();
-                consola.ingresarMoneda(consola.claseServicio);
-                consola.ingresarPlazo();
-                consola.ingresarInversion();
+                ingresarNombreCliente();
+                ingresarServicio();
+                ingresarMoneda(claseServicio);
+                ingresarPlazo();
+                ingresarInversion();
                 //enviardatosalDTO
                 //consola.resultado(DTOInversion) al final Consola.run();
-                consola.resultado();
+                resultado();
                 Console.ReadLine();
             }
         }
