@@ -8,6 +8,7 @@ using SistemaDeInversion.Modelo.Factorys;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Modelo;
 using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Vistas;
 
 namespace SistemaDeInversion
 {
@@ -34,7 +35,8 @@ namespace SistemaDeInversion
             csv.crearArchivo();
             */
             Application.Run(new Vistas.VistaGUI());
-            //Consola.run();
+            VistaConsola consola = new VistaConsola();
+            consola.run();
 
         }
     }

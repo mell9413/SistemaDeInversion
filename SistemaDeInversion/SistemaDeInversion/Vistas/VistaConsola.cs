@@ -27,7 +27,7 @@ namespace SistemaDeInversion.Vistas
         private Double minimo;
         private int minimoDias;
         private string claseServicio;
-        ArrayList servicios = LectorData.obtenerServicios();
+        List<String[]> servicios = LectorData.obtenerServicios();
         ArrayList clasesServicios = LectorData.obtenerServiciosClase();
         private string nombreMoneda;
 
@@ -98,8 +98,14 @@ namespace SistemaDeInversion.Vistas
                 if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
                 {
                     tipoServicio = Int32.Parse(numeroTemporal.ToString());
-                    nombreServicio = servicios[tipoServicio - 1].ToString();
-                    claseServicio = clasesServicios[tipoServicio - 1].ToString();
+                    int i = 0;
+                    foreach (var elemento in servicios) {
+                        if (tipoServicio-1 == i) {
+                            nombreServicio = elemento[0];
+                            claseServicio = elemento[1];
+                        }
+                        i++;
+                    }
                 }
                 else
                 {
@@ -249,7 +255,7 @@ namespace SistemaDeInversion.Vistas
             int i = 0;
             foreach (var elemento in lista)
             {
-                Console.WriteLine(">>> " + (i + 1) + ") ---> " + lista[i]);
+                Console.WriteLine(">>> " + (i + 1) + ") ---> " + elemento[0]);
                 i++;
             }
             return i;
@@ -283,7 +289,7 @@ namespace SistemaDeInversion.Vistas
             NativeMethods.AllocConsole();
             while (true)
             {
-
+                
                 Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
                 ingresarNombreCliente();
                 ingresarServicio();
