@@ -57,24 +57,7 @@ namespace SistemaDeInversion.DataBase
 
             return tiposS;
         }
-
-        public static ArrayList obtenerServiciosClase()
-        {
-            List<String[]> tiposS = new List<String[]>();
-            XElement xelement = XElement.Load(obtenerRutaCarpeta() + "tiposServicios.xml");
-            IEnumerable<XElement> servicios = xelement.Elements();
-            foreach (var servicio in servicios)
-            {
-                String[] temp = new String[2];
-
-                temp[0] = (servicio.Element("Clase").Value.ToString());
-                tiposS.Add(temp);
-            }
-
-            return obtenerNombreMonedas(tiposS);
-        }
-
-
+       
         // obtiene la ruta donde se encuentran las monedas
         public static string obtenerRutaCarpeta()
         {

@@ -6,6 +6,7 @@ using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Controles;
 using System.Globalization;
 using System.Collections.Generic;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Vistas
 {
@@ -20,16 +21,18 @@ namespace SistemaDeInversion.Vistas
         private string segundoApellido;
         private int tipoServicio;
         private string nombreServicio;
+        private string claseServicio;
         private double montoInversion;
         private int plazoDias;
         private int tipoMoneda;
+        private string nombreMoneda;
         private string numeroTemporal;
         private Double minimo;
         private int minimoDias;
-        private string claseServicio;
+        
         List<String[]> servicios = LectorData.obtenerServicios();
         ArrayList clasesServicios = LectorData.obtenerServiciosClase();
-        private string nombreMoneda;
+        
 
         internal static class NativeMethods
         {
@@ -260,9 +263,28 @@ namespace SistemaDeInversion.Vistas
             }
             return i;
         }
+        private DTOCliente crearDTOCliente()
+        {
+            DTOCliente dtoCliente = new DTOCliente();
+            dtoCliente.Nombre = nombre;
+            dtoCliente.PrimerApellido = primerApellido;
+            dtoCliente.PrimerApellido = segundoApellido;
+            return dtoCliente;
+        }
+
+        private DTOServicioAhorroInversion crearDTOInversion()
+        {
+            DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
+            dtoServicio.Moneda = nombreMoneda;
+            dtoServicio.TipoServicio = nombreServicio;
+            dtoServicio.PlazoDias = plazoDias;
+            return dtoServicio;
+        }
 
         private void resultado()
         {
+            crearDTOCliente();
+            crearDTOInversion();
             Console.Clear();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
             Console.WriteLine("***** Datos del cliente y su operación bancaria *****");
