@@ -43,6 +43,12 @@ namespace SistemaDeInversion.Vistas
             visibleOfLabels(false);
         }
 
+        private string buscarTipo(string tipo)
+        {
+            int indexServicio = tiposServicios.IndexOf(tipo);
+            return LectorData.obtenerServicios()[indexServicio][0];
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -75,12 +81,13 @@ namespace SistemaDeInversion.Vistas
             labelNombre.Text = dtoCliente.Nombre +" " + dtoCliente.PrimerApellido + " " +dtoCliente.SegundoApellido;
             labelMonto.Text = dtoServicio.MontoInversion.ToString();
             labelDias.Text = dtoServicio.PlazoDias.ToString();
-            labelInversion.Text = dtoServicio.TipoServicio;
+            labelInversion.Text = buscarTipo(dtoServicio.TipoServicio); ;
             labelInteres.Text = dtoServicio.Interes.ToString();
             renDias.Text = dtoServicio.PlazoDias.ToString();
             renMonto.Text = dtoServicio.MontoInversion.ToString();
             renInteresesGanados.Text = dtoServicio.InteresGanado.ToString();
             renSaldoFinal.Text = dtoServicio.SaldoFinal.ToString();
+            labelImpuesto.Text = dtoServicio.ImpuestoRenta.ToString();
             visibleOfLabels(true);
         }
 
@@ -255,6 +262,7 @@ namespace SistemaDeInversion.Vistas
             renMonto.Visible = booleano;
             renInteresesGanados.Visible = booleano;
             renSaldoFinal.Visible = booleano;
+            labelImpuesto.Visible = booleano;
         }
         
 
