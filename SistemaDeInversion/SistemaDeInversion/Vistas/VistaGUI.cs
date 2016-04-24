@@ -40,7 +40,7 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            esconderLabels();
+            visibleOfLabels(false);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,8 +79,9 @@ namespace SistemaDeInversion.Vistas
             labelInteres.Text = dtoServicio.Interes.ToString();
             renDias.Text = dtoServicio.PlazoDias.ToString();
             renMonto.Text = dtoServicio.MontoInversion.ToString();
-            //renInteresesGanados.Text = dtoServicio.InteresGanado.toString();
+            renInteresesGanados.Text = dtoServicio.InteresGanado.ToString();
             renSaldoFinal.Text = dtoServicio.SaldoFinal.ToString();
+            visibleOfLabels(true);
         }
 
         private void realizarInversion()
@@ -242,17 +243,17 @@ namespace SistemaDeInversion.Vistas
              comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex));
         }
         
-        private void esconderLabels()
+        private void visibleOfLabels(bool booleano)
         {
-            labelNombre.Visible = false;
-            labelMonto.Visible = false;
-            labelDias.Visible = false;
-            labelInversion.Visible = false;
-            labelInteres.Visible = false;
-            renDias.Visible = false;
-            renMonto.Visible = false;
-            renInteresesGanados.Visible = false;
-            renSaldoFinal.Visible = false;
+            labelNombre.Visible = booleano;
+            labelMonto.Visible = booleano;
+            labelDias.Visible = booleano;
+            labelInversion.Visible = booleano;
+            labelInteres.Visible = booleano;
+            renDias.Visible = booleano;
+            renMonto.Visible = booleano;
+            renInteresesGanados.Visible = booleano;
+            renSaldoFinal.Visible = booleano;
         }
         
 

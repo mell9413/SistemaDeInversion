@@ -120,6 +120,7 @@ namespace SistemaDeInversion.Modelo
         }
         private void verificarSaldo()
         {
+            MessageBox.Show(obtenerSaldoMinimo().ToString());
             if(this.montoInversion < obtenerSaldoMinimo())
             {
                 throw new System.ArgumentException("El saldo mínimo requerido es de " + obtenerSaldoMinimo().ToString(), "Saldo Mínimo");
