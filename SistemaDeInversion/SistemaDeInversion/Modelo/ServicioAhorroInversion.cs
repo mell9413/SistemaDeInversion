@@ -19,6 +19,7 @@ namespace SistemaDeInversion.Modelo
         protected String moneda;
         protected double saldoFinal;
         protected Cliente cliente;
+        protected double interesGanado;
 
         public ServicioAhorroInversion(DTOServicioAhorroInversion dtoInversion)
         {
@@ -87,7 +88,7 @@ namespace SistemaDeInversion.Modelo
         public abstract void calcularInteres();
         public abstract double obtenerSaldoMinimo();
 
-        public double calcularRendimiento()
+        public void calcularRendimiento()
         {
             this.verificarSaldo();
             this.calcularInteres();
@@ -96,9 +97,13 @@ namespace SistemaDeInversion.Modelo
             {
                 rendimiento += this.montoInversion * (this.interes / 360);
             }
-            this.saldoFinal = this.montoInversion + rendimiento;
-            return rendimiento;
+            
+            this.interesGanado=rendimiento;
 
+        }
+        private void calcularSaldofinal()
+        {
+            this.saldoFinal=this.montoInversion + this.interesGanado;
         }
         private void verificarSaldo()
         {
