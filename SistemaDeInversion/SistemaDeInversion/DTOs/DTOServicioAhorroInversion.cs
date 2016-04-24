@@ -16,6 +16,7 @@ namespace SistemaDeInversion.DTOs
         private Cliente cliente;
         private String moneda;
         private double saldoFinal;
+        private double interesGanado;
         private String tipoServicio;
 
         public double MontoInversion
