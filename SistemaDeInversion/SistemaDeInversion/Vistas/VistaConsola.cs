@@ -256,7 +256,7 @@ namespace SistemaDeInversion.Vistas
             DTOCliente dtoCliente = new DTOCliente();
             dtoCliente.Nombre = nombre;
             dtoCliente.PrimerApellido = primerApellido;
-            dtoCliente.PrimerApellido = segundoApellido;
+            dtoCliente.SegundoApellido = segundoApellido;
             return dtoCliente;
         }
 
@@ -266,6 +266,7 @@ namespace SistemaDeInversion.Vistas
             dtoServicio.Moneda = nombreMoneda;
             dtoServicio.TipoServicio = claseServicio;
             dtoServicio.PlazoDias = plazoDias;
+            dtoServicio.MontoInversion = montoInversion;
             return dtoServicio;
         }
 
@@ -287,13 +288,18 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("\n***Rendimiento***");
             if (nombreServicio == "Inversión Vista Pactada")
             {
-                Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tImpuesto de Renta\tSaldo Final");
-                Console.WriteLine("\t" + inversion.PlazoDias + "\t\t" + inversion.MontoInversion + " " + nombreMoneda + "\t\t  " + inversion.InteresGanado + " " + nombreMoneda + "\t\t  " + "inversion.obtenerImpuestoRenta()"+" "+nombreMoneda+ "\t\t  " + inversion.SaldoFinal);
+                Console.WriteLine("Plazo en días\t\t\t" + inversion.PlazoDias);
+                Console.WriteLine("Monto de ahorro e inversión\t" + inversion.MontoInversion + " " + nombreMoneda);
+                Console.WriteLine("Intereses ganados\t\t" + inversion.InteresGanado);
+                Console.WriteLine("Impuesto de Renta\t\t" + "inversion.obtenerImpuestoRenta()");
+                Console.WriteLine("Saldo Final\t\t\t" + inversion.SaldoFinal);
             }
             else
             {
-                Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tSaldo Final");
-                Console.WriteLine("\t" + inversion.PlazoDias + "\t\t" + inversion.MontoInversion + " " + nombreMoneda + "\t\t  " + inversion.InteresGanado + " " + nombreMoneda + "\t\t  " + inversion.SaldoFinal);
+                Console.WriteLine("Plazo en días\t\t\t" + inversion.PlazoDias);
+                Console.WriteLine("Monto de ahorro e inversión\t" + inversion.MontoInversion + " " + nombreMoneda);
+                Console.WriteLine("Intereses ganados\t\t" + inversion.InteresGanado);
+                Console.WriteLine("Saldo Final\t\t\t" + inversion.SaldoFinal);
             }
             Console.WriteLine("--->Última línea<---");
         }

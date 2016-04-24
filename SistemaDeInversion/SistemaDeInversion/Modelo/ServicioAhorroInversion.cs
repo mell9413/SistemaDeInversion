@@ -29,6 +29,8 @@ namespace SistemaDeInversion.Modelo
             this.moneda = dtoInversion.Moneda;
             this.cliente = dtoInversion.Cliente;
             cantidadInstancias++;
+            calcularRendimiento();
+            calcularSaldofinal();
         }
 
         public static int CantidadInstancias
@@ -103,25 +105,32 @@ namespace SistemaDeInversion.Modelo
 
         public void calcularRendimiento()
         {
-            this.verificarSaldo();
-            this.calcularInteres();
-            double rendimiento = 0;
-            for (int i = 1; i <= this.plazoDias; i++)
+            try
             {
-                rendimiento += this.montoInversion * (this.interes / 360);
-            }
-            MessageBox.Show(rendimiento.ToString());
-            this.interesGanado=rendimiento;
+                this.verificarSaldo();
+                this.calcularInteres();
+                double rendimiento = 0;
+                for (int i = 1; i <= this.plazoDias; i++)
+                {
+                    rendimiento += this.montoInversion * (this.interes / 360);
+                }
+                //MessageBox.Show(rendimiento.ToString());
+                this.interesGanado = rendimiento;
 
+            }
+            catch (ArgumentException ess)
+            {
+                
+            }
         }
         public abstract void calcularSaldofinal();
        
         private void verificarSaldo()
         {
-            MessageBox.Show(obtenerSaldoMinimo().ToString());
+            //MessageBox.Show(obtenerSaldoMinimo().ToString());
             if(this.montoInversion < obtenerSaldoMinimo())
             {
-                throw new System.ArgumentException("El saldo mínimo requerido es de " + obtenerSaldoMinimo().ToString(), "Saldo Mínimo");
+                throw new System.ArgumentException("El saldo mínimo requerido es de " + obtenerSaldoMinimo().ToString(), "Saldo Minimo");
             }
         }
     }
