@@ -43,6 +43,10 @@ namespace SistemaDeInversion.Modelo
            dtoServicio.Cliente = this.crearCliente(dtoCliente);
            servicio.calcularRendimiento();
            servicio.calcularSaldofinal();
+           try
+            {
+                (CertificadoInversion)servicio.calcularImpuestoRenta();
+            }
            dtoServicio.InteresGanado = servicio.InteresGanado;
            dtoServicio.Interes = servicio.Interes;
            dtoServicio.SaldoFinal = servicio.SaldoFinal;
