@@ -45,7 +45,12 @@ namespace SistemaDeInversion.Modelo
            servicio.calcularSaldofinal();
            try
             {
-                (CertificadoInversion)servicio.calcularImpuestoRenta();
+                CertificadoInversion temp = (CertificadoInversion)servicio;
+                dtoServicio.ImpuestoRenta = temp.calcacularImpuestoRenta();
+            }
+            catch
+            {
+
             }
            dtoServicio.InteresGanado = servicio.InteresGanado;
            dtoServicio.Interes = servicio.Interes;

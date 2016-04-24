@@ -14,7 +14,6 @@ namespace SistemaDeInversion.Modelo
 {
     class CertificadoInversion : ServicioAhorroInversion
     {
-        private double impuestoDeRenta;
         private static int cantidadInstancias = 0;
 
         public CertificadoInversion(DTOServicioAhorroInversion dtoInversion): base(dtoInversion)
@@ -59,6 +58,8 @@ namespace SistemaDeInversion.Modelo
 
         public double calcacularImpuestoRenta()
         {
+            MessageBox.Show(InteresGanado.ToString());
+            MessageBox.Show(obtenerImpuestoRenta().ToString());
             return (this.interesGanado * this.obtenerImpuestoRenta());
         }
        
