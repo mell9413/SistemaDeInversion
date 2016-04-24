@@ -79,7 +79,7 @@ namespace SistemaDeInversion.Vistas
             labelInteres.Text = dtoServicio.Interes.ToString();
             renDias.Text = dtoServicio.PlazoDias.ToString();
             renMonto.Text = dtoServicio.MontoInversion.ToString();
-            renInteresesGanados.Text = dtoServicio.InteresGanado.toString();
+            renInteresesGanados.Text = dtoServicio.InteresGanado.ToString();
             renSaldoFinal.Text = dtoServicio.SaldoFinal.ToString();
         }
 
