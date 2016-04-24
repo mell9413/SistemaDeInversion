@@ -23,12 +23,14 @@ namespace SistemaDeInversion.Modelo
 
         public ServicioAhorroInversion(DTOServicioAhorroInversion dtoInversion)
         {
+
             this.montoInversion = dtoInversion.MontoInversion;
             this.plazoDias = dtoInversion.PlazoDias;
             this.interes = dtoInversion.Interes;
             this.moneda = dtoInversion.Moneda;
             this.cliente = dtoInversion.Cliente;
             cantidadInstancias++;
+
         }
 
         public static int CantidadInstancias
@@ -37,7 +39,6 @@ namespace SistemaDeInversion.Modelo
             {
                 return cantidadInstancias;
             }
-
         }
 
         public string Id
@@ -54,7 +55,6 @@ namespace SistemaDeInversion.Modelo
             {
                 return montoInversion;
             }
-
         }
 
         public int PlazoDias
@@ -63,7 +63,6 @@ namespace SistemaDeInversion.Modelo
             {
                 return plazoDias;
             }
-
         }
 
         public double Interes
@@ -73,6 +72,7 @@ namespace SistemaDeInversion.Modelo
                 return interes;
             }
         }
+
         public double SaldoFinal
         {
             get
@@ -80,6 +80,7 @@ namespace SistemaDeInversion.Modelo
                 return this.saldoFinal;
             }
         }
+
         public double InteresGanado
         {
             get
@@ -88,18 +89,18 @@ namespace SistemaDeInversion.Modelo
             }
         }
       
-
         public Cliente Cliente
         {
             get
             {
                 return cliente;
             }
-
         }
 
+        //Métodos abstractos
         public abstract void calcularInteres();
         public abstract double obtenerSaldoMinimo();
+        public abstract void calcularSaldofinal();
 
         public void calcularRendimiento()
         {
@@ -110,20 +111,20 @@ namespace SistemaDeInversion.Modelo
                 {
                     rendimiento += this.montoInversion * (this.interes / 360);
                 }
-                //MessageBox.Show(rendimiento.ToString());
                 this.interesGanado = rendimiento;
 
            
         }
-        public abstract void calcularSaldofinal();
        
+        //Verificación saldo minimo entrante
         private void verificarSaldo()
         {
-            //MessageBox.Show(obtenerSaldoMinimo().ToString());
             if(this.montoInversion < obtenerSaldoMinimo())
             {
                 throw new System.ArgumentException("El saldo mínimo requerido es de " + obtenerSaldoMinimo().ToString(), "Saldo Minimo");
             }
+
         }
+
     }
 }

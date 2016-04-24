@@ -24,25 +24,33 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
+
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "InversionVistaPactada.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias  
                             select rango).First();
             base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
+
         }
 
         //Saldo minimo inversión Vista pactada
         public override double obtenerSaldoMinimo()
         {
+
             double saldoMin;
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "InversionVistaPactada.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(base.moneda).Value);
+
             return saldoMin;
+
         }
+
         public override void calcularSaldoFinal()
         {
+
             this.saldoFinal = this.montoInversion + this.interesGanado;
+
         }
 
 
