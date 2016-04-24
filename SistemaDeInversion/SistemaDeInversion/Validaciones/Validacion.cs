@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using SistemaDeInversion.DataBase;
+using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Modelo.Factorys;
+using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion.Validaciones
 {
@@ -103,7 +106,20 @@ namespace SistemaDeInversion.Validaciones
 
             return objects;
         }
-        
 
+        public static double validarMinimos(double monto, string claseServicio, DTOServicioAhorroInversion dtoInversion)
+        {
+            double minimo = monto;
+            FactoryConcretoServicio factory = new FactoryConcretoServicio();
+            ServicioAhorroInversion clase = factory.crearServicioAhorroInversion(dtoInversion);
+            if (0 > monto.CompareTo(clase.obtenerSaldoMinimo()))
+            {
+                return minimo = clase.obtenerSaldoMinimo();
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

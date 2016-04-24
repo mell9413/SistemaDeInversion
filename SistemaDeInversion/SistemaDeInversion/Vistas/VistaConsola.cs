@@ -7,13 +7,14 @@ using SistemaDeInversion.Modelo;
 using System.Globalization;
 using System.Collections.Generic;
 using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Modelo.Factorys;
 
 namespace SistemaDeInversion.Vistas
 {
     public class VistaConsola
     {
 
-      /*  private IControlador controlador = new Controlador();
+        private IControlador controlador = new Controlador();
 
 
         private string nombre;
@@ -31,7 +32,6 @@ namespace SistemaDeInversion.Vistas
         private int minimoDias;
         
         List<String[]> servicios = LectorData.obtenerServicios();
-        ArrayList clasesServicios = LectorData.obtenerServiciosClase();
         
 
         internal static class NativeMethods
@@ -130,15 +130,16 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarDouble(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                //if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture)))
-                //{
+                minimo = Validacion.validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture), claseServicio,crearDTOInversion());
+                if (minimo==0)
+                {
                     montoInversion = Double.Parse(numeroTemporal, CultureInfo.InvariantCulture);
-                //}
-                //else
-                //{
-                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>>Si quiere expresar decimales por favor usar punto");
+                }
+                else
+                {
+                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>> Si quiere expresar decimales por favor usar punto");
                     ingresarInversion();
-                //}
+                }
             }
             else
             {
@@ -180,8 +181,8 @@ namespace SistemaDeInversion.Vistas
         private void ingresarMoneda(String nombreServicio)
         {
             Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
-            ArrayList monedas = LectorData.obtenerMonedasXinstancia(claseServicio);
-            int rangoLista = getElementos(monedas);
+            String[] monedas = LectorData.obtenerMonedasXinstancia(claseServicio);
+            int rangoLista = getMonedas(monedas);
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
@@ -215,20 +216,7 @@ namespace SistemaDeInversion.Vistas
                 return false;
             }
         }
-
-        //private Boolean validarMinimos(double monto,string claseServicio)
-        //{
-            
-        //    if (0 > monto.CompareTo(claseServicio.obtenerSaldoMinimo()))
-        //    {
-        //        minimo = LectorData.obtenerSaldoMinCuentaCorriente();
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
+       
         private Boolean validarMinimoDias(int dias, string claseServicio)
         {
             minimoDias = LectorData.obtenerMinDias(claseServicio);
@@ -242,12 +230,12 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private int getElementos(ArrayList lista)
+        private int getMonedas(String[] lista)
         {
             int i = 0;
             foreach (var elemento in lista)
             {
-                Console.WriteLine(">>> " + (i + 1) + ") ---> " + lista[i]);
+                Console.WriteLine(">>> " + (i + 1) + ") ---> " + elemento);
                 i++;
             }
             return i;
@@ -276,7 +264,7 @@ namespace SistemaDeInversion.Vistas
         {
             DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
             dtoServicio.Moneda = nombreMoneda;
-            dtoServicio.TipoServicio = nombreServicio;
+            dtoServicio.TipoServicio = claseServicio;
             dtoServicio.PlazoDias = plazoDias;
             return dtoServicio;
         }
@@ -323,6 +311,6 @@ namespace SistemaDeInversion.Vistas
                 resultado();
                 Console.ReadLine();
             }
-        }*/
+        }
     }
 }

@@ -34,9 +34,9 @@ namespace SistemaDeInversion
             Modelo.BitacoraCSV csv = new Modelo.BitacoraCSV();
             csv.crearArchivo();
             */
-            Application.Run(new Vistas.VistaGUI());
-            //VistaConsola consola = new VistaConsola();
-            //consola.run();
+            //Application.Run(new Vistas.VistaGUI());
+            VistaConsola consola = new VistaConsola();
+            consola.run();
 
         }
     }

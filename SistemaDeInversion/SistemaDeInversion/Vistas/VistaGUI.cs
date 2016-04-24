@@ -33,19 +33,6 @@ namespace SistemaDeInversion.Vistas
             InitializeComponent();
 
         }
-        private void ocultarLabels()
-        {
-            labelNombre.Visible = false;
-            labelMonto.Visible = false;
-            labelDias.Visible = false;
-            labelInversion.Visible = false;
-            labelInteres.Visible = false;
-            renDias.Visible = false;
-            renMonto.Visible = false;
-            renInteresesGanados.Visible = false;
-            renSaldoFinal.Visible = false;
-
-        }
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
@@ -53,7 +40,6 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            ocultarLabels();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -102,9 +88,8 @@ namespace SistemaDeInversion.Vistas
 
         private void procesarInversion()
         {
-            IControlador control = factoryControl.crearIControlador();
-            control.realizarInversion(dtoServicio,dtoCliente);
-            MessageBox.Show(dtoServicio.Interes.ToString());
+             IControlador control = factoryControl.crearIControlador();
+             control.realizarInversion(dtoServicio,dtoCliente);
             MessageBox.Show(dtoServicio.Interes.ToString());
 
         }

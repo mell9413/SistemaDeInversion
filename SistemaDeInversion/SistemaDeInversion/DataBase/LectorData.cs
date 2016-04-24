@@ -70,7 +70,15 @@ namespace SistemaDeInversion.DataBase
             int minDias;
             XElement xelement = XElement.Load(obtenerRutaCarpeta() + tipoServicio+".xml");
             IEnumerable<XElement> servicios = xelement.Elements();
-            minDias = Convert.ToInt32(servicios.ToArray()[0].Element("rangomin").Value);
+            try
+            {
+                minDias = Convert.ToInt32(servicios.ToArray()[0].Element("rangomin").Value);
+            }
+            catch
+            {
+                minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
+            }
+            
             return minDias;
         }
 }
