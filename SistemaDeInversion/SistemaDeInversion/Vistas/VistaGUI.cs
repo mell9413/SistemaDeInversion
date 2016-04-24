@@ -99,12 +99,16 @@ namespace SistemaDeInversion.Vistas
             boxList.Add(textBoxApellido2);
             boxList.Add(textBoxMonto);
 
-            if (revisarDatos(boxList))
+            if (revisarDatos(boxList) && LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value)
             {
                 asignarDTOCliente();
                 asignarDTOInversion();
                 procesarInversion();
-               // MessageBox.Show("linda");
+ 
+            }
+            else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
+            {
+                MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
             }
             else
             {
@@ -155,14 +159,6 @@ namespace SistemaDeInversion.Vistas
 
         }
 
-
-
-
-        private bool validarTextBoxMontoMayor(TextBox box)
-        {
-            //if (Validacion.Validacion.)
-            return true;
-        }
 
         private bool validarTextBoxLetras(TextBox box)
         {
@@ -240,10 +236,7 @@ namespace SistemaDeInversion.Vistas
             textBoxMonto.Text = "";
             textBoxMonto.ForeColor = Color.Black;
         }
-        private void validarIncorrectos()
-        {
 
-        }
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
