@@ -41,6 +41,10 @@ namespace SistemaDeInversion.Modelo
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
             return saldoMin;
         }
+        public override void calcularSaldofinal()
+        {
+            this.saldoFinal=this.montoInversion + this.interesGanado;
+        }
 
        
     }

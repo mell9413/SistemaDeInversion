@@ -52,6 +52,16 @@ namespace SistemaDeInversion.Modelo
                           select rango).First();
             return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
         }
+        public override void calcularSaldofinal()
+        {
+            this.saldoFinal = this.montoInversion + this.calcacularImpuestoRenta();
+        }
+
+        private double calcacularImpuestoRenta()
+        {
+            return this.interesGanado - (this.interesGanado * this.obtenerImpuestoRenta());
+        }
+       
 
     }
 }
