@@ -99,13 +99,15 @@ namespace SistemaDeInversion.Vistas
             boxList.Add(textBoxApellido2);
             boxList.Add(textBoxMonto);
 
-            if (revisarDatos(boxList) && LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value || comboBoxInversion.SelectedIndex == 0)
+            if (revisarDatos(boxList))
             {
-                asignarDTOCliente();
-                asignarDTOInversion();
-                procesarInversion();
-                establecerDatos();
-
+                if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value || comboBoxInversion.SelectedIndex == 0)
+                {
+                    asignarDTOCliente();
+                    asignarDTOInversion();
+                    procesarInversion();
+                    establecerDatos();
+                }
             }
             else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
             {
