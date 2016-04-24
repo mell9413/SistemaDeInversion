@@ -40,7 +40,7 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            esconderLabels();
+            visibleOfLabels(false);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace SistemaDeInversion.Vistas
 
         private void establecerDatos()
         {
-            labelNombre.Text = dtoCliente.Nombre + dtoCliente.PrimerApellido + dtoCliente.SegundoApellido;
+            labelNombre.Text = dtoCliente.Nombre +" " + dtoCliente.PrimerApellido + " " +dtoCliente.SegundoApellido;
             labelMonto.Text = dtoServicio.MontoInversion.ToString();
             labelDias.Text = dtoServicio.PlazoDias.ToString();
             labelInversion.Text = dtoServicio.TipoServicio;
@@ -81,6 +81,7 @@ namespace SistemaDeInversion.Vistas
             renMonto.Text = dtoServicio.MontoInversion.ToString();
             renInteresesGanados.Text = dtoServicio.InteresGanado.ToString();
             renSaldoFinal.Text = dtoServicio.SaldoFinal.ToString();
+            visibleOfLabels(true);
         }
 
         private void realizarInversion()
@@ -96,7 +97,7 @@ namespace SistemaDeInversion.Vistas
                 asignarDTOCliente();
                 asignarDTOInversion();
                 procesarInversion();
-                MessageBox.Show("linda");
+               // MessageBox.Show("linda");
             }
             else
             {
@@ -108,7 +109,7 @@ namespace SistemaDeInversion.Vistas
         {
              IControlador control = factoryControl.crearIControlador();
              control.realizarInversion(dtoServicio,dtoCliente);
-            MessageBox.Show(dtoServicio.Interes.ToString());
+           //MessageBox.Show(dtoServicio.Interes.ToString());
 
         }
 
@@ -116,7 +117,7 @@ namespace SistemaDeInversion.Vistas
         {
             dtoCliente.Nombre = textBoxNombre.Text;
             dtoCliente.PrimerApellido = textBoxApellido1.Text;
-            dtoCliente.PrimerApellido = textBoxApellido2.Text;
+            dtoCliente.SegundoApellido = textBoxApellido2.Text;
 
           
 
@@ -128,6 +129,7 @@ namespace SistemaDeInversion.Vistas
             dtoServicio.Moneda = comboBoxMoneda.Text;
             dtoServicio.TipoServicio = tiposServicios.ElementAt(comboBoxInversion.SelectedIndex);
             dtoServicio.PlazoDias = Decimal.ToInt32(numericUpDownPlazo.Value);
+           
 
 
         }
@@ -242,17 +244,17 @@ namespace SistemaDeInversion.Vistas
              comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex));
         }
         
-        private void esconderLabels()
+        private void visibleOfLabels(bool booleano)
         {
-            labelNombre.Visible = false;
-            labelMonto.Visible = false;
-            labelDias.Visible = false;
-            labelInversion.Visible = false;
-            labelInteres.Visible = false;
-            renDias.Visible = false;
-            renMonto.Visible = false;
-            renInteresesGanados.Visible = false;
-            renSaldoFinal.Visible = false;
+            labelNombre.Visible = booleano;
+            labelMonto.Visible = booleano;
+            labelDias.Visible = booleano;
+            labelInversion.Visible = booleano;
+            labelInteres.Visible = booleano;
+            renDias.Visible = booleano;
+            renMonto.Visible = booleano;
+            renInteresesGanados.Visible = booleano;
+            renSaldoFinal.Visible = booleano;
         }
         
 
