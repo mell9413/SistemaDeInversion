@@ -24,7 +24,7 @@ namespace SistemaDeInversion.Modelo
             }
         }
 
-        public override void crearArchivo()
+        public void crearArchivo()
         {
             XmlTextWriter archivoXML = new XmlTextWriter(LectorData.obtenerRutaCarpeta() + nombreArchivo, System.Text.Encoding.UTF8);
             archivoXML.WriteStartDocument();
@@ -34,24 +34,39 @@ namespace SistemaDeInversion.Modelo
             archivoXML.Close();
         }
 
-        public override void escribirMovimiento(DTOServicioAhorroInversion dtoMovimiento)
+        public void escribirMovimiento(DTOServicioAhorroInversion dtoInversion)
         {
-            //if exitse y crear y eso
-            //string filepath = LectorData.obtenerRutaCarpeta() + nombreArchivo;
-            //XmlDocument documento = new XmlDocument();
-            //documento.Load(filepath);
-            //XElement xml = XElement.Load(filepath);
-            //xml.Add(new XElement("Movimiento",
-            //        new XAttribute("Cliente", dtoMovimiento.getCliente().ToString()),
-            //        new XElement("TipoServicio", dtoMovimiento.TipoServicio()),
-            //        new XElement("Inversion", dtoMovimiento.getMontoInversion().ToString()),
-            //        new XElement("PlazoDias", dtoMovimiento.getPlazoDias().ToString()),
-            //        new XElement("Moneda", dtoMovimiento.getMoneda())));
-            //xml.Save(filepath);
+            if (existeArchivo())
+            {
+                string filepath = LectorData.obtenerRutaCarpeta() + nombreArchivo;
+                XmlDocument documento = new XmlDocument();
+                documento.Load(filepath);
+                XElement xml = XElement.Load(filepath);
+                xml.Add(new XElement("Movimiento",
+                        new XAttribute("Cliente", dtoInversion.Cliente.Nombre + " " + dtoInversion.Cliente.PrimerApellido + " " + dtoInversion.Cliente.SegundoApellido),
+                        new XElement("TipoServicio", dtoInversion.TipoServicio),
+                        new XElement("Inversion", dtoInversion.MontoInversion.ToString()),
+                        new XElement("PlazoDias", dtoInversion.PlazoDias.ToString()),
+                        new XElement("Moneda", dtoInversion.Moneda)));
+                xml.Save(filepath);
+            }
+            else
+            {
+                crearArchivo();
+                escribirMovimiento(dtoInversion);
+            }
+            
         }
 
-        public override Boolean existeArchivo() {
-            return true;
+        public Boolean existeArchivo() {
+            if (File.Exists(LectorData.obtenerRutaCarpeta() + nombreArchivo))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
