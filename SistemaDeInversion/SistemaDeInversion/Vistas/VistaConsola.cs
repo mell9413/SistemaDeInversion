@@ -271,26 +271,29 @@ namespace SistemaDeInversion.Vistas
 
         private void resultado()
         {
-            crearDTOCliente();
-            crearDTOInversion();
+            FactoryConcretoCliente factoryCliente = new FactoryConcretoCliente();
+            Cliente cliente = factoryCliente.crearCliente(crearDTOCliente());
+            FactoryConcretoServicio servicio = new FactoryConcretoServicio();
+            ServicioAhorroInversion inversion = servicio.crearServicioAhorroInversion(crearDTOInversion());
+
             Console.Clear();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
             Console.WriteLine("***** Datos del cliente y su operación bancaria *****");
-            Console.WriteLine("Cliente:\t\t\t"+nombre+" "+primerApellido+" "+segundoApellido);
-            Console.WriteLine("Monto de ahorro e inversión:\t" + montoInversion+" "+nombreMoneda);
-            Console.WriteLine("Plazo de la inversión en días:\t" + plazoDias+" días");
+            Console.WriteLine("Cliente:\t\t\t"+cliente.Nombre+" "+cliente.PrimerApellido+" "+cliente.SegundoApellido);
+            Console.WriteLine("Monto de ahorro e inversión:\t" + inversion.MontoInversion+" "+nombreMoneda);
+            Console.WriteLine("Plazo de la inversión en días:\t" + inversion.PlazoDias+" días");
             Console.WriteLine("Sistema de ahorro e inversión:\t" + nombreServicio);
             Console.WriteLine("Interés anual correspondiente:\t");
             Console.WriteLine("\n***Rendimiento***");
             if (nombreServicio == "Inversión Vista Pactada")
             {
                 Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tImpuesto de Renta\tSaldo Final");
-                Console.WriteLine("\t" + plazoDias + "\t\t" + montoInversion + " " + nombreMoneda + "\t\t  " + "8100" + " " + nombreMoneda + "\t\t  " + "9999"+" "+nombreMoneda+ "\t\t  " + "565656");
+                Console.WriteLine("\t" + inversion.PlazoDias + "\t\t" + inversion.MontoInversion + " " + nombreMoneda + "\t\t  " + inversion.InteresGanado + " " + nombreMoneda + "\t\t  " + "inversion.obtenerImpuestoRenta()"+" "+nombreMoneda+ "\t\t  " + inversion.SaldoFinal);
             }
             else
             {
                 Console.WriteLine("Plazo en días\tMonto de ahorro e inversión\tIntereses ganados\tSaldo Final");
-                Console.WriteLine("\t" + plazoDias + "\t\t" + montoInversion + " " + nombreMoneda + "\t\t  " + "8100" + " " + nombreMoneda + "\t\t  " + "999999");
+                Console.WriteLine("\t" + inversion.PlazoDias + "\t\t" + inversion.MontoInversion + " " + nombreMoneda + "\t\t  " + inversion.InteresGanado + " " + nombreMoneda + "\t\t  " + inversion.SaldoFinal);
             }
             Console.WriteLine("--->Última línea<---");
         }

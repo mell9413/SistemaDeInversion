@@ -14,6 +14,7 @@ namespace SistemaDeInversion.Modelo
 {
     class CertificadoInversion : ServicioAhorroInversion
     {
+        private double impuestoDeRenta;
         private static int cantidadInstancias = 0;
 
         public CertificadoInversion(DTOServicioAhorroInversion dtoInversion): base(dtoInversion)
@@ -53,12 +54,12 @@ namespace SistemaDeInversion.Modelo
         }
         public override void calcularSaldofinal()
         {
-            this.saldoFinal = this.montoInversion + this.calcacularImpuestoRenta();
+            this.saldoFinal = this.montoInversion +(this.interesGanado- this.calcacularImpuestoRenta());
         }
 
-        private double calcacularImpuestoRenta()
+        public double calcacularImpuestoRenta()
         {
-            return this.interesGanado - (this.interesGanado * this.obtenerImpuestoRenta());
+            return (this.interesGanado * this.obtenerImpuestoRenta());
         }
        
 
