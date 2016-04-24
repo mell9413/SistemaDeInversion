@@ -29,8 +29,6 @@ namespace SistemaDeInversion.Modelo
             this.moneda = dtoInversion.Moneda;
             this.cliente = dtoInversion.Cliente;
             cantidadInstancias++;
-            calcularRendimiento();
-            calcularSaldofinal();
         }
 
         public static int CantidadInstancias

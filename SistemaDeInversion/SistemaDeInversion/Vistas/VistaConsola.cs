@@ -272,10 +272,9 @@ namespace SistemaDeInversion.Vistas
 
         private void resultado()
         {
-            FactoryConcretoCliente factoryCliente = new FactoryConcretoCliente();
-            Cliente cliente = factoryCliente.crearCliente(crearDTOCliente());
-            FactoryConcretoServicio servicio = new FactoryConcretoServicio();
-            ServicioAhorroInversion inversion = servicio.crearServicioAhorroInversion(crearDTOInversion());
+            DTOCliente cliente = crearDTOCliente();
+            DTOServicioAhorroInversion inversion = crearDTOInversion();
+            controlador.realizarInversion(inversion, cliente);
 
             Console.Clear();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
@@ -284,14 +283,14 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("Monto de ahorro e inversión:\t" + inversion.MontoInversion+" "+nombreMoneda);
             Console.WriteLine("Plazo de la inversión en días:\t" + inversion.PlazoDias+" días");
             Console.WriteLine("Sistema de ahorro e inversión:\t" + nombreServicio);
-            Console.WriteLine("Interés anual correspondiente:\t");
+            Console.WriteLine("Interés anual correspondiente:\t"+ inversion.Interes);
             Console.WriteLine("\n***Rendimiento***");
             if (nombreServicio == "Inversión Vista Pactada")
             {
                 Console.WriteLine("Plazo en días\t\t\t" + inversion.PlazoDias);
                 Console.WriteLine("Monto de ahorro e inversión\t" + inversion.MontoInversion + " " + nombreMoneda);
                 Console.WriteLine("Intereses ganados\t\t" + inversion.InteresGanado);
-                Console.WriteLine("Impuesto de Renta\t\t" + "inversion.obtenerImpuestoRenta()");
+                Console.WriteLine("Impuesto de Renta\t\t" + inversion.ImpuestoRenta);
                 Console.WriteLine("Saldo Final\t\t\t" + inversion.SaldoFinal);
             }
             else
