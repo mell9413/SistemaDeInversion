@@ -114,10 +114,8 @@ namespace SistemaDeInversion.Modelo
             this.interesGanado=rendimiento;
 
         }
-        public void calcularSaldofinal()
-        {
-            this.saldoFinal=this.montoInversion + this.interesGanado;
-        }
+        public abstract void calcularSaldofinal();
+       
         private void verificarSaldo()
         {
             MessageBox.Show(obtenerSaldoMinimo().ToString());

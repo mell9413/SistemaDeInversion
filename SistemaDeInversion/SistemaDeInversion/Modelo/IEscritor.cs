@@ -7,10 +7,10 @@ using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion.Modelo
 {
-    public abstract class IEscritor
+    interface IEscritor
     {
-        public abstract void crearArchivo();
-        public abstract void escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
-        public abstract Boolean existeArchivo();
+        void crearArchivo();
+        void escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
+        Boolean existeArchivo();
     }
 }

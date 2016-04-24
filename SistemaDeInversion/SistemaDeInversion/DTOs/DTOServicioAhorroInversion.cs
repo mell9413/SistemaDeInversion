@@ -136,6 +136,19 @@ namespace SistemaDeInversion.DTOs
         }
 
 
+        public double InteresGanado
+        {
+            get
+            {
+                return interesGanado;
+            }
+
+            set
+            {
+                interesGanado = value;
+            }
+        }
+
         public DTOServicioAhorroInversion()
         {
 
