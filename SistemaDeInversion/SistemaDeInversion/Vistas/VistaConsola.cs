@@ -130,7 +130,8 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarDouble(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture),claseServicio))
+                minimo = Validacion.validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture), claseServicio,crearDTOInversion());
+                if (minimo==0)
                 {
                     montoInversion = Double.Parse(numeroTemporal, CultureInfo.InvariantCulture);
                 }
@@ -215,21 +216,7 @@ namespace SistemaDeInversion.Vistas
                 return false;
             }
         }
-
-        private Boolean validarMinimos(double monto,string claseServicio)
-        {
-            FactoryConcretoServicio factory = new FactoryConcretoServicio();
-            ServicioAhorroInversion clase = factory.crearServicioAhorroInversion(crearDTOInversion());
-            if (0 > monto.CompareTo(clase.obtenerSaldoMinimo()))
-            {
-                minimo = clase.obtenerSaldoMinimo();
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+       
         private Boolean validarMinimoDias(int dias, string claseServicio)
         {
             minimoDias = LectorData.obtenerMinDias(claseServicio);
