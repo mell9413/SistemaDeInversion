@@ -106,15 +106,15 @@ namespace SistemaDeInversion.Modelo
             this.verificarSaldo();
             this.calcularInteres();
             double rendimiento = 0;
-            for (int i = 1; i != this.plazoDias; i++)
+            for (int i = 1; i > this.plazoDias; i++)
             {
                 rendimiento += this.montoInversion * (this.interes / 360);
             }
-            
+            MessageBox.Show(rendimiento.ToString());
             this.interesGanado=rendimiento;
 
         }
-        private void calcularSaldofinal()
+        public void calcularSaldofinal()
         {
             this.saldoFinal=this.montoInversion + this.interesGanado;
         }
