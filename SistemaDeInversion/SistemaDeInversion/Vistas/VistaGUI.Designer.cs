@@ -64,6 +64,8 @@
             this.renInteresesGanados = new System.Windows.Forms.Label();
             this.renSaldoFinal = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.labelImpuesto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPlazo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,7 +352,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(370, 602);
+            this.label17.Location = new System.Drawing.Point(348, 602);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(94, 13);
             this.label17.TabIndex = 28;
@@ -359,7 +361,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(515, 602);
+            this.label18.Location = new System.Drawing.Point(604, 602);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 13);
             this.label18.TabIndex = 29;
@@ -386,7 +388,7 @@
             // renInteresesGanados
             // 
             this.renInteresesGanados.AutoSize = true;
-            this.renInteresesGanados.Location = new System.Drawing.Point(370, 636);
+            this.renInteresesGanados.Location = new System.Drawing.Point(348, 636);
             this.renInteresesGanados.Name = "renInteresesGanados";
             this.renInteresesGanados.Size = new System.Drawing.Size(41, 13);
             this.renInteresesGanados.TabIndex = 32;
@@ -395,7 +397,7 @@
             // renSaldoFinal
             // 
             this.renSaldoFinal.AutoSize = true;
-            this.renSaldoFinal.Location = new System.Drawing.Point(516, 636);
+            this.renSaldoFinal.Location = new System.Drawing.Point(604, 636);
             this.renSaldoFinal.Name = "renSaldoFinal";
             this.renSaldoFinal.Size = new System.Drawing.Size(41, 13);
             this.renSaldoFinal.TabIndex = 33;
@@ -411,11 +413,31 @@
             this.label19.TabIndex = 34;
             this.label19.Text = "Sistema de ahorro e inversión";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(486, 602);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(92, 13);
+            this.label22.TabIndex = 35;
+            this.label22.Text = "Impuesta de renta";
+            // 
+            // labelImpuesto
+            // 
+            this.labelImpuesto.AutoSize = true;
+            this.labelImpuesto.Location = new System.Drawing.Point(486, 636);
+            this.labelImpuesto.Name = "labelImpuesto";
+            this.labelImpuesto.Size = new System.Drawing.Size(41, 13);
+            this.labelImpuesto.TabIndex = 36;
+            this.labelImpuesto.Text = "label21";
+            // 
             // VistaGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 682);
+            this.ClientSize = new System.Drawing.Size(706, 682);
+            this.Controls.Add(this.labelImpuesto);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.renSaldoFinal);
             this.Controls.Add(this.renInteresesGanados);
@@ -499,5 +521,7 @@
         private System.Windows.Forms.Label renInteresesGanados;
         private System.Windows.Forms.Label renSaldoFinal;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label labelImpuesto;
     }
 }

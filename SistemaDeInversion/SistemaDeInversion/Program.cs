@@ -20,13 +20,10 @@ namespace SistemaDeInversion
         [STAThread]
         static void Main()
         {
-            DTOServicioAhorroInversion y = new DTOServicioAhorroInversion();
-            y.TipoServicio = "CuentaCorriente";
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Validacion.GetEnumerableOfType();
-            FactoryConcretoServicio x = new FactoryConcretoServicio();
-            x.crearServicioAhorroInversion(y);
+
             /*
             Modelo.BitacoraXML xml = new Modelo.BitacoraXML();
             xml.crearArchivo();

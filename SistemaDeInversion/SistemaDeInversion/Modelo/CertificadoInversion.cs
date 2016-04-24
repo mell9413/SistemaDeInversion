@@ -40,8 +40,7 @@ namespace SistemaDeInversion.Modelo
                             select rango).First();
 
             //MessageBox.Show(intAnual.Element(base.moneda).Value);
-            double interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
-            base.interes = interes - (interes * 0.08);
+            base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
         }
 
         public  override double obtenerSaldoMinimo()
@@ -50,7 +49,7 @@ namespace SistemaDeInversion.Modelo
             var saldos = (from rango in xelement.Elements("row")
                           where (double)rango.Element("rangomax") >=base.plazoDias
                           select rango).First();
-            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
+            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colones").Value);
         }
 
     }

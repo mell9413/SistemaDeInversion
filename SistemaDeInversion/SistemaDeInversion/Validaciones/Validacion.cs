@@ -30,33 +30,6 @@ namespace SistemaDeInversion.Validaciones
             return true;
         }
 
-        //public static bool validarMontoInversion(string inversion, double monto)
-        //{
-        //    if (inversion ==  "Cuenta Corriente")
-        //    {
-        //        validarMontoCC(monto);
-        //    }
-
-        //    return true;
-        //}
-
-        //private static bool validarMontoCC(double cantidad)
-        //{
-        //    return LectorData.obtenerSaldoMinCuentaCorriente() <= cantidad;
-
-        //}
-
-        //private static bool validarMontoIVP(double cantidad, string moneda)
-        //{
-        //    return LectorData.obtenerMinInversionVista(moneda) <= cantidad;
-
-        //}
-
-        private static bool validarMontoCertificado(double cantidad, string moneda)
-        {
-            return true;
-
-        }
         // valida si un string viene vacio
         public static bool validarVacio(string palabra)
         {
@@ -92,20 +65,6 @@ namespace SistemaDeInversion.Validaciones
             return true;
         }
 
-
-        // Metodo inutil, codigo muerto posiblemente
-        public static ArrayList GetEnumerableOfType() 
-        {
-            ArrayList objects = new ArrayList();
-            foreach (Type type in
-                Assembly.GetAssembly(typeof(Modelo.ServicioAhorroInversion)).GetTypes()
-                .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Modelo.ServicioAhorroInversion))))
-            {
-                objects.Add(type);
-            }
-
-            return objects;
-        }
 
         public static double validarMinimos(double monto, string claseServicio, DTOServicioAhorroInversion dtoInversion)
         {
