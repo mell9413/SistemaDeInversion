@@ -55,19 +55,13 @@ namespace SistemaDeInversion.DataBase
 
         public static int obtenerMinDias(String tipoServicio)
         {
-            int minDias;
-            XElement xelement = XElement.Load(obtenerRutaCarpeta() + tipoServicio+".xml");
-            IEnumerable<XElement> servicios = xelement.Elements();
-            try
-            {
-                minDias = Convert.ToInt32(servicios.ToArray()[0].Element("rangomin").Value);
-            }
-            catch
-            {
-                minDias = Convert.ToInt32(servicios.ToArray()[1].Element("rangomin").Value);
-            }
             
-            return minDias;
+            XElement xelement = XElement.Load(obtenerRutaCarpeta() +"minimoDias.xml");
+            IEnumerable<XElement> servicios = xelement.Elements();
+            var minDias = (from rango in xelement.Elements("row")
+                            select rango).First();
+
+            return Convert.ToInt32(minDias.Element(tipoServicio).Value);
         }
 
         public static double obtenerImpuestoRenta()
