@@ -17,6 +17,7 @@ namespace SistemaDeInversion.Modelo
         protected int plazoDias;
         protected double interes;
         protected String moneda;
+        protected double saldoFinal;
         protected Cliente cliente;
 
         public ServicioAhorroInversion(DTOServicioAhorroInversion dtoInversion)
@@ -88,14 +89,14 @@ namespace SistemaDeInversion.Modelo
 
         public double calcularRendimiento()
         {
-            MessageBox.Show(this.montoInversion.ToString());
             this.verificarSaldo();
             this.calcularInteres();
             double rendimiento = 0;
-            for (int i = 0; i != this.plazoDias; i++)
+            for (int i = 1; i != this.plazoDias; i++)
             {
                 rendimiento += this.montoInversion * (this.interes / 360);
             }
+            this.saldoFinal = this.montoInversion + rendimiento;
             return rendimiento;
 
         }
