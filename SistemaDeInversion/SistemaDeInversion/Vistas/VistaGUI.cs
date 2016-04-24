@@ -66,7 +66,7 @@ namespace SistemaDeInversion.Vistas
             // Valida si existe en los nombres "datos incorrectos" y no deja registrar
             try {
                 realizarInversion();
-                establecerDatos();
+                
 
             }
             catch(ArgumentException ess){
@@ -99,12 +99,13 @@ namespace SistemaDeInversion.Vistas
             boxList.Add(textBoxApellido2);
             boxList.Add(textBoxMonto);
 
-            if (revisarDatos(boxList) && LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value)
+            if (revisarDatos(boxList) && LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value || comboBoxInversion.SelectedIndex == 0)
             {
                 asignarDTOCliente();
                 asignarDTOInversion();
                 procesarInversion();
- 
+                establecerDatos();
+
             }
             else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
             {

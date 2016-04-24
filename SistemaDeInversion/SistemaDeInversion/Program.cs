@@ -32,8 +32,8 @@ namespace SistemaDeInversion
             csv.crearArchivo();
             */
             Application.Run(new Vistas.VistaGUI());
-            //VistaConsola consola = new VistaConsola();
-            //consola.run();
+            VistaConsola consola = new VistaConsola();
+            consola.run();
 
         }
     }

@@ -14,7 +14,6 @@ namespace SistemaDeInversion.Modelo.Factorys
         {
             var assembly = Assembly.GetExecutingAssembly();
             var type = assembly.GetType("SistemaDeInversion.Modelo.Controlador");
-            MessageBox.Show(type.ToString());
             object[] args = {};
             Controlador claseConcreta = (Controlador)Activator.CreateInstance(type);
             return claseConcreta;
