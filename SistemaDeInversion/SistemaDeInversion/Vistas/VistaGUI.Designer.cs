@@ -43,6 +43,27 @@
             this.comboBoxMoneda = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelNombre = new System.Windows.Forms.Label();
+            this.labelMonto = new System.Windows.Forms.Label();
+            this.labelDias = new System.Windows.Forms.Label();
+            this.labelInversion = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelInteres = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.renDias = new System.Windows.Forms.Label();
+            this.renMonto = new System.Windows.Forms.Label();
+            this.renInteresesGanados = new System.Windows.Forms.Label();
+            this.renSaldoFinal = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPlazo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,11 +218,225 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Ingrese su segundo apellido:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(23, 397);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(339, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Datos del cliente y su operación bancaria";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label9.Location = new System.Drawing.Point(27, 437);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Nombre :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 464);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(145, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Monto de ahorro e inversión :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 496);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 13);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Plazo de la invesión días :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(27, 524);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(149, 13);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Sistema de ahorro e inversión:";
+            // 
+            // labelNombre
+            // 
+            this.labelNombre.AutoSize = true;
+            this.labelNombre.Location = new System.Drawing.Point(211, 437);
+            this.labelNombre.Name = "labelNombre";
+            this.labelNombre.Size = new System.Drawing.Size(41, 13);
+            this.labelNombre.TabIndex = 19;
+            this.labelNombre.Text = "label13";
+            // 
+            // labelMonto
+            // 
+            this.labelMonto.AutoSize = true;
+            this.labelMonto.Location = new System.Drawing.Point(211, 464);
+            this.labelMonto.Name = "labelMonto";
+            this.labelMonto.Size = new System.Drawing.Size(41, 13);
+            this.labelMonto.TabIndex = 20;
+            this.labelMonto.Text = "label14";
+            // 
+            // labelDias
+            // 
+            this.labelDias.AutoSize = true;
+            this.labelDias.Location = new System.Drawing.Point(211, 496);
+            this.labelDias.Name = "labelDias";
+            this.labelDias.Size = new System.Drawing.Size(41, 13);
+            this.labelDias.TabIndex = 21;
+            this.labelDias.Text = "label15";
+            // 
+            // labelInversion
+            // 
+            this.labelInversion.AutoSize = true;
+            this.labelInversion.Location = new System.Drawing.Point(211, 524);
+            this.labelInversion.Name = "labelInversion";
+            this.labelInversion.Size = new System.Drawing.Size(41, 13);
+            this.labelInversion.TabIndex = 22;
+            this.labelInversion.Text = "label16";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(24, 575);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(95, 16);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Rendimiento";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(27, 552);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(153, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Interés anual correspondiente :";
+            // 
+            // labelInteres
+            // 
+            this.labelInteres.AutoSize = true;
+            this.labelInteres.Location = new System.Drawing.Point(211, 552);
+            this.labelInteres.Name = "labelInteres";
+            this.labelInteres.Size = new System.Drawing.Size(41, 13);
+            this.labelInteres.TabIndex = 25;
+            this.labelInteres.Text = "label15";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(27, 602);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 13);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Plazo en días";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(160, 602);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(139, 13);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Monto de ahorro e inversión";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(370, 602);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(94, 13);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Intereses ganados";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(515, 602);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 13);
+            this.label18.TabIndex = 29;
+            this.label18.Text = "Saldo Final";
+            // 
+            // renDias
+            // 
+            this.renDias.AutoSize = true;
+            this.renDias.Location = new System.Drawing.Point(27, 636);
+            this.renDias.Name = "renDias";
+            this.renDias.Size = new System.Drawing.Size(41, 13);
+            this.renDias.TabIndex = 30;
+            this.renDias.Text = "label19";
+            // 
+            // renMonto
+            // 
+            this.renMonto.AutoSize = true;
+            this.renMonto.Location = new System.Drawing.Point(160, 636);
+            this.renMonto.Name = "renMonto";
+            this.renMonto.Size = new System.Drawing.Size(41, 13);
+            this.renMonto.TabIndex = 31;
+            this.renMonto.Text = "label19";
+            // 
+            // renInteresesGanados
+            // 
+            this.renInteresesGanados.AutoSize = true;
+            this.renInteresesGanados.Location = new System.Drawing.Point(370, 636);
+            this.renInteresesGanados.Name = "renInteresesGanados";
+            this.renInteresesGanados.Size = new System.Drawing.Size(41, 13);
+            this.renInteresesGanados.TabIndex = 32;
+            this.renInteresesGanados.Text = "label19";
+            // 
+            // renSaldoFinal
+            // 
+            this.renSaldoFinal.AutoSize = true;
+            this.renSaldoFinal.Location = new System.Drawing.Point(516, 636);
+            this.renSaldoFinal.Name = "renSaldoFinal";
+            this.renSaldoFinal.Size = new System.Drawing.Size(41, 13);
+            this.renSaldoFinal.TabIndex = 33;
+            this.renSaldoFinal.Text = "label19";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(39, 13);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(362, 29);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Sistema de ahorro e inversión";
+            // 
             // VistaGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 423);
+            this.ClientSize = new System.Drawing.Size(645, 682);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.renSaldoFinal);
+            this.Controls.Add(this.renInteresesGanados);
+            this.Controls.Add(this.renMonto);
+            this.Controls.Add(this.renDias);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.labelInteres);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.labelInversion);
+            this.Controls.Add(this.labelDias);
+            this.Controls.Add(this.labelMonto);
+            this.Controls.Add(this.labelNombre);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.textBoxApellido1);
             this.Controls.Add(this.textBoxApellido2);
@@ -243,6 +478,26 @@
         private System.Windows.Forms.ComboBox comboBoxMoneda;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelNombre;
+        private System.Windows.Forms.Label labelMonto;
+        private System.Windows.Forms.Label labelDias;
+        private System.Windows.Forms.Label labelInversion;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelInteres;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label renDias;
+        private System.Windows.Forms.Label renMonto;
+        private System.Windows.Forms.Label renInteresesGanados;
+        private System.Windows.Forms.Label renSaldoFinal;
+        private System.Windows.Forms.Label label19;
     }
 }

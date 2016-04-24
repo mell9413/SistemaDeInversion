@@ -27,7 +27,7 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "rangosCuentaCorriente.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "CuentaCorriente.xml");
              var intAnual = (from rango in xelement.Elements("row")
                              where (double)rango.Element("rangomax")>=base.montoInversion
                              select rango).First();

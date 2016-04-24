@@ -96,5 +96,12 @@ namespace SistemaDeInversion.Modelo
             return rendimiento;
 
         }
+        private void verificarSaldo()
+        {
+            if(!this.montoInversion < obtenerSaldoMinimo())
+            {
+               // throw new Ex
+            }
+        }
     }
 }

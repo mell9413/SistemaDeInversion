@@ -34,7 +34,7 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularInteres()
         {
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "rangosInversionCertificado.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "CertificadoInversion.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias
                             select rango).First();
@@ -46,11 +46,11 @@ namespace SistemaDeInversion.Modelo
 
         public  override double obtenerSaldoMinimo()
         {
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta()+ "CertificadoInversion.xml");
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "CertificadoInversion.xml");
             var saldos = (from rango in xelement.Elements("row")
                           where (double)rango.Element("rangomax") >=base.plazoDias
                           select rango).First();
-            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colones").Value);
+            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
         }
 
     }
