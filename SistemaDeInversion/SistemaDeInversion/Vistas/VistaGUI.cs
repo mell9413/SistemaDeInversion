@@ -71,7 +71,11 @@ namespace SistemaDeInversion.Vistas
             //validarTextBoxMontoMayor(textBoxMonto);
 
             // Valida si existe en los nombres "datos incorrectos" y no deja registrar
-            realizarInversion();
+            try { realizarInversion(); }
+            catch(ArgumentException ess){
+                MessageBox.Show(ess.Message);
+            }
+
 
         }
 

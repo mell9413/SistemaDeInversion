@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using SistemaDeInversion.DTOs;
+using System.Windows.Forms;
 
 namespace SistemaDeInversion.Modelo
 {
@@ -87,6 +88,8 @@ namespace SistemaDeInversion.Modelo
 
         public double calcularRendimiento()
         {
+            MessageBox.Show(this.montoInversion.ToString());
+            this.verificarSaldo();
             this.calcularInteres();
             double rendimiento = 0;
             for (int i = 0; i != this.plazoDias; i++)
@@ -98,9 +101,9 @@ namespace SistemaDeInversion.Modelo
         }
         private void verificarSaldo()
         {
-            if(!this.montoInversion < obtenerSaldoMinimo())
+            if(this.montoInversion < obtenerSaldoMinimo())
             {
-               // throw new Ex
+                throw new System.ArgumentException("El saldo mínimo requerido es de " + obtenerSaldoMinimo().ToString(), "Saldo Mínimo");
             }
         }
     }
