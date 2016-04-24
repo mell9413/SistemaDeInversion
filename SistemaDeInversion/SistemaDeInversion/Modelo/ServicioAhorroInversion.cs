@@ -98,10 +98,10 @@ namespace SistemaDeInversion.Modelo
         }
         private void verificarSaldo()
         {
-            if(!this.montoInversion < obtenerSaldoMinimo())
-            {
-               // throw new Ex
-            }
+            //if(!this.montoInversion < obtenerSaldoMinimo())
+            //{
+            //   // throw new Ex
+            //}
         }
     }
 }

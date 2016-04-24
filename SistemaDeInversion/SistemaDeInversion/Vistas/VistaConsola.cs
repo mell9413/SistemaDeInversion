@@ -180,8 +180,8 @@ namespace SistemaDeInversion.Vistas
         private void ingresarMoneda(String nombreServicio)
         {
             Console.WriteLine("\n>>> Por favor ingrese el numero correspondiente al Tipo de Moneda de la inversión:");
-            ArrayList monedas = LectorData.obtenerMonedasXinstancia(claseServicio);
-            int rangoLista = getElementos(monedas);
+            String[] monedas = LectorData.obtenerMonedasXinstancia(claseServicio);
+            int rangoLista = getMonedas(monedas);
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
@@ -243,12 +243,12 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private int getElementos(ArrayList lista)
+        private int getMonedas(String[] lista)
         {
             int i = 0;
             foreach (var elemento in lista)
             {
-                Console.WriteLine(">>> " + (i + 1) + ") ---> " + lista[i]);
+                Console.WriteLine(">>> " + (i + 1) + ") ---> " + elemento);
                 i++;
             }
             return i;
