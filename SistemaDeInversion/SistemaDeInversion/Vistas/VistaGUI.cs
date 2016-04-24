@@ -129,6 +129,7 @@ namespace SistemaDeInversion.Vistas
             dtoServicio.Moneda = comboBoxMoneda.Text;
             dtoServicio.TipoServicio = tiposServicios.ElementAt(comboBoxInversion.SelectedIndex);
             dtoServicio.PlazoDias = Decimal.ToInt32(numericUpDownPlazo.Value);
+           
 
 
         }
