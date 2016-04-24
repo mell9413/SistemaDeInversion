@@ -14,9 +14,9 @@ namespace SistemaDeInversion.Modelo
         private static int cantidadInstancias = 0;
         protected String id;
         protected double montoInversion;
-        protected String moneda;
         protected int plazoDias;
         protected double interes;
+        protected String moneda;
         protected double saldoFinal;
         protected Cliente cliente;
         protected double interesGanado;
@@ -98,10 +98,11 @@ namespace SistemaDeInversion.Modelo
 
         }
 
+        public abstract void calcularInteres();
+        public abstract double obtenerSaldoMinimo();
+
         public void calcularRendimiento()
         {
-            try
-            {
                 this.verificarSaldo();
                 this.calcularInteres();
                 double rendimiento = 0;
@@ -112,16 +113,9 @@ namespace SistemaDeInversion.Modelo
                 //MessageBox.Show(rendimiento.ToString());
                 this.interesGanado = rendimiento;
 
-            }
-            catch (ArgumentException ess)
-            {
-
-            }
+           
         }
-
-        public abstract void calcularInteres();
-        public abstract double obtenerSaldoMinimo();
-        public abstract void calcularSaldoFinal();
+        public abstract void calcularSaldofinal();
        
         private void verificarSaldo()
         {

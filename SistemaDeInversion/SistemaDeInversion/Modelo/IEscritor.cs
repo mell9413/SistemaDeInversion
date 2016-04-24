@@ -7,7 +7,7 @@ using SistemaDeInversion.Modelo;
 
 namespace SistemaDeInversion.Modelo
 {
-    interface IEscritor
+    public interface IEscritor
     {
         void crearArchivo();
         void escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);

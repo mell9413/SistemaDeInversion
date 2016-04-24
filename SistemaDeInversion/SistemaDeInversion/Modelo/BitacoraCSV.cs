@@ -9,7 +9,7 @@ using SistemaDeInversion.DataBase;
 
 namespace SistemaDeInversion.Modelo
 {
-    class BitacoraCSV: IEscritor
+    public class BitacoraCSV: IEscritor
     {
         private static String nombreArchivo = "bitacoraCSV.csv";
 

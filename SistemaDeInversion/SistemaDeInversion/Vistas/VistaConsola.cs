@@ -275,7 +275,6 @@ namespace SistemaDeInversion.Vistas
             DTOCliente cliente = crearDTOCliente();
             DTOServicioAhorroInversion inversion = crearDTOInversion();
             controlador.realizarInversion(inversion, cliente);
-
             Console.Clear();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
             Console.WriteLine("***** Datos del cliente y su operación bancaria *****");
@@ -285,7 +284,7 @@ namespace SistemaDeInversion.Vistas
             Console.WriteLine("Sistema de ahorro e inversión:\t" + nombreServicio);
             Console.WriteLine("Interés anual correspondiente:\t"+ inversion.Interes);
             Console.WriteLine("\n***Rendimiento***");
-            if (nombreServicio == "Inversión Vista Pactada")
+            if (claseServicio == "CertificadoInversion")
             {
                 Console.WriteLine("Plazo en días\t\t\t" + inversion.PlazoDias);
                 Console.WriteLine("Monto de ahorro e inversión\t" + inversion.MontoInversion + " " + nombreMoneda);
@@ -301,6 +300,7 @@ namespace SistemaDeInversion.Vistas
                 Console.WriteLine("Saldo Final\t\t\t" + inversion.SaldoFinal);
             }
             Console.WriteLine("--->Última línea<---");
+
         }
         public void run()
         {

@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modelo\Controlador.cs" />
+    <Compile Include="Modelo\Factorys\FactoryConcretoCSV.cs" />
+    <Compile Include="Modelo\Factorys\FactoryConcretoXML.cs" />
+    <Compile Include="Modelo\Factorys\FactoryIEscritor.cs" />
     <Compile Include="Modelo\IControlador.cs" />
     <Compile Include="DataBase\LectorData.cs" />
     <Compile Include="DTOs\DTOCliente.cs" />
