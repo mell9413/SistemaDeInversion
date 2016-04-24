@@ -14,17 +14,11 @@ namespace SistemaDeInversion.Modelo
     {
        private FactoryCliente factoryCliente = new FactoryConcretoCliente();
        private FactoryServicio factoryServicio = new FactoryConcretoServicio();
-      //  private FactoryBitacora factoryBitacora = new FactoryBitacora();
-        
+        private ArrayList factoryIEscritor = new ArrayList { new FactoryConcretoXML().crearBitacora(), new FactoryConcretoCSV().crearBitacora() };
+
 
         public Controlador()
         {
-        }
-
-       public void crearBitacora()
-        {
-            //factoryBitacora();
-            
         }
 
         public Cliente crearCliente(DTOCliente dtoCliente)
@@ -39,11 +33,12 @@ namespace SistemaDeInversion.Modelo
 
         public void realizarInversion(DTOServicioAhorroInversion dtoServicio, DTOCliente dtoCliente)
         {
-           ServicioAhorroInversion servicio= this.crearServicioAhorroInversion(dtoServicio);
-           dtoServicio.Cliente = this.crearCliente(dtoCliente);
-           servicio.calcularRendimiento();
-           servicio.calcularSaldofinal();
-           try
+            ServicioAhorroInversion servicio= this.crearServicioAhorroInversion(dtoServicio);
+            Cliente cliente = this.crearCliente(dtoCliente);
+            dtoServicio.Cliente = this.crearCliente(dtoCliente);
+            servicio.calcularRendimiento();
+            servicio.calcularSaldofinal();
+            try
             {
                 CertificadoInversion temp = (CertificadoInversion)servicio;
                 dtoServicio.ImpuestoRenta = temp.calcacularImpuestoRenta();
@@ -52,11 +47,17 @@ namespace SistemaDeInversion.Modelo
             {
 
             }
-           dtoServicio.InteresGanado = servicio.InteresGanado;
-           dtoServicio.Interes = servicio.Interes;
-           dtoServicio.SaldoFinal = servicio.SaldoFinal;
+            dtoServicio.InteresGanado = servicio.InteresGanado;
+            dtoServicio.Interes = servicio.Interes;
+            dtoServicio.SaldoFinal = servicio.SaldoFinal;
+            dtoServicio.Cliente = cliente;
+            realizarRegistro(dtoServicio);
+        }
 
-            
+        public void realizarRegistro(DTOServicioAhorroInversion dtoInversion) {
+            foreach (IEscritor elemento in factoryIEscritor) {
+                elemento.escribirMovimiento(dtoInversion);
+            }
         }
     }
 }

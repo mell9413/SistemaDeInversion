@@ -103,8 +103,6 @@ namespace SistemaDeInversion.Modelo
 
         public void calcularRendimiento()
         {
-            try
-            {
                 this.verificarSaldo();
                 this.calcularInteres();
                 double rendimiento = 0;
@@ -115,11 +113,7 @@ namespace SistemaDeInversion.Modelo
                 //MessageBox.Show(rendimiento.ToString());
                 this.interesGanado = rendimiento;
 
-            }
-            catch (ArgumentException ess)
-            {
-                
-            }
+           
         }
         public abstract void calcularSaldofinal();
        

@@ -9,7 +9,7 @@ namespace SistemaDeInversion.Modelo
 {
     interface IControlador
     {
-        void crearBitacora();
+        void realizarRegistro(DTOServicioAhorroInversion dtoInversion);
         ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio);
         Cliente crearCliente(DTOCliente dtoCliente);
         void realizarInversion(DTOServicioAhorroInversion dtoServicio, DTOCliente dtoCliente);
