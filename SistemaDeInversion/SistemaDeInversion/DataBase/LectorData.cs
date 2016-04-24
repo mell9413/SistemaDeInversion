@@ -13,7 +13,7 @@ namespace SistemaDeInversion.DataBase
     public static class LectorData
     {
         //Devuelve lista de monedas aceptadas por un tipo de inversion
-        public static ArrayList obtenerMonedasXinstancia(String nombreInstancia)
+        public static String[] obtenerMonedasXinstancia(String nombreInstancia)
         {
             List<String[]> tiposM = new List<String[]>();
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "tiposMoneda.xml");
@@ -25,8 +25,7 @@ namespace SistemaDeInversion.DataBase
                     tiposM.Add(Convert.ToString(moneda.Element(nombreInstancia).Value).Split(','));
                 }
             }
-            MessageBox.Show(tiposM[0].ToString());
-            return obtenerNombreMonedas(tiposM);
+            return tiposM[0];
         }
 
         private static ArrayList obtenerNombreMonedas(List<String[]> lista)

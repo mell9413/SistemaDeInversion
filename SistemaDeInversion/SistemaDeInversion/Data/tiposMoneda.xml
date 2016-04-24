@@ -3,13 +3,10 @@
 <tiposMoneda>
 
   <row>
-    <CuentaCorriente>Colones</CuentaCorriente>
+    <CuentaCorriente>Colones,Yenes</CuentaCorriente>
   </row>
   <row>
-    <InversionVistaPactada>Dólares</InversionVistaPactada>
-  </row>
-  <row>
-    <InversionVistaPactada>Colones</InversionVistaPactada>
+    <InversionVistaPactada>Dólares,Colones</InversionVistaPactada>
   </row>
   <row>
     <CertificadoInversion>Colones</CertificadoInversion>
