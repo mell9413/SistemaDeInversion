@@ -72,7 +72,7 @@ namespace SistemaDeInversion.Vistas
 
         private void establecerDatos()
         {
-            labelNombre.Text = dtoCliente.Nombre + dtoCliente.PrimerApellido + dtoCliente.SegundoApellido;
+            labelNombre.Text = dtoCliente.Nombre +" " + dtoCliente.PrimerApellido + " " +dtoCliente.SegundoApellido;
             labelMonto.Text = dtoServicio.MontoInversion.ToString();
             labelDias.Text = dtoServicio.PlazoDias.ToString();
             labelInversion.Text = dtoServicio.TipoServicio;
@@ -117,7 +117,7 @@ namespace SistemaDeInversion.Vistas
         {
             dtoCliente.Nombre = textBoxNombre.Text;
             dtoCliente.PrimerApellido = textBoxApellido1.Text;
-            dtoCliente.PrimerApellido = textBoxApellido2.Text;
+            dtoCliente.SegundoApellido = textBoxApellido2.Text;
 
           
 

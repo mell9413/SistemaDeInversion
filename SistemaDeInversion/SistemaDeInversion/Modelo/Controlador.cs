@@ -42,8 +42,7 @@ namespace SistemaDeInversion.Modelo
            ServicioAhorroInversion servicio= this.crearServicioAhorroInversion(dtoServicio);
            dtoServicio.Cliente = this.crearCliente(dtoCliente);
            servicio.calcularRendimiento();
-           servicio.calcularInteres();
-            //servicio.sal
+           servicio.calcularSaldofinal();
            dtoServicio.InteresGanado = servicio.InteresGanado;
            dtoServicio.Interes = servicio.Interes;
            dtoServicio.SaldoFinal = servicio.SaldoFinal;

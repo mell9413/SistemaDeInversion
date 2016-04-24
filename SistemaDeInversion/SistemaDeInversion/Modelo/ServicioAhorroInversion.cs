@@ -110,11 +110,11 @@ namespace SistemaDeInversion.Modelo
             {
                 rendimiento += this.montoInversion * (this.interes / 360);
             }
-            
+            MessageBox.Show(rendimiento.ToString());
             this.interesGanado=rendimiento;
 
         }
-        private void calcularSaldofinal()
+        public void calcularSaldofinal()
         {
             this.saldoFinal=this.montoInversion + this.interesGanado;
         }
