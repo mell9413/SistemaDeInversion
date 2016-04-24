@@ -25,6 +25,7 @@ namespace SistemaDeInversion.DataBase
                     tiposM.Add(Convert.ToString(moneda.Element(nombreInstancia).Value).Split(','));
                 }
             }
+            MessageBox.Show(tiposM[0].ToString());
             return obtenerNombreMonedas(tiposM);
         }
 
