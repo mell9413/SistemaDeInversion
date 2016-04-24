@@ -137,6 +137,7 @@
     <Content Include="Data\CertificadoInversion.xml" />
     <Content Include="Data\CuentaCorriente.xml" />
     <Content Include="Data\InversionVistaPactada.xml" />
+    <Content Include="Data\staticData.xml" />
     <Content Include="Data\tiposMoneda.xml" />
     <Content Include="Data\tiposServicios.xml" />
   </ItemGroup>

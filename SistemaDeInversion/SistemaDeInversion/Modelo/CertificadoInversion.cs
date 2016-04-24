@@ -53,12 +53,14 @@ namespace SistemaDeInversion.Modelo
         }
         public override void calcularSaldofinal()
         {
-            this.saldoFinal = this.montoInversion + this.calcacularImpuestoRenta();
+            this.saldoFinal = this.montoInversion +(this.interesGanado- this.calcacularImpuestoRenta());
         }
 
-        private double calcacularImpuestoRenta()
+        public double calcacularImpuestoRenta()
         {
-            return this.interesGanado - (this.interesGanado * this.obtenerImpuestoRenta());
+            MessageBox.Show(InteresGanado.ToString());
+            MessageBox.Show(obtenerImpuestoRenta().ToString());
+            return (this.interesGanado * this.obtenerImpuestoRenta());
         }
        
 
