@@ -12,19 +12,20 @@ namespace SistemaDeInversion.Modelo
     {
         private static int cantidadInstancias = 0;
         private String id;
-        private ArrayList serviciosAhorroInversion;
         private string nombre;
         private string primerApellido;
         private string segundoApellido;
+        private ArrayList serviciosAhorroInversion;
 
         public Cliente(DTOCliente dtoCliente)
         {
+            cantidadInstancias++;
+            this.id = "Clte#" + CantidadInstancias;
             this.nombre = dtoCliente.Nombre;
             this.primerApellido = dtoCliente.PrimerApellido;
             this.segundoApellido = dtoCliente.SegundoApellido;
-            this.id = "Clte#" + CantidadInstancias;
-            cantidadInstancias++;
             this.serviciosAhorroInversion = new ArrayList();
+
         }
 
         public static int CantidadInstancias
@@ -32,9 +33,7 @@ namespace SistemaDeInversion.Modelo
             get
             {
                 return cantidadInstancias;
-            }
-
-            
+            }       
         }
 
         public string Id
@@ -50,9 +49,7 @@ namespace SistemaDeInversion.Modelo
             get
             {
                 return serviciosAhorroInversion;
-            }
-
-           
+            }        
         }
 
         public string Nombre
@@ -61,7 +58,10 @@ namespace SistemaDeInversion.Modelo
             {
                 return nombre;
             }
-
+            set
+            {
+                nombre = value;
+            }
         }
 
         public string PrimerApellido
@@ -89,5 +89,11 @@ namespace SistemaDeInversion.Modelo
                 segundoApellido = value;
             }
         }
+
+        public void agregarServicioInversion(ServicioAhorroInversion servicio)
+        {
+            this.serviciosAhorroInversion.Add(servicio);
+        }
+
     }
 }
