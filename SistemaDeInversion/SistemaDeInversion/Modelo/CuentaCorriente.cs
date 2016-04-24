@@ -31,7 +31,6 @@ namespace SistemaDeInversion.Modelo
              var intAnual = (from rango in xelement.Elements("row")
                              where (double)rango.Element("rangomax")>=base.montoInversion
                              select rango).First();
-
              base.interes= Convert.ToDouble(intAnual.Element(base.moneda).Value);
         }
         public override double obtenerSaldoMinimo()
@@ -40,7 +39,6 @@ namespace SistemaDeInversion.Modelo
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() +"CuentaCorriente.xml");
             IEnumerable<XElement> servicios = xelement.Elements();
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element("rangomin").Value);
-            //MessageBox.Show(saldoMin.ToString());
             return saldoMin;
         }
 

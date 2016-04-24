@@ -33,19 +33,6 @@ namespace SistemaDeInversion.Vistas
             InitializeComponent();
 
         }
-        private void ocultarLabels()
-        {
-            labelNombre.Visible = false;
-            labelMonto.Visible = false;
-            labelDias.Visible = false;
-            labelInversion.Visible = false;
-            labelInteres.Visible = false;
-            renDias.Visible = false;
-            renMonto.Visible = false;
-            renInteresesGanados.Visible = false;
-            renSaldoFinal.Visible = false;
-
-        }
 
         private void VistaGUI_Load(object sender, EventArgs e)
         {
@@ -53,7 +40,7 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            ocultarLabels();
+            esconderLabels();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,8 +58,29 @@ namespace SistemaDeInversion.Vistas
             //validarTextBoxMontoMayor(textBoxMonto);
 
             // Valida si existe en los nombres "datos incorrectos" y no deja registrar
-            realizarInversion();
+            try {
+                realizarInversion();
+                establecerDatos();
 
+            }
+            catch(ArgumentException ess){
+                MessageBox.Show(ess.Message);
+            }
+
+
+        }
+
+        private void establecerDatos()
+        {
+            labelNombre.Text = dtoCliente.Nombre + dtoCliente.PrimerApellido + dtoCliente.SegundoApellido;
+            labelMonto.Text = dtoServicio.MontoInversion.ToString();
+            labelDias.Text = dtoServicio.PlazoDias.ToString();
+            labelInversion.Text = dtoServicio.TipoServicio;
+            labelInteres.Text = dtoServicio.Interes.ToString();
+            renDias.Text = dtoServicio.PlazoDias.ToString();
+            renMonto.Text = dtoServicio.MontoInversion.ToString();
+            renInteresesGanados.Text = dtoServicio.InteresGanado.toString();
+            renSaldoFinal.Text = dtoServicio.SaldoFinal.ToString();
         }
 
         private void realizarInversion()
@@ -98,9 +106,8 @@ namespace SistemaDeInversion.Vistas
 
         private void procesarInversion()
         {
-            IControlador control = factoryControl.crearIControlador();
-            control.realizarInversion(dtoServicio,dtoCliente);
-            MessageBox.Show(dtoServicio.Interes.ToString());
+             IControlador control = factoryControl.crearIControlador();
+             control.realizarInversion(dtoServicio,dtoCliente);
             MessageBox.Show(dtoServicio.Interes.ToString());
 
         }
@@ -234,6 +241,20 @@ namespace SistemaDeInversion.Vistas
 
              comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex));
         }
+        
+        private void esconderLabels()
+        {
+            labelNombre.Visible = false;
+            labelMonto.Visible = false;
+            labelDias.Visible = false;
+            labelInversion.Visible = false;
+            labelInteres.Visible = false;
+            renDias.Visible = false;
+            renMonto.Visible = false;
+            renInteresesGanados.Visible = false;
+            renSaldoFinal.Visible = false;
+        }
+        
 
     }
 }
