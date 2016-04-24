@@ -6,10 +6,11 @@ using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Modelo;
 using System.Globalization;
 using System.Collections.Generic;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Vistas
 {
-    class VistaConsola
+    public class VistaConsola
     {
 
       /*  private IControlador controlador = new Controlador();
@@ -20,16 +21,18 @@ namespace SistemaDeInversion.Vistas
         private string segundoApellido;
         private int tipoServicio;
         private string nombreServicio;
+        private string claseServicio;
         private double montoInversion;
         private int plazoDias;
         private int tipoMoneda;
+        private string nombreMoneda;
         private string numeroTemporal;
         private Double minimo;
         private int minimoDias;
-        private string claseServicio;
-        ArrayList servicios = LectorData.obtenerServicios();
+        
+        List<String[]> servicios = LectorData.obtenerServicios();
         ArrayList clasesServicios = LectorData.obtenerServiciosClase();
-        private string nombreMoneda;
+        
 
         internal static class NativeMethods
         {
@@ -98,8 +101,14 @@ namespace SistemaDeInversion.Vistas
                 if (validarRango(Int32.Parse(numeroTemporal.ToString()), rangoLista))
                 {
                     tipoServicio = Int32.Parse(numeroTemporal.ToString());
-                    nombreServicio = servicios[tipoServicio - 1].ToString();
-                    claseServicio = clasesServicios[tipoServicio - 1].ToString();
+                    int i = 0;
+                    foreach (var elemento in servicios) {
+                        if (tipoServicio-1 == i) {
+                            nombreServicio = elemento[0];
+                            claseServicio = elemento[1];
+                        }
+                        i++;
+                    }
                 }
                 else
                 {
@@ -207,21 +216,14 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        //private Boolean validarMinimos(double monto)
+        //private Boolean validarMinimos(double monto,string claseServicio)
         //{
-        //    if (this.tipoServicio == 1 && 0>monto.CompareTo(LectorData.obtenerSaldoMinCuentaCorriente()))
+            
+        //    if (0 > monto.CompareTo(claseServicio.obtenerSaldoMinimo()))
         //    {
         //        minimo = LectorData.obtenerSaldoMinCuentaCorriente();
         //        return false;
         //    }
-        //    else if (this.tipoServicio == 3 && 0 > monto.CompareTo(LectorData.obtenerMinInversionVista(nombreMoneda)))
-        //    {
-        //        minimo = LectorData.obtenerMinInversionVista(nombreMoneda);
-        //        return false;
-        //    }
-
-
-
         //    else
         //    {
         //        return true;
@@ -256,14 +258,33 @@ namespace SistemaDeInversion.Vistas
             int i = 0;
             foreach (var elemento in lista)
             {
-                Console.WriteLine(">>> " + (i + 1) + ") ---> " + lista[i]);
+                Console.WriteLine(">>> " + (i + 1) + ") ---> " + elemento[0]);
                 i++;
             }
             return i;
         }
+        private DTOCliente crearDTOCliente()
+        {
+            DTOCliente dtoCliente = new DTOCliente();
+            dtoCliente.Nombre = nombre;
+            dtoCliente.PrimerApellido = primerApellido;
+            dtoCliente.PrimerApellido = segundoApellido;
+            return dtoCliente;
+        }
+
+        private DTOServicioAhorroInversion crearDTOInversion()
+        {
+            DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
+            dtoServicio.Moneda = nombreMoneda;
+            dtoServicio.TipoServicio = nombreServicio;
+            dtoServicio.PlazoDias = plazoDias;
+            return dtoServicio;
+        }
 
         private void resultado()
         {
+            crearDTOCliente();
+            crearDTOInversion();
             Console.Clear();
             Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
             Console.WriteLine("***** Datos del cliente y su operación bancaria *****");
@@ -285,21 +306,21 @@ namespace SistemaDeInversion.Vistas
             }
             Console.WriteLine("--->Última línea<---");
         }
-        static void Main(string[] args)
+        public void run()
         {
+            NativeMethods.AllocConsole();
             while (true)
             {
-                VistaConsola consola = new VistaConsola();
-                NativeMethods.AllocConsole();
+                
                 Console.WriteLine("***** Sistema de Inversión y Ahorro *****\n");
-                consola.ingresarNombreCliente();
-                consola.ingresarServicio();
-                consola.ingresarMoneda(consola.claseServicio);
-                consola.ingresarPlazo();
-                consola.ingresarInversion();
+                ingresarNombreCliente();
+                ingresarServicio();
+                ingresarMoneda(claseServicio);
+                ingresarPlazo();
+                ingresarInversion();
                 //enviardatosalDTO
                 //consola.resultado(DTOInversion) al final Consola.run();
-                consola.resultado();
+                resultado();
                 Console.ReadLine();
             }
         }*/
