@@ -66,7 +66,7 @@ namespace SistemaDeInversion.Vistas
             // Valida si existe en los nombres "datos incorrectos" y no deja registrar
             try {
                 realizarInversion();
-                establecerDatos();
+                
 
             }
             catch(ArgumentException ess){
@@ -99,12 +99,30 @@ namespace SistemaDeInversion.Vistas
             boxList.Add(textBoxApellido2);
             boxList.Add(textBoxMonto);
 
-            if (revisarDatos(boxList))
+            if (revisarDatos(boxList) && LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) <= numericUpDownPlazo.Value)
             {
                 asignarDTOCliente();
                 asignarDTOInversion();
                 procesarInversion();
-               // MessageBox.Show("linda");
+                establecerDatos();
+
+            }
+            else if (revisarDatos(boxList) && comboBoxInversion.SelectedIndex == 0) {
+                asignarDTOCliente();
+                asignarDTOInversion();
+                procesarInversion();
+                establecerDatos();
+            }
+            else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
+            {
+                if (comboBoxInversion.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Plazo incorrecto, el minimo de dias es uno (1) ");
+                }
+                else
+                {
+                    MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
+                }
             }
             else
             {
@@ -155,14 +173,6 @@ namespace SistemaDeInversion.Vistas
 
         }
 
-
-
-
-        private bool validarTextBoxMontoMayor(TextBox box)
-        {
-            //if (Validacion.Validacion.)
-            return true;
-        }
 
         private bool validarTextBoxLetras(TextBox box)
         {
@@ -240,10 +250,7 @@ namespace SistemaDeInversion.Vistas
             textBoxMonto.Text = "";
             textBoxMonto.ForeColor = Color.Black;
         }
-        private void validarIncorrectos()
-        {
 
-        }
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
