@@ -100,7 +100,6 @@ namespace SistemaDeInversion.Validaciones
             {
                 objects.Add(type);
             }
-            MessageBox.Show(objects[0].ToString());
 
             return objects;
         }

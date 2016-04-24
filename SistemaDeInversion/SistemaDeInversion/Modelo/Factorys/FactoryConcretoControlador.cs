@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SistemaDeInversion.Controles;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
@@ -11,7 +12,12 @@ namespace SistemaDeInversion.Modelo.Factorys
     {
         public override Controlador crearIControlador()
         {
-            return null;
+            var assembly = Assembly.GetExecutingAssembly();
+            var type = assembly.GetType("SistemaDeInversion.Modelo.Controlador");
+            MessageBox.Show(type.ToString());
+            object[] args = {};
+            Controlador claseConcreta = (Controlador)Activator.CreateInstance(type);
+            return claseConcreta;
         }
     }
 }

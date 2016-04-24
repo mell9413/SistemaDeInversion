@@ -12,27 +12,25 @@ using System.Windows.Forms;
 using System.Reflection;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.DataBase;
-using SistemaDeInversion.Controles;
+using SistemaDeInversion.Modelo;
 using SistemaDeInversion.DTOs;
-
-
+using SistemaDeInversion.Modelo.Factorys;
 
 namespace SistemaDeInversion.Vistas
 {
     public partial class VistaGUI : Form
     {
-        //private FactoryControlador controlador = new Controlador();
+        private FactoryControlador factoryControl = new FactoryConcretoControlador();
+        private List<String> tiposServicios = new List<String>();
+        private DTOCliente dtoCliente = new DTOCliente();
+        private DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
+       
 
 
         public VistaGUI()
         {
-            //ServicioAhorroInversion x;
-            //x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1000000, 31);
-           //MessageBox.Show( x.calcularRendimiento().ToString());
+
             InitializeComponent();
-            //controlador.crearBitacora();
-            
-      
 
         }
 
@@ -42,35 +40,13 @@ namespace SistemaDeInversion.Vistas
             comboBoxMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
             establecerMonedas();
             establecerServicios();
-            /*Mambiux Inversión Pactada y validacion de saldo
-             * ServicioAhorroInversiox;
-                x = new InversionVistaPactada(new Fisico("Marvin", "fernandez", "Coto"), "Colón", 1200000, 56);
-                MessageBox.Show(Validacion.Validacion.getSaldoMinIVP("Dólar").ToString());
-                MessageBox.Show((x.calcularRendimiento()).ToString());
-             * 
-            Mambiux Cuenta corriente 
-             *  ServicioAhorroInversion x;
-                x = new CuentaCorriente(new Fisico("Marvin", "fernandez", "Coto"), new Dolar(), 10000, 30);
-             
-             */
-
-
-
-
-
-            /* BitacoraXML xml = new BitacoraXML();
-             xml.crearArchivo();
-            
-             BitacoraCSV csv = new BitacoraCSV();
-             csv.crearArchivo();
-             */
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
             // Valida que los datos ingresados sean correctos y devuelve los "datos incorrectos"
-
+            
             validarTextBoxLetras(textBoxNombre);
             validarTextBoxLetras(textBoxApellido1);
             validarTextBoxLetras(textBoxApellido2);
@@ -82,6 +58,7 @@ namespace SistemaDeInversion.Vistas
 
             // Valida si existe en los nombres "datos incorrectos" y no deja registrar
             realizarInversion();
+
         }
 
         private void realizarInversion()
@@ -94,9 +71,9 @@ namespace SistemaDeInversion.Vistas
 
             if (revisarDatos(boxList))
             {
-                crearDTOCliente();
-                crearDTOInversion();
-                //controlador.realizarInversion();
+                asignarDTOCliente();
+                asignarDTOInversion();
+                procesarInversion();
                 MessageBox.Show("linda");
             }
             else
@@ -105,22 +82,31 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        private DTOCliente crearDTOCliente()
+        private void procesarInversion()
         {
-            DTOCliente dtoCliente = new DTOCliente();
+             IControlador control = factoryControl.crearIControlador();
+             control.realizarInversion(dtoServicio,dtoCliente);
+            MessageBox.Show(dtoServicio.Interes.ToString());
+
+        }
+
+        private void asignarDTOCliente()
+        {
             dtoCliente.Nombre = textBoxNombre.Text;
             dtoCliente.PrimerApellido = textBoxApellido1.Text;
             dtoCliente.PrimerApellido = textBoxApellido2.Text;
-            return dtoCliente;
+
+          
+
         }
 
-        private DTOServicioAhorroInversion crearDTOInversion()
+        private void asignarDTOInversion()
         {
-            DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
+            dtoServicio.MontoInversion = Convert.ToDouble(textBoxMonto.Text);
             dtoServicio.Moneda = comboBoxMoneda.Text;
-            dtoServicio.TipoServicio = comboBoxInversion.Text;
+            dtoServicio.TipoServicio = tiposServicios.ElementAt(comboBoxInversion.SelectedIndex);
             dtoServicio.PlazoDias = Decimal.ToInt32(numericUpDownPlazo.Value);
-            return dtoServicio;
+
 
         }
         private bool revisarDatos(ArrayList boxList)
@@ -182,13 +168,22 @@ namespace SistemaDeInversion.Vistas
 
         private void establecerMonedas()
         {
-      
-            //comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
+            comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia("CuentaCorriente");
         }
 
         private void establecerServicios()
         {
-            comboBoxInversion.DataSource = LectorData.obtenerServicios();
+            List<String[]> lista = LectorData.obtenerServicios();
+            ArrayList listCompleta = new ArrayList();
+            foreach(string[] elemento in lista)
+            {
+                listCompleta.Add(elemento[0]);
+                tiposServicios.Add(elemento[1]);
+
+            }
+            
+            comboBoxInversion.DataSource = listCompleta;
+
         }
 
         private void textBoxNombre_Click(object sender, EventArgs e)
@@ -221,22 +216,8 @@ namespace SistemaDeInversion.Vistas
 
         private void comboBoxInversion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /* ArrayList listaServicios = LectorData.obtenerServicios();
-             ArrayList lista = new ArrayList();
-             if (comboBoxInversion.Text == listaServicios[0].ToString() || listaServicios[1].ToString() == "Certificado de Inversión")
-             {
-                 lista.Add(LectorData.obtenerMonedas()[1].ToString());
-                 comboBoxMoneda.DataSource = lista;
-             }
-             else if (comboBoxInversion.Text == listaServicios[3].ToString())
-             {
 
-                 comboBoxMoneda.DataSource = LectorData.obtenerMonedas();
-            } */
-
-
-
-
+             comboBoxMoneda.DataSource = LectorData.obtenerMonedasXinstancia(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex));
         }
 
     }

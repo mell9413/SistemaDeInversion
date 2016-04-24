@@ -1,4 +1,4 @@
-﻿using SistemaDeInversion.Controles;
+﻿using SistemaDeInversion.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

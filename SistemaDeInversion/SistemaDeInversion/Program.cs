@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using SistemaDeInversion.Modelo.Factorys;
 using SistemaDeInversion.Validaciones;
 using SistemaDeInversion.Modelo;
+using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Vistas;
 
 namespace SistemaDeInversion
 {
@@ -18,11 +20,13 @@ namespace SistemaDeInversion
         [STAThread]
         static void Main()
         {
+            DTOServicioAhorroInversion y = new DTOServicioAhorroInversion();
+            y.TipoServicio = "CuentaCorriente";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Validacion.GetEnumerableOfType();
-            FactoryServicio x = new FactoryConcretoServicio();
-            x.registrarServiciosHash();
+            FactoryConcretoServicio x = new FactoryConcretoServicio();
+            x.crearServicioAhorroInversion(y);
             /*
             Modelo.BitacoraXML xml = new Modelo.BitacoraXML();
             xml.crearArchivo();
@@ -31,7 +35,8 @@ namespace SistemaDeInversion
             csv.crearArchivo();
             */
             Application.Run(new Vistas.VistaGUI());
-            //Consola.run();
+            VistaConsola consola = new VistaConsola();
+            consola.run();
 
         }
     }

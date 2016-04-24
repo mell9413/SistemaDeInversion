@@ -8,37 +8,25 @@ using System.Threading.Tasks;
 using SistemaDeInversion.DataBase;
 using System.Reflection;
 using System.Windows.Forms;
+using System.IO;
+using SistemaDeInversion.Validaciones;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    class FactoryConcretoServicio: FactoryServicio
+    public class FactoryConcretoServicio: FactoryServicio
     {
-        private Hashtable serviciosRegistrados = new Hashtable();
-
-
-
-        private void registrarServicioHash (String tipo, Object servicio)
-        {
-            serviciosRegistrados.Add(tipo, servicio);
-            MessageBox.Show("final");
-            MessageBox.Show(servicio.ToString());
-
-        }
-
-        public override void registrarServiciosHash()
-        {
-            foreach(String elemento in LectorData.obtenerServicios())// "Cuenta Corriente" ,, "CuentaCorriente"
-            {
-                Type clase = Type.GetType("SistemaDeInversion.Modelo." + "");
-                MessageBox.Show(clase.ToString());
-                registrarServicioHash(elemento, clase);
-            }
-        }
 
         public override ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio)
         {
-            ServicioAhorroInversion x = new CuentaCorriente(dtoServicio);
-            return x;
+
+            var assembly = Assembly.GetExecutingAssembly();
+            MessageBox.Show(dtoServicio.TipoServicio.ToString());
+            var type = assembly.GetType("SistemaDeInversion.Modelo." + dtoServicio.TipoServicio);
+            object[] args = { dtoServicio };
+            ServicioAhorroInversion claseConcreta = (ServicioAhorroInversion)Activator.CreateInstance(type, args);
+            return claseConcreta;
+            
+
         }
     }
 }

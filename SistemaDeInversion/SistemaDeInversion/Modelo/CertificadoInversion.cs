@@ -18,6 +18,7 @@ namespace SistemaDeInversion.Modelo
 
         public CertificadoInversion(DTOServicioAhorroInversion dtoInversion): base(dtoInversion)
         {
+            
             base.id = "Cer#" + cantidadInstancias;
             cantidadInstancias++;
         }

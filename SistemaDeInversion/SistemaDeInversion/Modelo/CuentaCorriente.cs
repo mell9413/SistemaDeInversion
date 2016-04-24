@@ -13,10 +13,11 @@ using SistemaDeInversion.DataBase;
 
 namespace SistemaDeInversion.Modelo
 {
-    class CuentaCorriente : ServicioAhorroInversion
+    public class CuentaCorriente : ServicioAhorroInversion
     {
         
         private static int cantidadInstancias = 0;
+
 
         public CuentaCorriente(DTOServicioAhorroInversion dtoInversion) : base(dtoInversion)
         {
