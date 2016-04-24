@@ -1,4 +1,4 @@
-﻿using SistemaDeInversion.Controles;
+﻿using SistemaDeInversion.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    public abstract class FactoryIControlador
+    public abstract class FactoryControlador
     {
         public abstract Controlador crearIControlador(); 
     }

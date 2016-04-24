@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SistemaDeInversion.DTOs;
 
 namespace SistemaDeInversion.Modelo
 {
@@ -16,11 +17,11 @@ namespace SistemaDeInversion.Modelo
         private string primerApellido;
         private string segundoApellido;
 
-        public Cliente(String nombre, String primerApellido, String segundoApellido)
+        public Cliente(DTOCliente dtoCliente)
         {
-            this.nombre = nombre;
-            this.primerApellido = primerApellido;
-            this.segundoApellido = segundoApellido;
+            this.nombre = dtoCliente.Nombre;
+            this.primerApellido = dtoCliente.PrimerApellido;
+            this.segundoApellido = dtoCliente.SegundoApellido;
             this.id = "Clte#" + CantidadInstancias;
             cantidadInstancias++;
             this.serviciosAhorroInversion = new ArrayList();

@@ -1,4 +1,4 @@
-﻿using SistemaDeInversion.Modelo;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,14 @@ using System.Collections;
 using SistemaDeInversion.DTOs;
 using SistemaDeInversion.Modelo.Factorys;
 
-namespace SistemaDeInversion.Controles
+namespace SistemaDeInversion.Modelo
 {
     public class Controlador: IControlador
     {
-       // private FactoryCliente factoryCliente = new FactoryCliente();
-        //private FactoryServicio factoryServicio = new FactoryConcretoServicio();
+       private FactoryCliente factoryCliente = new FactoryConcretoCliente();
+       private FactoryServicio factoryServicio = new FactoryConcretoServicio();
       //  private FactoryBitacora factoryBitacora = new FactoryBitacora();
+        
 
         public Controlador()
         {
@@ -28,17 +29,20 @@ namespace SistemaDeInversion.Controles
 
         public Cliente crearCliente(DTOCliente dtoCliente)
         {
-            throw new NotImplementedException();
+            return factoryCliente.crearCliente(dtoCliente);
         }
 
         public ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio)
         {
-            throw new NotImplementedException();
+            return factoryServicio.crearServicioAhorroInversion(dtoServicio);
         }
 
         public void realizarInversion(DTOServicioAhorroInversion dtoServicio, DTOCliente dtoCliente)
         {
-            throw new NotImplementedException();
+           ServicioAhorroInversion servicio= this.crearServicioAhorroInversion(dtoServicio);
+           dtoServicio.Cliente = this.crearCliente(dtoCliente);
+           dtoServicio.Interes = servicio.calcularRendimiento();
+            
         }
     }
 }

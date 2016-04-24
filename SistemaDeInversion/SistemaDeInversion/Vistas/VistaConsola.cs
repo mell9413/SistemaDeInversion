@@ -3,7 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using SistemaDeInversion.DataBase;
 using SistemaDeInversion.Validaciones;
-using SistemaDeInversion.Controles;
+using SistemaDeInversion.Modelo;
 using System.Globalization;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace SistemaDeInversion.Vistas
     class VistaConsola
     {
 
-        private IControlador controlador = new Controlador();
+      /*  private IControlador controlador = new Controlador();
 
 
         private string nombre;
@@ -302,6 +302,6 @@ namespace SistemaDeInversion.Vistas
                 consola.resultado();
                 Console.ReadLine();
             }
-        }
+        }*/
     }
 }
