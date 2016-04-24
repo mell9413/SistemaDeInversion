@@ -7,13 +7,14 @@ using SistemaDeInversion.Modelo;
 using System.Globalization;
 using System.Collections.Generic;
 using SistemaDeInversion.DTOs;
+using SistemaDeInversion.Modelo.Factorys;
 
 namespace SistemaDeInversion.Vistas
 {
     public class VistaConsola
     {
 
-      /*  private IControlador controlador = new Controlador();
+        private IControlador controlador = new Controlador();
 
 
         private string nombre;
@@ -31,7 +32,6 @@ namespace SistemaDeInversion.Vistas
         private int minimoDias;
         
         List<String[]> servicios = LectorData.obtenerServicios();
-        ArrayList clasesServicios = LectorData.obtenerServiciosClase();
         
 
         internal static class NativeMethods
@@ -130,15 +130,15 @@ namespace SistemaDeInversion.Vistas
             numeroTemporal = Console.ReadLine();
             if (Validacion.validarDouble(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
-                //if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture)))
-                //{
+                if (validarMinimos(double.Parse(numeroTemporal, CultureInfo.InvariantCulture),claseServicio))
+                {
                     montoInversion = Double.Parse(numeroTemporal, CultureInfo.InvariantCulture);
-                //}
-                //else
-                //{
-                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>>Si quiere expresar decimales por favor usar punto");
+                }
+                else
+                {
+                    Console.WriteLine(">>> Debe ingresar un monto minimo igual o mayor a "+minimo+ "\n>>> Si quiere expresar decimales por favor usar punto");
                     ingresarInversion();
-                //}
+                }
             }
             else
             {
@@ -216,19 +216,20 @@ namespace SistemaDeInversion.Vistas
             }
         }
 
-        //private Boolean validarMinimos(double monto,string claseServicio)
-        //{
-            
-        //    if (0 > monto.CompareTo(claseServicio.obtenerSaldoMinimo()))
-        //    {
-        //        minimo = LectorData.obtenerSaldoMinCuentaCorriente();
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
+        private Boolean validarMinimos(double monto,string claseServicio)
+        {
+            FactoryConcretoServicio factory = new FactoryConcretoServicio();
+            ServicioAhorroInversion clase = factory.crearServicioAhorroInversion(crearDTOInversion());
+            if (0 > monto.CompareTo(clase.obtenerSaldoMinimo()))
+            {
+                minimo = clase.obtenerSaldoMinimo();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private Boolean validarMinimoDias(int dias, string claseServicio)
         {
             minimoDias = LectorData.obtenerMinDias(claseServicio);
@@ -276,7 +277,7 @@ namespace SistemaDeInversion.Vistas
         {
             DTOServicioAhorroInversion dtoServicio = new DTOServicioAhorroInversion();
             dtoServicio.Moneda = nombreMoneda;
-            dtoServicio.TipoServicio = nombreServicio;
+            dtoServicio.TipoServicio = claseServicio;
             dtoServicio.PlazoDias = plazoDias;
             return dtoServicio;
         }
@@ -323,6 +324,6 @@ namespace SistemaDeInversion.Vistas
                 resultado();
                 Console.ReadLine();
             }
-        }*/
+        }
     }
 }

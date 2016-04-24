@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <inversionPactada>
+  <saldoMin><Colones>100000</Colones><Dólares>500</Dólares></saldoMin>
 <row><rangomin>15</rangomin><rangomax>29</rangomax><Colones>0,0485</Colones><Dólares>0,08</Dólares></row>
 <row><rangomin>30</rangomin><rangomax>59</rangomax><Colones>0,0494</Colones><Dólares>0,091</Dólares></row>
 <row><rangomin>60</rangomin><rangomax>89</rangomax><Colones>0,0523</Colones><Dólares>0,0106</Dólares></row>

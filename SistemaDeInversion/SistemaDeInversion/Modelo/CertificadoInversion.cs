@@ -46,11 +46,11 @@ namespace SistemaDeInversion.Modelo
 
         public  override double obtenerSaldoMinimo()
         {
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta()+this.GetType());
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta()+ "CertificadoInversion.xml");
             var saldos = (from rango in xelement.Elements("row")
                           where (double)rango.Element("rangomax") >=base.plazoDias
                           select rango).First();
-            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colón").Value);
+            return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colones").Value);
         }
 
     }
