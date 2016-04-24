@@ -42,7 +42,7 @@ namespace SistemaDeInversion.Modelo
            ServicioAhorroInversion servicio= this.crearServicioAhorroInversion(dtoServicio);
            dtoServicio.Cliente = this.crearCliente(dtoCliente);
            servicio.calcularRendimiento();
-           servicio.calcularSaldofinal();
+           servicio.calcularSaldoFinal();
            try
             {
                 CertificadoInversion temp = (CertificadoInversion)servicio;

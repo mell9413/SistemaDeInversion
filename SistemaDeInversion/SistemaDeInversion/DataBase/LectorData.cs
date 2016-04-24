@@ -81,6 +81,15 @@ namespace SistemaDeInversion.DataBase
             
             return minDias;
         }
+
+        public static double obtenerImpuestoRenta()
+        {
+            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "staticData.xml");
+            var isr = (from rango in xelement.Elements("row")
+                            select rango).First();
+           
+            return Convert.ToDouble(isr.Element("ISR").Value);
+        }
 }
 
 }

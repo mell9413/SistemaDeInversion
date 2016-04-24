@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
-using System.Windows.Forms;
 using SistemaDeInversion.DTOs;
 using SistemaDeInversion.DataBase;
 
@@ -23,23 +22,12 @@ namespace SistemaDeInversion.Modelo
             cantidadInstancias++;
         }
 
-        private double obtenerImpuestoRenta()
-        {
-            XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "staticData.xml");
-            var intAnual = (from rango in xelement.Elements("row")
-                            select rango).First();
-            //MessageBox.Show(intAnual.Element("ISR").Value);
-            return Convert.ToDouble(intAnual.Element("ISR").Value);
-        }
-
         public override void calcularInteres()
         {
             XElement xelement = XElement.Load(LectorData.obtenerRutaCarpeta() + "CertificadoInversion.xml");
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias
                             select rango).First();
-
-            //MessageBox.Show(intAnual.Element(base.moneda).Value);
             base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
         }
 
@@ -51,16 +39,15 @@ namespace SistemaDeInversion.Modelo
                           select rango).First();
             return Convert.ToDouble(saldos.Element("rangomax").Attribute("Colones").Value);
         }
-        public override void calcularSaldofinal()
+
+        public override void calcularSaldoFinal()
         {
             this.saldoFinal = this.montoInversion +(this.interesGanado- this.calcacularImpuestoRenta());
         }
 
         public double calcacularImpuestoRenta()
         {
-            MessageBox.Show(InteresGanado.ToString());
-            MessageBox.Show(obtenerImpuestoRenta().ToString());
-            return (this.interesGanado * this.obtenerImpuestoRenta());
+            return (this.interesGanado * LectorData.obtenerImpuestoRenta());
         }
        
 

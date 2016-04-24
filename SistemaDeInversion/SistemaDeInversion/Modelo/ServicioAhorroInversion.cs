@@ -14,9 +14,9 @@ namespace SistemaDeInversion.Modelo
         private static int cantidadInstancias = 0;
         protected String id;
         protected double montoInversion;
+        protected String moneda;
         protected int plazoDias;
         protected double interes;
-        protected String moneda;
         protected double saldoFinal;
         protected Cliente cliente;
         protected double interesGanado;
@@ -98,9 +98,6 @@ namespace SistemaDeInversion.Modelo
 
         }
 
-        public abstract void calcularInteres();
-        public abstract double obtenerSaldoMinimo();
-
         public void calcularRendimiento()
         {
             try
@@ -118,10 +115,13 @@ namespace SistemaDeInversion.Modelo
             }
             catch (ArgumentException ess)
             {
-                
+
             }
         }
-        public abstract void calcularSaldofinal();
+
+        public abstract void calcularInteres();
+        public abstract double obtenerSaldoMinimo();
+        public abstract void calcularSaldoFinal();
        
         private void verificarSaldo()
         {

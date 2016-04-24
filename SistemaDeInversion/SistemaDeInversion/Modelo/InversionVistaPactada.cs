@@ -28,8 +28,6 @@ namespace SistemaDeInversion.Modelo
             var intAnual = (from rango in xelement.Elements("row")
                             where (double)rango.Element("rangomax") >= base.plazoDias  
                             select rango).First();
-            //MessageBox.Show(base.moneda);
-           // MessageBox.Show(intAnual.Element(base.moneda).Value);
             base.interes = Convert.ToDouble((intAnual.Element(base.moneda).Value));
         }
 
@@ -42,7 +40,7 @@ namespace SistemaDeInversion.Modelo
             saldoMin = Convert.ToDouble(servicios.ToArray()[0].Element(base.moneda).Value);
             return saldoMin;
         }
-        public override void calcularSaldofinal()
+        public override void calcularSaldoFinal()
         {
             this.saldoFinal = this.montoInversion + this.interesGanado;
         }
