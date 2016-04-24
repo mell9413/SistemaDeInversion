@@ -20,10 +20,8 @@ namespace SistemaDeInversion.Modelo.Factorys
         {
 
             var assembly = Assembly.GetExecutingAssembly();
-            //MessageBox.Show(dtoServicio.TipoServicio.ToString());
             var type = assembly.GetType("SistemaDeInversion.Modelo." + dtoServicio.TipoServicio);
             object[] args = { dtoServicio };
-            //MessageBox.Show("aqui");
             ServicioAhorroInversion claseConcreta = (ServicioAhorroInversion)Activator.CreateInstance(type, args);
             return claseConcreta;
             

@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace SistemaDeInversion.Modelo.Factorys
 {
-    class FactoryConcretoCSV: FactoryIEscritor
+    class FactoryConcretoBitacora : FactoryIEscritor
     {
-        public override IEscritor crearBitacora()
-        {
+        public override IEscritor crearBitacora(String tipoBitacora)
+        { 
             var assembly = Assembly.GetExecutingAssembly();
-            //MessageBox.Show(dtoServicio.TipoServicio.ToString());
-            var type = assembly.GetType("SistemaDeInversion.Modelo.BitacoraCSV");
-            object[] args = {  };
-            //MessageBox.Show("aqui");
+            var type = assembly.GetType("SistemaDeInversion.Modelo."+tipoBitacora);
+            object[] args = {};
             IEscritor claseConcreta = (IEscritor)Activator.CreateInstance(type, args);
             return claseConcreta;
         }
+
+        
     }
 }

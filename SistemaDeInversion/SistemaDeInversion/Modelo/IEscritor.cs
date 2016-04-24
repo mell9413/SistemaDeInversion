@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SistemaDeInversion.Modelo;
-
+using SistemaDeInversion.DTOs;
 namespace SistemaDeInversion.Modelo
 {
     public interface IEscritor
     {
         void crearArchivo();
-        void escribirMovimiento(DTOs.DTOServicioAhorroInversion dtomovimiento);
+        void escribirMovimiento(DTOServicioAhorroInversion dtoInversion);
         Boolean existeArchivo();
     }
 }

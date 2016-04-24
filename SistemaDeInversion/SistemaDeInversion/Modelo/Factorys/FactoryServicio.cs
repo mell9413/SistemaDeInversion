@@ -10,7 +10,6 @@ namespace SistemaDeInversion.Modelo.Factorys
 {
     public abstract class FactoryServicio
     {
-        private Hashtable serviciosRegistrados = new Hashtable();
         public abstract ServicioAhorroInversion crearServicioAhorroInversion(DTOServicioAhorroInversion dtoServicio);
 
     }

@@ -50,10 +50,10 @@ namespace SistemaDeInversion.Modelo
 
         public override void calcularSaldoFinal()
         {
-            this.saldoFinal = this.montoInversion +(this.interesGanado- this.calcacularImpuestoRenta());
+            this.saldoFinal = this.montoInversion +(this.interesGanado- this.calcularImpuestoRenta());
         }
 
-        public double calcacularImpuestoRenta()
+        public double calcularImpuestoRenta()
         {
             return (this.interesGanado * LectorData.obtenerImpuestoRenta());
         }

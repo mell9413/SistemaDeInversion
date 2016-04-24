@@ -114,7 +114,7 @@ namespace SistemaDeInversion.Vistas
 
         private void procesarInversion()
         {
-             IControlador control = factoryControl.crearIControlador();
+             IControlador control = factoryControl.crearControlador();
              control.realizarInversion(dtoServicio,dtoCliente);
            //MessageBox.Show(dtoServicio.Interes.ToString());
 

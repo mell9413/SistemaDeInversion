@@ -9,6 +9,6 @@ namespace SistemaDeInversion.Modelo.Factorys
 {
     public abstract class FactoryIEscritor
     {
-        public abstract IEscritor crearBitacora();
+        public abstract IEscritor crearBitacora(String tipoBitacora);
     }
 }

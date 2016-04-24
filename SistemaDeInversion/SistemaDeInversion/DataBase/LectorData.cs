@@ -28,18 +28,6 @@ namespace SistemaDeInversion.DataBase
             return tiposM[0];
         }
 
-        private static ArrayList obtenerNombreMonedas(List<String[]> lista)
-        {
-            ArrayList resultado = new ArrayList();
-            foreach (String[] elemento in lista)
-            {
-                resultado.Add(elemento[0]);
-
-            }
-            return resultado;
-
-        }
-
         // Devuelve los diferentes tipos de servicios de ahorro e inversion
         public static List<String[]> obtenerServicios()
         {

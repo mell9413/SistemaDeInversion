@@ -10,7 +10,7 @@ namespace SistemaDeInversion.Modelo.Factorys
 {
     public class FactoryConcretoControlador : FactoryControlador
     {
-        public override Controlador crearIControlador()
+        public override Controlador crearControlador()
         {
             var assembly = Assembly.GetExecutingAssembly();
             var type = assembly.GetType("SistemaDeInversion.Modelo.Controlador");

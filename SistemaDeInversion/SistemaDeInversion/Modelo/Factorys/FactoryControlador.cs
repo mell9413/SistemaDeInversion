@@ -9,6 +9,6 @@ namespace SistemaDeInversion.Modelo.Factorys
 {
     public abstract class FactoryControlador
     {
-        public abstract Controlador crearIControlador(); 
+        public abstract Controlador crearControlador(); 
     }
 }

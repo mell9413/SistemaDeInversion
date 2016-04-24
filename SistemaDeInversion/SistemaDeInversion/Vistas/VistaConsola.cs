@@ -14,7 +14,7 @@ namespace SistemaDeInversion.Vistas
     public class VistaConsola
     {
 
-        private IControlador controlador = new Controlador();
+        private IControlador controlador = new Controlador();////WTF mae para eso esta el factory del controlador, apoyese en la GUI para q vea como se realiza la relación
 
 
         private string nombre;

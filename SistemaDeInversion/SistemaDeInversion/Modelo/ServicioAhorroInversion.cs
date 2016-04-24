@@ -100,10 +100,11 @@ namespace SistemaDeInversion.Modelo
         //Métodos abstractos
         public abstract void calcularInteres();
         public abstract double obtenerSaldoMinimo();
-        public abstract void calcularSaldofinal();
+        public abstract void calcularSaldoFinal();
 
         public void calcularRendimiento()
         {
+
                 this.verificarSaldo();
                 this.calcularInteres();
                 double rendimiento = 0;
@@ -111,9 +112,8 @@ namespace SistemaDeInversion.Modelo
                 {
                     rendimiento += this.montoInversion * (this.interes / 360);
                 }
-                this.interesGanado = rendimiento;
-
-           
+                this.interesGanado = rendimiento;  
+      
         }
        
         //Verificación saldo minimo entrante
