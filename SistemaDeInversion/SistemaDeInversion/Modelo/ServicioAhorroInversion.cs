@@ -73,7 +73,20 @@ namespace SistemaDeInversion.Modelo
                 return interes;
             }
         }
-
+        public double SaldoFinal
+        {
+            get
+            {
+                return this.saldoFinal;
+            }
+        }
+        public double InteresGanado
+        {
+            get
+            {
+                return this.interesGanado;
+            }
+        }
       
 
         public Cliente Cliente
