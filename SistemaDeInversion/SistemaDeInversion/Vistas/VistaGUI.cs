@@ -111,7 +111,14 @@ namespace SistemaDeInversion.Vistas
             }
             else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
             {
-                MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
+                if (comboBoxInversion.SelectedIndex == 0) {
+                    MessageBox.Show("Plazo incorrecto, el minimo de dias es de uno (1)");
+                }
+                else {
+                    MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
+                }
+
+                
             }
             else
             {
