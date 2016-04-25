@@ -155,7 +155,7 @@ namespace SistemaDeInversion.Vistas
             if (Validacion.validarNumeros(numeroTemporal) && Validacion.validarVacio(numeroTemporal))
             {
                 if( 0< Int32.Parse(numeroTemporal.ToString())){
-                    if (tipoServicio==1 || validarMinimoDias(Int32.Parse(numeroTemporal.ToString()),claseServicio))
+                    if (validarMinimoDias(Int32.Parse(numeroTemporal.ToString()),claseServicio))
                     {
                         plazoDias = Int32.Parse(numeroTemporal.ToString());
                     }

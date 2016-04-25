@@ -59,7 +59,7 @@ namespace SistemaDeInversion.DataBase
             var servicio = (from rango in xelement.Elements("row")
                             where (String)rango.Element("inversion") == tipoServicio
                             select rango).First();
-            MessageBox.Show(Convert.ToString(servicio.Element("minDias").Value) + "foRr?");
+            //MessageBox.Show(Convert.ToString(servicio.Element("minDias").Value) + "foRr?");
             return Convert.ToInt32(servicio.Element("minDias").Value);
         }
 
