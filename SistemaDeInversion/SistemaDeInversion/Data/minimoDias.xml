@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<minimoDias>
+<row><inversion>CuentaCorriente</inversion><minDias>1</minDias></row>
+<row><inversion>CertificadoInversion</inversion><minDias>30</minDias></row>
+<row><inversion>InversionVistaPactada</inversion><minDias>15</minDias></row>
+</minimoDias>
