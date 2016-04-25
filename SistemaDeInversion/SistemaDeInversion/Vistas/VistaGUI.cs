@@ -105,24 +105,12 @@ namespace SistemaDeInversion.Vistas
                 asignarDTOInversion();
                 procesarInversion();
                 establecerDatos();
-
-            }
-            else if (revisarDatos(boxList) && comboBoxInversion.SelectedIndex == 0) {
-                asignarDTOCliente();
-                asignarDTOInversion();
-                procesarInversion();
-                establecerDatos();
+ 
             }
             else if (LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)) > numericUpDownPlazo.Value)
             {
-                if (comboBoxInversion.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Plazo incorrecto, el minimo de dias es uno (1) ");
-                }
-                else
-                {
-                    MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
-                }
+                MessageBox.Show("Plazo incorrecto, el minimo de dias son: " + LectorData.obtenerMinDias(tiposServicios.ElementAt(comboBoxInversion.SelectedIndex)));
+                
             }
             else
             {
